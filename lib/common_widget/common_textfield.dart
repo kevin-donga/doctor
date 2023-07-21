@@ -4,6 +4,7 @@ import '../utils/color_res.dart';
 
 Widget textField(
     {String? hintText,
+      TextEditingController? controller,
     Widget? suffixIcon,
     Widget? prefixIcon,
     InputBorder? border,

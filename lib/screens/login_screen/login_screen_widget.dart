@@ -78,7 +78,7 @@ Widget loginButton() {
           top: height * 0.02,
           bottom: height * 0.02,
         ),
-        child: commonText(data: StringRes.loginButtonText),
+        child: FittedBox(child: commonText(data: StringRes.loginButtonText)),
       ),
     );
   });

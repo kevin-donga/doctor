@@ -1,19 +1,19 @@
 import 'package:doctor/screens/login_screen/login_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../utils/asset_res.dart';
 
 class SignupScreenController extends GetxController {
-  void alreadyUserTextLogin() {
-    Get.to(const LoginScreen());
+  bool visiBal = true;
+
+  void passSuFix() {
+    visiBal = !visiBal;
+    update(['LoginController']);
   }
 
-}
-
-Widget topImageSignUp() {
-  return Image.asset(
-    AssetRes.splashScreen1,
-    height: 150,
-  );
+  void alreadydUserTextSignUp() {
+    Get.to(const LoginScreen());
+  }
+  void signUpButton(){
+      Get.to(const LoginScreen());
+  }
 }
