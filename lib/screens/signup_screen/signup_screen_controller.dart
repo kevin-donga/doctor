@@ -5,9 +5,10 @@ import 'package:get/get.dart';
 import '../../utils/asset_res.dart';
 
 class SignupScreenController extends GetxController {
-  void alreadydUserTextLogin() {
+  void alreadyUserTextLogin() {
     Get.to(const LoginScreen());
   }
+
 }
 
 Widget topImageSignUp() {

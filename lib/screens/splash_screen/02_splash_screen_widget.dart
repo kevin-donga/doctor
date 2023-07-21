@@ -1,3 +1,6 @@
+// ignore: file_names
+// ignore_for_file: file_names, duplicate_ignore
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../common_widget/common_text.dart';

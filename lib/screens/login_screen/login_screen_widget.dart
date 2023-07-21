@@ -74,7 +74,7 @@ Widget loginButton() {
       widget: Padding(
         padding: EdgeInsets.only(
           left: width * 0.32,
-          right: width * 0.32,
+          right: width * 0.30,
           top: height * 0.02,
           bottom: height * 0.02,
         ),

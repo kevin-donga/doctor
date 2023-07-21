@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:doctor/screens/splash_screen/01_splash_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,7 +13,7 @@ class SplashScreen extends StatelessWidget {
     Get.put(SplashController());
     return Scaffold(
       body: Center(
-        child: Image.asset(AssetRes.splashScreen1),
+        child: Image.asset(AssetRes.splashScreen1,height: Get.height*0.30,),
       ),
     );
   }

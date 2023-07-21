@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 Widget commonDot({int? index, int? pageIndex}) {
   return AnimatedContainer(
-      duration: Duration(
+      duration: const Duration(
         milliseconds: 200,
       ),
       height: 8,
@@ -12,6 +12,6 @@ Widget commonDot({int? index, int? pageIndex}) {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
           color: index == pageIndex
-              ? ColorRes.commonDotExpanedColor
+              ? ColorRes.commonDotExpandColor
               : ColorRes.commonDotCollapsedColor.withOpacity(0.8)));
 }

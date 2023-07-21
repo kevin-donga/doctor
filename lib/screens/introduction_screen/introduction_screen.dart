@@ -1,7 +1,6 @@
 import 'package:doctor/screens/introduction_screen/introduction_screen_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../common_widget/swiped_common_dot_.dart';
 import 'introduction_screen_controller.dart';
 
 class IntroductionScreen extends StatelessWidget {

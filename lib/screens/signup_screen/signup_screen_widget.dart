@@ -1,5 +1,4 @@
 import 'package:doctor/screens/signup_screen/signup_screen_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +18,7 @@ Widget alreadydUserTextLogin() {
       ),
       GetBuilder<SignupScreenController>(builder: (controller) {
         return InkWell(
-          onTap: () => controller.newUserTextLogin(),
+        //  onTap: () => controller.newUserTextLogin(),
           child: commonText(
               data: StringRes.newUserWithSignUpText, color: Colors.blue),
         );

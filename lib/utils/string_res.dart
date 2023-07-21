@@ -31,6 +31,21 @@ class StringRes {
   static const alreadyUserText = 'Don\'t have an account?';
   static const alreadyUserWithSignInText = 'Sign In';
 
+//-----------forgot Screen-------------
+  static const forgotText = 'Forgot Password';
+  static const forgot = 'Forgot';
+  static const mobileText = 'mobile';
+  static const forgotText1 = 'Select which contact details should \n    we use to reset your password';
+
+//-----------verification Screen-------------
+  static const verificationText = 'OTP Code Verification';
+  static const verifyText = 'Verify';
+
+//------------bookAppointment Screen-------------
+
+static const selectDateText='Select Date';
+static const bookAppointmentText='Book Appointment';
+static const selectHourText='Select Hour';
 
 
 }
