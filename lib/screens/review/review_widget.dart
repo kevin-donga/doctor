@@ -134,7 +134,7 @@ Widget storyContainer() {
   );
 }
 
-Widget ElavatedSubmitReview() {
+Widget elevatedSubmitReview() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
@@ -144,16 +144,16 @@ Widget ElavatedSubmitReview() {
           height: 43,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Color(0xff9acd4c)),
-        child: Text('Submit Story'),
+              color: const Color(0xff9acd4c)),
+        child: const Text('Submit Story'),
       ),Container(
         alignment: Alignment.center,
           width: 175,
           height: 43,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Color(0xff9acd4c)),
-        child: Text('Submit Reviews'),
+              color: const Color(0xff9acd4c)),
+        child: const Text('Submit Reviews'),
       )
     ],
   );

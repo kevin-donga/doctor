@@ -24,4 +24,11 @@ class BookAppointmentController extends GetxController{
       }
       update(['DatePicker']);
   }
+
+  void bookAppointmentButton()
+  {
+    Get.back(
+
+    );
+  }
 }

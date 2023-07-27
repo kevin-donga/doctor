@@ -2,12 +2,15 @@ import 'dart:ffi';
 
 import 'package:doctor/common_widget/common_text.dart';
 import 'package:doctor/screens/book_appoinment/book_appointment_controller.dart';
+import 'package:doctor/screens/forget_password/forget_password_widget.dart';
 import 'package:doctor/utils/color_res.dart';
 import 'package:doctor/utils/icon_res.dart';
 import 'package:doctor/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+
+import '../../common_widget/common_elevated_button.dart';
 
 Widget datePickerText() {
   return GetBuilder<BookAppointmentController>(builder: (controller) {
@@ -93,6 +96,7 @@ Widget datePicker() {
 Widget timePicker() {
   return Expanded(
     child: GridView.builder(
+      physics: const BouncingScrollPhysics(),
       itemCount: 12,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         mainAxisSpacing: 15.0,
@@ -100,21 +104,41 @@ Widget timePicker() {
         childAspectRatio: 2.78,
         crossAxisCount: 3,
       ),
-      itemBuilder: (context, index) => Padding(
-        padding: EdgeInsets.zero,
-        child: Align(
-          child: Container(
-            height: Get.height*0.80,
-            width: Get.width*0.90,
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(color: ColorRes.blueColor,strokeAlign: BorderSide.strokeAlignOutside),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Center(child: commonText(data: '09.00 Am')),
+      itemBuilder: (context, index) => Align(
+        child: Container(
+          height: Get.height * 0.80,
+          width: Get.width * 0.90,
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            border: Border.all(
+                color: ColorRes.blueColor,
+                strokeAlign: BorderSide.strokeAlignOutside),
+            borderRadius: BorderRadius.circular(20),
           ),
+          child: Center(child: commonText(data: '09.00 Am')),
         ),
       ),
     ),
   );
+}
+
+Widget bookAppointmentButton() {
+  return GetBuilder<BookAppointmentController>(builder: (controller) {
+    return commonElevatedButton(
+      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(height * 0.25))),
+      onPressed: () => controller.bookAppointmentButton(),
+      widget: Padding(
+        padding: EdgeInsets.only(
+          left: width * 0.32,
+          right: width * 0.30,
+          top: height * 0.02,
+          bottom: height * 0.02,
+        ),
+        child: FittedBox(
+          child: commonText(data: StringRes.nextText),
+        ),
+      ),
+    );
+  });
 }

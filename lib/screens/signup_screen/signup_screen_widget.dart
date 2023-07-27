@@ -1,5 +1,4 @@
 import 'package:doctor/screens/signup_screen/signup_screen_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../common_widget/common_elevated_button.dart';
@@ -27,6 +26,26 @@ Widget middleTextSignUp() {
       fontFamily: StringRes.josefinSans);
 }
 
+Widget nameTextFieldSignUp() {
+  return textField(
+    hintText: StringRes.nameTextFieldHintText,
+    prefixIcon: const Icon(IconRes.personIcon),
+    fillColor: Colors.blueGrey.shade50,
+    filled: true,
+    obscureText: false,
+  );
+}
+
+Widget mobileTextFieldSignUp() {
+  return textField(
+    hintText: StringRes.mobileTextFieldHintText,
+    prefixIcon: const Icon(IconRes.phoneIcon),
+    fillColor: Colors.blueGrey.shade50,
+    filled: true,
+    obscureText: false,
+  );
+}
+
 Widget emailTextFieldSignUp() {
   return textField(
     hintText: StringRes.emailTextFieldHintText,
@@ -35,6 +54,44 @@ Widget emailTextFieldSignUp() {
     filled: true,
     obscureText: false,
   );
+}
+
+Widget radioButton() {
+  return GetBuilder<SignupScreenController>(
+      id: 'radioButton',
+      builder: (controller) {
+        return Container(
+          height: Get.height * 0.07,
+          width: Get.width * 0.802,
+          decoration: BoxDecoration(
+            color: Colors.blueGrey.shade50,
+            borderRadius: BorderRadius.circular(40),
+            border: Border.all(color: Colors.grey.shade700),
+          ),
+          child: Row(
+            children: [
+              Radio(
+                value: controller.male,
+                groupValue: controller.group,
+                onChanged: controller.radioButtonCondition,
+              ),
+              const Text("Male"),
+              Radio(
+                value: controller.female,
+                groupValue: controller.group,
+                onChanged: controller.radioButtonCondition,
+              ),
+              const Text("Female"),
+              Radio(
+                value: controller.other,
+                groupValue: controller.group,
+                onChanged: controller.radioButtonCondition,
+              ),
+              const Text("Other"),
+            ],
+          ),
+        );
+      });
 }
 
 Widget passTextFieldSignUp() {
@@ -59,18 +116,19 @@ Widget passTextFieldSignUp() {
 
 Widget signUpButton() {
   return GetBuilder<SignupScreenController>(builder: (controller) {
-    return commonElevatedButton(
-      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(height * 0.25))),
-      onPressed: () => controller.signUpButton(),
-      widget: Padding(
-        padding: EdgeInsets.only(
-          left: width * 0.32,
-          right: width * 0.32,
-          top: height * 0.02,
-          bottom: height * 0.02,
+    return SizedBox(
+      width: Get.width*0.802,
+      height: Get.height * 0.06,
+      child: commonElevatedButton(
+        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(height * 0.25))),
+        onPressed: () => controller.signUpButton(),
+        widget: commonText(
+          data: StringRes.signupButtonText,
+          fontFamily: StringRes.josefinSans,
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
         ),
-        child: FittedBox(child: commonText(data: StringRes.signupButtonText)),
       ),
     );
   });
@@ -83,12 +141,17 @@ Widget alreadydUserTextSignUp() {
       commonText(
         data: StringRes.alreadyUserText,
         color: Colors.black.withOpacity(0.5),
+        fontFamily: StringRes.josefinSans,
+        fontWeight: FontWeight.bold,
       ),
       GetBuilder<SignupScreenController>(builder: (controller) {
         return InkWell(
           onTap: () => controller.alreadydUserTextSignUp(),
           child: commonText(
-              data: StringRes.alreadyUserWithSignInText, color: Colors.blue),
+              fontFamily: StringRes.josefinSans,
+              fontWeight: FontWeight.bold,
+              data: StringRes.alreadyUserWithSignInText,
+              color: Colors.blue),
         );
       }),
     ],

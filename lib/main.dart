@@ -1,4 +1,3 @@
-import 'package:doctor/screens/bottom_navbar/bottom_navbar.dart';
 import 'package:doctor/screens/home_screen/home_screen.dart';
 import 'package:doctor/screens/splash_screen/01_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,9 +10,7 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
   runApp(const GetMaterialApp(
-    // home: HomeScreen(),
-    // home: MyApp(),
-      home: BottomNavBar(),
+    home: MyAppointmentMessage(),
     debugShowCheckedModeBanner: false,
-  ),);
+  ));
 }

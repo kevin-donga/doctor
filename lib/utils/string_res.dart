@@ -1,3 +1,4 @@
+
 class StringRes {
   //-----------common String------------
   static const josefinSans = 'Josefin Sans';
@@ -19,6 +20,8 @@ class StringRes {
 //---------Login Screen-------------
   static const loginScreenMiddleString = 'Login to Your Account';
   static const emailTextFieldHintText = 'Email';
+  static const mobileTextFieldHintText = 'Mobile Number';
+  static const nameTextFieldHintText = 'Name';
   static const passTextFieldHintText = 'Password';
   static const loginButtonText = 'Sign In';
   static const forgetPasswordText = 'Forget the password ?';
@@ -47,6 +50,7 @@ class StringRes {
 static const selectDateText='Select Date';
 static const bookAppointmentText='Book Appointment';
 static const selectHourText='Select Hour';
+static const nextText='Next';
 
 
   //---------Home Screen-----------
@@ -59,4 +63,58 @@ static const selectHourText='Select Hour';
   static const doctorSpecialityRow = 'Doctor Speciality';
   static const seeAllString = 'See All';
   static const topDoctor = 'Top Doctors';
+
+  //---------Profile Screen---------
+  static const profileText="Profile";
+  static const andrewAinsleyText="Andrew Ainsley";
+
+//---------MyAppointment Screen---------
+  static const drText="Dr.Rahul Zirkind";
+  static const voiceText="Voice Call -";
+  static const cancelText="Cancelled";
+  static const dateText="Dec 12,2022 | 16:00 AM";
+  static const doctorDataText="Immunologists";
+  static const locationText="The Valley Hospital in California,US";
+  static const scheduledAppointmentText="Scheduled Appointment";
+  static const monthText="Today,December 22,2022";
+  static const timeText="16:00-16:30 PM(30 minutes)";
+  static const patientText="Patient Information";
+  static const fullNameText="Full Name";
+  static const nameText="   : Andrew Ainsley";
+  static const genderText="Gender";
+  static const maleText="         : Male";
+  static const ageText="Age";
+  static const ageDisplayText="              : 27";
+  static const problemText="Problem";
+  static const problemDataText="         : Lorem ipsum dolor sit amet,\n           consectetur adipiscing elit,sed do\n           eiusmod tempor.";
+  static const packageText="Your Package";
+  static const myAppointmentText="My Appointment";
+  static const messageText="Messaging";
+  static const chatText="Chat Messagees with doctor";
+  static const text="\$20";
+  static const paidText="(Paid)";
+
+  static List<Map> doctorDataList=[
+    {
+      'Name':'Dr.Rahul Zirkind',
+      'message':'Voice Call',
+      'Date':'Dec 12,2022|16:00 AM',
+    },
+    {
+      'Name':'Dr.keegan Dach',
+      'message':'Messaging',
+      'Date':'Dec 12,2022|16:00 AM',
+    },
+    {
+      'Name':'Dr.Drake Boeson',
+      'message':'Video Call',
+      'Date':'Dec 12,2022|16:00 AM',
+    },
+    {
+      'Name':'Dr.Quinn Slatter',
+      'message':'Voice Call',
+      'Date':'Dec 12,2022|16:00 AM',
+    },
+  ];
+
 }

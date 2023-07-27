@@ -4,7 +4,15 @@ import 'package:get/get.dart';
 
 class SignupScreenController extends GetxController {
   bool visiBal = true;
+  String male = "Male";
+  String female = "Female";
+  String other = "Other";
+  String group = "Gender";
 
+  void radioButtonCondition(val){
+        group = val.toString();
+        update(['radioButton']);
+  }
   void passSuFix() {
     visiBal = !visiBal;
     update(['LoginController']);

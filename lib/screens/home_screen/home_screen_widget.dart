@@ -9,11 +9,11 @@ import '../../utils/string_res.dart';
 double h = Get.height;
 double w = Get.width;
 
-Widget onboardingContainer() {
+Widget onBoardingContainer() {
   return Container(
     padding: const EdgeInsets.only(left: 20),
     // margin: EdgeInsets.all(10),
-    height: 180,
+    height: Get.height * 0.210,
     width: double.infinity,
     decoration: BoxDecoration(
         color: Colors.blue, borderRadius: BorderRadius.circular(w * 0.09)),
@@ -107,8 +107,9 @@ Widget doctorSpecGridView() {
     physics: const NeverScrollableScrollPhysics(),
     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 4,
-      mainAxisSpacing: 10,
-      crossAxisSpacing: 10,
+      mainAxisSpacing: 30,
+      crossAxisSpacing: 20,
+      mainAxisExtent:76,
     ),
     itemCount: 8,
     itemBuilder: (context, index) => Column(
@@ -118,11 +119,11 @@ Widget doctorSpecGridView() {
           radius: 30,
           child: Image.asset(
             doctorSpecGridViewList[index]['icon'],
-            height: 20,
+            height: Get.height * 0.04,
             color: Colors.blueAccent,
           ),
         ),
-        Text(doctorSpecGridViewList[index]['string'])
+        Text(doctorSpecGridViewList[index]['string']),
       ],
     ),
   );

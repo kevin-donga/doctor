@@ -134,7 +134,7 @@ Widget forgotButton() {
           top: height * 0.02,
           bottom: height * 0.02,
         ),
-        child: commonText(data: StringRes.forgot,fontFamily: StringRes.josefinSans),
+        child: commonText(data: StringRes.forgot,fontFamily: StringRes.josefinSans,fontWeight: FontWeight.bold),
       ),
     );
   });

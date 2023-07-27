@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../utils/string_res.dart';
 import '../search&filter/search&filter.dart';
-import 'home_screen_controller.dart';
 import 'home_screen_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Get.put(HomeScreenController());
@@ -40,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                         fontFamily: StringRes.josefinSans),
                   ),
                   SizedBox(
-                    height: 5,
+                    height: h * 0.01,
                   ),
                   Text(
                     StringRes.appbarUsername,
@@ -61,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                   },
                   child: commonContainer(
                     padding: const EdgeInsets.all(10),
-                    height: 50,
+                    height: Get.height*0.06,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.blueGrey.shade50,
@@ -92,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              expandedHeight: 130,
+              expandedHeight: Get.height*0.170,
               foregroundColor: Colors.black,
               backgroundColor: Colors.white,
               actions: <Widget>[

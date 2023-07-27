@@ -18,6 +18,8 @@ class BookAppointment extends StatelessWidget {
              datePickerText(),
               datePicker(),
               timePicker(),
+              bookAppointmentButton(),
+              SizedBox(height: Get.height*0.03,)
             ],
           ),
         ),
