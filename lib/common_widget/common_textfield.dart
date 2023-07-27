@@ -12,7 +12,6 @@ Widget textField(
     bool? filled,
     required bool obscureText,
     bool? isDense,
-      TextEditingController? controller,
       TextInputType? keyboardType,
     BoxConstraints? constraints}) {
   return TextFormField(

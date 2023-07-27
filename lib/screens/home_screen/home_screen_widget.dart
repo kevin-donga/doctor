@@ -2,7 +2,6 @@ import 'package:doctor/common_widget/common_container.dart';
 import 'package:doctor/common_widget/common_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../utils/asset_res.dart';
 import '../../utils/icon_res.dart';
 import '../../utils/string_res.dart';
@@ -24,7 +23,6 @@ Widget onboardingContainer() {
             right: 0,
             bottom: -5,
             child: Image.asset(
-
               AssetRes.doctorThumb1,
               height: 180,
             )),
@@ -149,25 +147,47 @@ Widget topDoctorRow() {
   );
 }
 
+List topDoctorTab = ['All', 'General', 'Dentist', 'Nutrition'];
+
 Widget topDoctorsTab() {
-  return Expanded(
-    child: ListView.builder(
-      itemCount: 4,
-      scrollDirection: Axis.horizontal,
-      itemBuilder: (BuildContext context, int index) {
-        return commonContainer(
-          alignment: Alignment.center,
-          height: 40,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.red,
-          ),
-          // child: Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: commonText(data: 'all', color: Colors.white),
-          // ),
-        );
-      },
-    ),
+  // return GetBuilder<HomeScreenController>(
+  //   builder: (controller) {
+  return ListView.builder(
+    shrinkWrap: true,
+    // physics: const NeverScrollableScrollPhysics(),
+    itemCount: topDoctorTab.length,
+    scrollDirection: Axis.horizontal,
+    itemBuilder: (BuildContext context, index) {
+      return commonContainer(
+        // height: 30,
+        width: 90,
+        margin: const EdgeInsets.all(10),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.blue, width: 2),
+          borderRadius: BorderRadius.circular(20),
+          // color: Colors.red,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: commonText(data: topDoctorTab[index], color: Colors.blue),
+        ),
+      );
+    },
+  );
+  //   },
+  // );
+}
+
+Widget topDoctorsField() {
+  return GridView.builder(
+    physics: const NeverScrollableScrollPhysics(),
+    shrinkWrap: true,
+    gridDelegate:
+        const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+    itemCount: 10,
+    itemBuilder: (context, index) {
+      return Container(margin: const EdgeInsets.all(10),color: Colors.blue,);
+    },
   );
 }
