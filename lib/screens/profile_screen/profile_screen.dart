@@ -15,21 +15,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     Get.put(ProfileController());
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              customAppbar(),
-              SizedBox(height: Get.height*0.04,),
-              profileImage(),
-              SizedBox(height: Get.height*0.04,),
-              listview(),
-              logout(),
-              SizedBox(height: Get.height*0.13,),
-            ],
-          ),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            SizedBox(height: Get.height*0.04,),
+            customAppbar(),
+            SizedBox(height: Get.height*0.04,),
+            profileImage(),
+            SizedBox(height: Get.height*0.04,),
+            listview(),
+            logout(),
+            SizedBox(height: Get.height*0.13,),
+          ],
         ),
       ),
     );

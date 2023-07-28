@@ -11,8 +11,8 @@ class _ArticleScreenState extends State<ArticleScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Column(
-
+      body: Center(
+child: Text('Artiles'),
       ),
     );
   }

@@ -6,28 +6,34 @@ import 'package:get/get.dart';
 
 import '../articles_screen/articles_screen.dart';
 import '../history_screen/history_screen.dart';
+import '../profile_screen/profile_screen.dart';
 import '../review/review_screen.dart';
 
 class BottomNavBarController extends GetxController {
-  List<Map> bottom = [
+  List<Map> bottomItem = [
     {
-      'icon': Icons.home,
+      'inactivateIcon': Icons.home_outlined,
+      'ActivateIcon': Icons.home,
       'text': 'Home',
     },
     {
-      'icon': Icons.date_range,
-      'text': 'Appointme..',
+      'inactivateIcon': Icons.date_range,
+      'ActivateIcon': Icons.date_range_outlined,
+      'text': 'Appoin',
     },
     {
-      'icon': Icons.note_alt_rounded,
+      'inactivateIcon': Icons.note_alt_outlined,
+      'ActivateIcon': Icons.note_alt_rounded,
       'text': 'History',
     },
     {
-      'icon': Icons.note_outlined,
+      'inactivateIcon': Icons.note_add_outlined,
+      'ActivateIcon': Icons.note_add_rounded,
       'text': 'Articles',
     },
     {
-      'icon': Icons.person,
+      'inactivateIcon': Icons.person_2_outlined,
+      'ActivateIcon': Icons.person,
       'text': 'Profile',
     },
   ];
@@ -36,9 +42,16 @@ class BottomNavBarController extends GetxController {
     const BookAppointment(),
     const HistoryScreen(),
     const ArticleScreen(),
-    const ReviewScreen(),
+    const ProfileScreen(),
   ];
   final pageController = PageController(initialPage: 0);
   final notchController = NotchBottomBarController(index: 0);
   int maxCount = 5;
+   void onTapBotomBar(index)
+   {
+     update(['BottomNavBarController']);
+     log('current selected index $index');
+     pageController.jumpToPage(index);
+
+   }
 }

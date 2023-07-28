@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   child: commonContainer(
                     padding: const EdgeInsets.all(10),
-                    height: Get.height*0.06,
+                    height: Get.height * 0.06,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.blueGrey.shade50,
@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              expandedHeight: Get.height*0.170,
+              expandedHeight: Get.height * 0.170,
               foregroundColor: Colors.black,
               backgroundColor: Colors.white,
               actions: <Widget>[
@@ -113,40 +113,38 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            SliverFillRemaining(
-              child: Scaffold(
-                body: SingleChildScrollView(
-                  child: Column(children: [
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    onBoardingContainer(),
-                    SizedBox(
-                      height: h * 0.02,
-                    ),
-                    doctorSpecialityRow(),
-                    SizedBox(
-                      height: h * 0.01,
-                    ),
-                    SizedBox(
-                      height: h * 0.28,
-                      child: doctorSpecGridView(),
-                    ),
-                    SizedBox(
-                      height: h * 0.05,
-                    ),
-                    topDoctorRow(),
-                    SizedBox(
-                      height: h * 0.01,
-                    ),
-                    SizedBox(
-                      height: h * 0.075,
-                      width: w,
-                      child: topDoctorsTab(),
-                    ),
-                    topDoctorsField()
-                  ]),
-                ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  onBoardingContainer(),
+                  SizedBox(
+                    height: h * 0.02,
+                  ),
+                  doctorSpecialityRow(),
+                  SizedBox(
+                    height: h * 0.01,
+                  ),
+                  SizedBox(
+                    height: h * 0.27,
+                    child: doctorSpecGridView(),
+                  ),
+                  SizedBox(
+                    height: h * 0.05,
+                  ),
+                  topDoctorRow(),
+                  SizedBox(
+                    height: h * 0.01,
+                  ),
+                  SizedBox(
+                    height: h * 0.075,
+                    width: w,
+                    child: topDoctorsTab(),
+                  ),
+                  topDoctorsField(),
+                ],
               ),
             ),
           ],

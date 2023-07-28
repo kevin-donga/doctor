@@ -109,9 +109,9 @@ Widget doctorSpecGridView() {
       crossAxisCount: 4,
       mainAxisSpacing: 30,
       crossAxisSpacing: 20,
-      mainAxisExtent:76,
+      mainAxisExtent:80,
     ),
-    itemCount: 8,
+    itemCount: doctorSpecGridViewList.length,
     itemBuilder: (context, index) => Column(
       children: [
         CircleAvatar(

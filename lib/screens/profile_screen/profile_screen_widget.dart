@@ -11,7 +11,7 @@ Widget customAppbar() {
   return Row(
     children: [
       Container(
-        height: Get.height * 0.05,
+        height: Get.height * 0.06,
         width: Get.width * 0.14,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(40),
@@ -97,7 +97,7 @@ Widget listview() {
     builder: (controller) {
       return Expanded(
         child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: profileList.length,
           itemBuilder: (context, index) => Row(
             children: [

@@ -11,7 +11,8 @@ import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../common_widget/common_elevated_button.dart';
-
+double h=Get.height;
+double w=Get.width;
 Widget datePickerText() {
   return GetBuilder<BookAppointmentController>(builder: (controller) {
     return Column(

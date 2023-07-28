@@ -125,4 +125,11 @@ static const nextText='Next';
   static const descriptionText='My pleasure,All the best for....';
   static const dayText='Today,';
   static const historyOfTimeText='10:00 AM';
+//---------BottomBar Screen---------
+static const page1='Home';
+static const page2='Appoin..';
+static const page3='History';
+static const page4='Articles';
+static const page5='Profile';
+
 }

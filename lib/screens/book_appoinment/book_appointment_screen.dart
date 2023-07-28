@@ -9,19 +9,18 @@ class BookAppointment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(BookAppointmentController());
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-             datePickerText(),
-              datePicker(),
-              timePicker(),
-              bookAppointmentButton(),
-              SizedBox(height: Get.height*0.03,)
-            ],
-          ),
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            SizedBox(height: Get.height*0.04,),
+           datePickerText(),
+            datePicker(),
+            timePicker(),
+            bookAppointmentButton(),
+            SizedBox(height: Get.height*0.03,)
+          ],
         ),
       ),
     );
