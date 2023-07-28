@@ -1,9 +1,12 @@
 import 'package:doctor/utils/asset_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pinput/pinput.dart';
 import '../../../common_widget/common_text.dart';
 import '../../../utils/color_res.dart';
 import '../../../utils/icon_res.dart';
+import '../../../utils/string_res.dart';
+import '../../../utils/string_res.dart';
 import '../../../utils/string_res.dart';
 import '01_my_appointment_controller.dart';
 
@@ -60,7 +63,7 @@ Widget listview() {
       return Expanded(
         child: ListView.builder(
           physics: const BouncingScrollPhysics(),
-          itemCount: 7,
+          itemCount: StringRes.doctorDataList.length,
           itemBuilder: (context, index) => Column(
             children: [
               Padding(

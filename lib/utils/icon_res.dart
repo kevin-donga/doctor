@@ -8,6 +8,7 @@ class IconRes {
   static const messageIcon = Icons.messenger;
   static const emailIcon = Icons.email;
   static const moreHorizIcon=Icons.more_horiz;
+  static const searchIcon=Icons.search_rounded;
   static const personIcon = Icons.person;
   static const IconData person1Icon = Icons.person_outline_sharp;
   static const IconData notificationIcon = Icons.notifications_none_outlined;

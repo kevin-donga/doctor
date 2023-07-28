@@ -2,6 +2,7 @@
 class StringRes {
   //-----------common String------------
   static const josefinSans = 'Josefin Sans';
+  static const josefinSansBold = 'Josefin Sans-Bold';
 
   //---------Splash Screen-2-------------
   static const welcomeSplash = 'Welcome to\n Medica! 👋';
@@ -71,6 +72,8 @@ static const nextText='Next';
 //---------MyAppointment Screen---------
   static const drText="Dr.Rahul Zirkind";
   static const voiceText="Voice Call -";
+  static const historyVoiceText="Voice Call";
+  static const historyVideoText="Video Call";
   static const cancelText="Cancelled";
   static const dateText="Dec 12,2022 | 16:00 AM";
   static const doctorDataText="Immunologists";
@@ -117,4 +120,9 @@ static const nextText='Next';
     },
   ];
 
+//---------History Screen---------
+  static const historyText='History';
+  static const descriptionText='My pleasure,All the best for....';
+  static const dayText='Today,';
+  static const historyOfTimeText='10:00 AM';
 }

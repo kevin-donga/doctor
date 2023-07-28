@@ -66,22 +66,28 @@ Widget forgetPassTextLogin() {
 }
 
 Widget loginButton() {
-  return GetBuilder<LoginController>(builder: (controller) {
-    return commonElevatedButton(
-      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(height * 0.25))),
-      onPressed: () => controller.loginButton(),
-      widget: Padding(
-        padding: EdgeInsets.only(
-          left: width * 0.32,
-          right: width * 0.30,
-          top: height * 0.02,
-          bottom: height * 0.02,
+  return GetBuilder<LoginController>(
+    builder: (controller) {
+      return SizedBox(
+        width: Get.width * 0.802,
+        height: Get.height * 0.06,
+        child: commonElevatedButton(
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(height * 0.25),
+            ),
+          ),
+          onPressed: () => controller.loginButton(),
+          widget: commonText(
+            data: StringRes.loginButtonText,
+            fontFamily: StringRes.josefinSans,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
         ),
-        child: FittedBox(child: commonText(data: StringRes.loginButtonText)),
-      ),
-    );
-  });
+      );
+    },
+  );
 }
 
 Widget newUserTextLogin() {

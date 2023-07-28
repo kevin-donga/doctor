@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../utils/string_res.dart';
 import '../search&filter/search&filter.dart';
+import 'home_screen_controller.dart';
 import 'home_screen_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,9 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 backgroundImage: AssetImage(AssetRes.doctorThumb2),
                 backgroundColor: Colors.transparent,
               ),
-              title: const Column(
+              title:  Column(
                 children: [
-                  Text(
+                  const Text(
                     StringRes.appbarTitle,
                     style: TextStyle(
                         color: Colors.black,
@@ -46,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: h * 0.01,
                   ),
-                  Text(
+                  const Text(
                     StringRes.appbarUsername,
                     style: TextStyle(
                       color: Colors.black,
@@ -119,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(
                       height: 20,
                     ),
-                    onboardingContainer(),
+                    onBoardingContainer(),
                     SizedBox(
                       height: h * 0.02,
                     ),
@@ -128,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: h * 0.01,
                     ),
                     SizedBox(
-                      height: h * 0.25,
+                      height: h * 0.28,
                       child: doctorSpecGridView(),
                     ),
                     SizedBox(

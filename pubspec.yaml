@@ -87,6 +87,9 @@ flutter:
    - family: Josefin Sans
      fonts:
       - asset: assets/fonts/JosefinSans-VariableFont_wght.ttf
+   - family: Josefin Sans-Bold
+     fonts:
+       - asset: assets/fonts/JosefinSans-Bold.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

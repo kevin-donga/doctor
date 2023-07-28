@@ -35,7 +35,7 @@ class BottomNavBarController extends GetxController {
     const HomeScreen(),
     const BookAppointment(),
     const HistoryScreen(),
-    const ArticlesScreen(),
+    const ArticleScreen(),
     const ReviewScreen(),
   ];
   final pageController = PageController(initialPage: 0);
