@@ -1,4 +1,5 @@
 import 'package:doctor/screens/book_appoinment/my_appointment/02_my_appointment.dart';
+import 'package:doctor/screens/bottom_navbar/bottom_navbar.dart';
 import 'package:doctor/screens/home_screen/home_screen.dart';
 import 'package:doctor/screens/splash_screen/01_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,7 +14,7 @@ Future<void> main() async {
     home: EditProfileScreen(),
     // home: SplashScreen(),
     // home: HomeScreen(),
-    home: BottomNavBar(),
+    // home: BottomNavBar(),
     debugShowCheckedModeBanner: false,
   ));
 }

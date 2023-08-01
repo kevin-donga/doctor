@@ -148,11 +148,7 @@ class StringRes {
   static const page3 = 'History';
   static const page4 = 'Articles';
   static const page5 = 'Profile';
-static const page1='Home';
-static const page2='Appoin..';
-static const page3='History';
-static const page4='Articles';
-static const page5='Profile';
+
 
   //---------Articles Screen---------
   static const articleAppbarTitle="Articles";

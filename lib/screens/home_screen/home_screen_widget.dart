@@ -1,7 +1,6 @@
 import 'package:doctor/common_widget/common_container.dart';
 import 'package:doctor/common_widget/common_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import '../../utils/asset_res.dart';
 import '../../utils/icon_res.dart';
