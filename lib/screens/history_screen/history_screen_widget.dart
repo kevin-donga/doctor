@@ -22,7 +22,7 @@ Widget historyAppbar() {
               Row(
                 children: [
                   Container(
-                    height: Get.height * 0.05,
+                    height: Get.height * 0.06,
                     width: Get.width * 0.14,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(40),

@@ -1,10 +1,12 @@
 import 'package:doctor/common_widget/common_container.dart';
 import 'package:doctor/common_widget/common_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import '../../utils/asset_res.dart';
 import '../../utils/icon_res.dart';
 import '../../utils/string_res.dart';
+import 'home_screen_controller.dart';
 
 double h = Get.height;
 double w = Get.width;
@@ -109,7 +111,7 @@ Widget doctorSpecGridView() {
       crossAxisCount: 4,
       mainAxisSpacing: 30,
       crossAxisSpacing: 20,
-      mainAxisExtent:80,
+      mainAxisExtent: 80,
     ),
     itemCount: doctorSpecGridViewList.length,
     itemBuilder: (context, index) => Column(
@@ -133,7 +135,7 @@ Widget topDoctorRow() {
   return Row(
     children: [
       commonText(
-          data: StringRes.topDoctor,
+          data: StringRes.article,
           fontSize: 18,
           fontFamily: StringRes.josefinSans,
           fontWeight: FontWeight.bold),
@@ -181,14 +183,70 @@ Widget topDoctorsTab() {
 }
 
 Widget topDoctorsField() {
-  return GridView.builder(
-    physics: const NeverScrollableScrollPhysics(),
-    shrinkWrap: true,
-    gridDelegate:
-        const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-    itemCount: 10,
-    itemBuilder: (context, index) {
-      return Container(margin: const EdgeInsets.all(10),color: Colors.blue,);
-    },
-  );
+  return GetBuilder<HomeScreenController>(builder: (controller) {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      physics: const BouncingScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: controller.topDoctors.length,
+      itemBuilder: (context, index) {
+        return commonContainer(
+          // height: h*0.5,
+          width: w * 0.55,
+          margin: const EdgeInsets.all(10),
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
+          child: Column(
+            children: [
+              ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  child: commonContainer(
+                    height: h * 0.24,
+                    width: w,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(
+                            controller.topDoctors[index]['photo'],
+                          ),
+                          fit: BoxFit.cover),
+                    ),
+                    // color: Colors.white24,
+                  )),
+              Column(
+                children: [
+                  SizedBox(
+                    height: h * 0.01,
+                  ),
+                  commonText(
+                      data: controller.topDoctors[index]['name'],
+                      fontWeight: FontWeight.bold,
+                      fontFamily: StringRes.josefinSansBold),
+                  commonText(
+                      data: controller.topDoctors[index]['qualification'],
+                      fontWeight: FontWeight.bold,
+                      fontFamily: StringRes.josefinSans),
+                  RatingBarIndicator(
+                    rating: 2.50,
+                    itemBuilder: (context, index) => const Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                    ),
+                    itemCount: 4,
+                    itemSize: 20.0,
+                    direction: Axis.horizontal,
+                  ),
+                ],
+              )
+            ],
+          ),
+        );
+      },
+    );
+  });
 }

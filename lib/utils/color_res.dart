@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorRes{
+  static const scaffoldColor=Color(0xffD9E2EE);
   //-----------introduction Screen--------------
 static const commonDotExpandColor=Colors.blueAccent;
 static const commonDotCollapsedColor=Colors.grey  ;

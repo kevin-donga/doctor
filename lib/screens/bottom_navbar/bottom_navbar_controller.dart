@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:doctor/screens/book_appoinment/book_appointment_screen.dart';
 import 'package:doctor/screens/home_screen/home_screen.dart';
@@ -7,7 +9,6 @@ import 'package:get/get.dart';
 import '../articles_screen/articles_screen.dart';
 import '../history_screen/history_screen.dart';
 import '../profile_screen/profile_screen.dart';
-import '../review/review_screen.dart';
 
 class BottomNavBarController extends GetxController {
   List<Map> bottomItem = [

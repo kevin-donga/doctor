@@ -2,6 +2,7 @@ import 'package:doctor/common_widget/common_container.dart';
 import 'package:doctor/utils/asset_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../utils/color_res.dart';
 import '../../utils/string_res.dart';
 import '../search&filter/search&filter.dart';
 import 'home_screen_controller.dart';
@@ -21,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double h = Get.height;
     double w = Get.width;
     return Scaffold(
+      backgroundColor: ColorRes.scaffoldColor,
       body: Padding(
         padding: const EdgeInsets.only(right: 10, left: 10),
         child: CustomScrollView(
@@ -30,11 +32,14 @@ class _HomeScreenState extends State<HomeScreen> {
               snap: false,
               pinned: false,
               floating: false,
+              expandedHeight: Get.height * 0.170,
+              foregroundColor: Colors.black,
+              backgroundColor: ColorRes.scaffoldColor,
               leading: const CircleAvatar(
                 backgroundImage: AssetImage(AssetRes.doctorThumb2),
                 backgroundColor: Colors.transparent,
               ),
-              title:  Column(
+              title: Column(
                 children: [
                   const Text(
                     StringRes.appbarTitle,
@@ -97,9 +102,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              expandedHeight: Get.height * 0.170,
-              foregroundColor: Colors.black,
-              backgroundColor: Colors.white,
               actions: <Widget>[
                 IconButton(
                   icon: const Icon(Icons.notifications_none),
@@ -143,7 +145,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: w,
                     child: topDoctorsTab(),
                   ),
-                  topDoctorsField(),
+                  SizedBox(
+                    height: h * 0.35,
+                    width: w,
+                    child: topDoctorsField(),
+                  ),
                 ],
               ),
             ),

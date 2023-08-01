@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+
 Widget commonText(
     {required String data,
+      int? maxLines,
+      TextOverflow? overflow,
     double? fontSize,
     Color? color,
     TextAlign? textAlign,
@@ -11,6 +14,8 @@ Widget commonText(
     String? fontFamily}) {
   return Text(
     data,
+    overflow: overflow,
+    maxLines: maxLines,
     style: TextStyle(
       fontSize: fontSize,
       color: color,

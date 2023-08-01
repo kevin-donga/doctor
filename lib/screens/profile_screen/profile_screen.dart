@@ -2,6 +2,7 @@ import 'package:doctor/screens/profile_screen/profile_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../utils/color_res.dart';
 import 'profile_screen_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -16,6 +17,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     Get.put(ProfileController());
     return Scaffold(
+      backgroundColor: ColorRes.scaffoldColor,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

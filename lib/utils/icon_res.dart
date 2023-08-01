@@ -18,6 +18,11 @@ class IconRes {
   static const IconData logoutIcon = Icons.logout;
   static const IconData inviteFriendIcon = Icons.supervisor_account;
   static const IconData arrowIcon = Icons.keyboard_arrow_right;
+  static const  favoriteBorderIcon = Icons.favorite_border;
+  static const  bookmarkBorderIcon = Icons.bookmark_border;
+
+
+
   static const imageIconBase = 'assets/images/';
   static const peopleIcon = '${imageIconBase}people_2118701.png';
   static const dentalIcon = '${imageIconBase}clean_2779423.png';
