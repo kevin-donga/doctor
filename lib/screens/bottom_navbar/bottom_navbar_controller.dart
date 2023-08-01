@@ -5,8 +5,8 @@ import 'package:doctor/screens/book_appoinment/book_appointment_screen.dart';
 import 'package:doctor/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../articles_screen/articles_screen.dart';
+import '../book_appoinment/my_appointment/01_my_appointment.dart';
 import '../history_screen/history_screen.dart';
 import '../profile_screen/profile_screen.dart';
 
@@ -40,8 +40,8 @@ class BottomNavBarController extends GetxController {
   ];
   List screen = [
     const HomeScreen(),
-    const BookAppointment(),
-    const HistoryScreen(),
+    const MyAppointment(),
+     HistoryScreen(),
     const ArticleScreen(),
     const ProfileScreen(),
   ];

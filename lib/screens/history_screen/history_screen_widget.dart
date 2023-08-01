@@ -7,88 +7,88 @@ import '../../utils/icon_res.dart';
 import '../../utils/string_res.dart';
 import 'history_screen_controller.dart';
 
-Widget historyAppbar() {
-  return GetBuilder<HistoryScreenController>(builder: (controller) {
-    return Column(
-      children: [
-        Container(
-          height: Get.height * 0.12,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            color: Colors.transparent,
-          ),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Container(
-                    height: Get.height * 0.06,
-                    width: Get.width * 0.14,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      color: Colors.transparent,
-                      image: const DecorationImage(
-                        image: AssetImage(AssetRes.splashScreen1),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: Get.width * 0.020,
-                  ),
-                  commonText(
-                    data: StringRes.historyText,
-                    color: ColorRes.blackColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    fontFamily: StringRes.josefinSans,
-                  ),
-                  const Spacer(),
-                  InkWell(
-                    child: Icon(
-                      IconRes.searchIcon,
-                      color: ColorRes.blackColor,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      IconRes.moreHorizIcon,
-                      color: ColorRes.blackColor,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: Get.height * 0.02,
-              ),
-              TabBar(
-                unselectedLabelColor: ColorRes.greyColor,
-                controller: controller.tabController,
-                tabs: controller.data,
-                labelColor: ColorRes.blueColor,
-                labelPadding: const EdgeInsets.all(6),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  });
-}
-
+// Widget historyAppbar() {
+//   return GetBuilder<HistoryScreenController>(builder: (controller) {
+//     return Column(
+//       children: [
+//         Container(
+//           height: Get.height * 0.12,
+//           width: double.infinity,
+//           decoration: const BoxDecoration(
+//             color: Colors.transparent,
+//           ),
+//           child: Column(
+//             children: [
+//               Row(
+//                 children: [
+//                   Container(
+//                     height: Get.height * 0.05,
+//                     width: Get.width * 0.14,
+//                     decoration: BoxDecoration(
+//                       borderRadius: BorderRadius.circular(40),
+//                       color: Colors.transparent,
+//                       image: const DecorationImage(
+//                         image: AssetImage(AssetRes.splashScreen1),
+//                         fit: BoxFit.fill,
+//                       ),
+//                     ),
+//                   ),
+//                   SizedBox(
+//                     width: Get.width * 0.020,
+//                   ),
+//                   commonText(
+//                     data: StringRes.historyText,
+//                     color: ColorRes.blackColor,
+//                     fontWeight: FontWeight.bold,
+//                     fontSize: 25,
+//                     fontFamily: StringRes.josefinSans,
+//                   ),
+//                   const Spacer(),
+//                   const InkWell(
+//                     child: Icon(
+//                       IconRes.searchIcon,
+//                       color: ColorRes.blackColor,
+//                     ),
+//                   ),
+//                   IconButton(
+//                     onPressed: () {},
+//                     icon: const Icon(
+//                       IconRes.moreHorizIcon,
+//                       color: ColorRes.blackColor,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//               SizedBox(
+//                 height: Get.height * 0.02,
+//               ),
+//               TabBar(
+//                 unselectedLabelColor: ColorRes.greyColor,
+//                 controller: controller.tabController,
+//                 tabs: controller.data,
+//                 labelColor: ColorRes.blueColor,
+//                 labelPadding: const EdgeInsets.all(6),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ],
+//     );
+//   });
+// }
 
 Widget historyListview() {
   return GetBuilder<HistoryScreenController>(builder: (controller) {
     return SizedBox(
       width: double.infinity,
-      height: Get.height*0.810,
+      height: Get.height * 0.840,
       child: TabBarView(
-          controller: controller.tabController,
+        controller: controller.tabController,
         children: [
           ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: 8,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: 7,
             itemBuilder: (context, index) => Column(
               children: [
                 Padding(
@@ -181,7 +181,8 @@ Widget historyListview() {
             ),
           ),
           ListView.builder(
-            physics: const BouncingScrollPhysics(),
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
             itemCount: StringRes.doctorDataList.length,
             itemBuilder: (context, index) => Column(
               children: [
@@ -214,7 +215,8 @@ Widget historyListview() {
                           ),
                           Padding(
                             padding: EdgeInsets.only(
-                                top: Get.height * 0.05, left: Get.height * 0.03),
+                                top: Get.height * 0.05,
+                                left: Get.height * 0.03),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -229,21 +231,25 @@ Widget historyListview() {
                                 Row(
                                   children: [
                                     commonText(
-                                      data: StringRes.doctorDataList[index]['message'],
+                                      data: StringRes.doctorDataList[index]
+                                          ['message'],
                                       color: ColorRes.blackColor,
                                       fontSize: 12,
                                       fontFamily: StringRes.josefinSans,
                                       fontWeight: FontWeight.bold,
                                     ),
-                                    SizedBox(width: Get.width*0.22,),
+                                    SizedBox(
+                                      width: Get.width * 0.22,
+                                    ),
                                     InkWell(
-                                      onTap: (){},
+                                      onTap: () {},
                                       child: CircleAvatar(
                                         radius: 26,
-                                        backgroundColor:   ColorRes.blueColor.shade50,
+                                        backgroundColor:
+                                            ColorRes.blueColor.shade50,
                                         child: const CircleAvatar(
                                           radius: 12,
-                                          child:  Center(
+                                          child: Center(
                                             child: Icon(
                                               IconRes.arrowIcon,
                                               color: ColorRes.whiteColor,
@@ -257,7 +263,8 @@ Widget historyListview() {
                                 Row(
                                   children: [
                                     commonText(
-                                      data: StringRes.doctorDataList[index]['Date'],
+                                      data: StringRes.doctorDataList[index]
+                                          ['Date'],
                                       color: ColorRes.blackColor,
                                       fontSize: 12,
                                       fontFamily: StringRes.josefinSans,
@@ -277,7 +284,8 @@ Widget historyListview() {
             ),
           ),
           ListView.builder(
-            physics: const BouncingScrollPhysics(),
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: StringRes.doctorDataList.length,
             itemBuilder: (context, index) => Column(
               children: [
@@ -310,7 +318,8 @@ Widget historyListview() {
                           ),
                           Padding(
                             padding: EdgeInsets.only(
-                                top: Get.height * 0.05, left: Get.height * 0.03),
+                                top: Get.height * 0.05,
+                                left: Get.height * 0.03),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -325,21 +334,25 @@ Widget historyListview() {
                                 Row(
                                   children: [
                                     commonText(
-                                      data: StringRes.doctorDataList[index]['message'],
+                                      data: StringRes.doctorDataList[index]
+                                          ['message'],
                                       color: ColorRes.blackColor,
                                       fontSize: 12,
                                       fontFamily: StringRes.josefinSans,
                                       fontWeight: FontWeight.bold,
                                     ),
-                                    SizedBox(width: Get.width*0.22,),
+                                    SizedBox(
+                                      width: Get.width * 0.22,
+                                    ),
                                     InkWell(
-                                      onTap: (){},
+                                      onTap: () {},
                                       child: CircleAvatar(
                                         radius: 26,
-                                        backgroundColor:   ColorRes.blueColor.shade50,
+                                        backgroundColor:
+                                            ColorRes.blueColor.shade50,
                                         child: const CircleAvatar(
                                           radius: 12,
-                                          child:  Center(
+                                          child: Center(
                                             child: Icon(
                                               IconRes.arrowIcon,
                                               color: ColorRes.whiteColor,
@@ -353,7 +366,8 @@ Widget historyListview() {
                                 Row(
                                   children: [
                                     commonText(
-                                      data: StringRes.doctorDataList[index]['Date'],
+                                      data: StringRes.doctorDataList[index]
+                                          ['Date'],
                                       color: ColorRes.blackColor,
                                       fontSize: 12,
                                       fontFamily: StringRes.josefinSans,

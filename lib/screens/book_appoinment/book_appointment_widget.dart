@@ -15,28 +15,10 @@ double h=Get.height;
 double w=Get.width;
 Widget datePickerText() {
   return GetBuilder<BookAppointmentController>(builder: (controller) {
-    return Column(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            IconButton(
-              onPressed: controller.backArrow,
-              icon: const Icon(IconRes.backArrowIcon),
-            ),
-            commonText(
-              data: StringRes.bookAppointmentText,
-              color: ColorRes.blackColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-              fontFamily: StringRes.josefinSans,
-            ),
-          ],
-        ),
-        SizedBox(
-          height: Get.height * 0.03,
-        ),
         Padding(
           padding: EdgeInsets.only(left: Get.width * 0.05),
           child: commonText(
@@ -94,30 +76,60 @@ Widget datePicker() {
       });
 }
 
+ List bookAppointmentList = [
+  '09.00 Am',
+  '09.30 Am',
+  '10.00 Am',
+  '10.30 Am',
+  '11.00 Am',
+  '11.30 Am',
+  '15.00 Am',
+  '15.30 Am',
+  '16.00 Am',
+  '16.30 Am',
+  '17.00 Am',
+  '17.30 Am',
+];
+
 Widget timePicker() {
-  return Expanded(
-    child: GridView.builder(
-      physics: const BouncingScrollPhysics(),
-      itemCount: 12,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisSpacing: 15.0,
-        crossAxisSpacing: 20.0,
-        childAspectRatio: 2.78,
-        crossAxisCount: 3,
-      ),
-      itemBuilder: (context, index) => Align(
-        child: Container(
-          height: Get.height * 0.80,
-          width: Get.width * 0.90,
-          decoration: BoxDecoration(
-            color: Colors.transparent,
-            border: Border.all(
-                color: ColorRes.blueColor,
-                strokeAlign: BorderSide.strokeAlignOutside),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Center(child: commonText(data: '09.00 Am')),
-        ),
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: SizedBox(
+      height: Get.height*0.250,
+      child: GetBuilder<BookAppointmentController>(
+        id: 'container',
+        builder: (controller) {
+          return GridView.builder(
+            shrinkWrap: true,
+            physics:const NeverScrollableScrollPhysics(),
+            itemCount: bookAppointmentList.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisSpacing: 15.0,
+              crossAxisSpacing: 20.0,
+              childAspectRatio: 2.78,
+              crossAxisCount: 3,
+            ),
+            itemBuilder: ( BuildContext context, int index) => Align(
+              child: InkWell(
+                onTap: (){
+                  controller.selectedIndex = index;
+                },
+                child: Container(
+                  height: Get.height * 0.80,
+                  width: Get.width * 0.90,
+                  decoration: BoxDecoration(
+                    color: controller.selectedIndex == index ? ColorRes.blueColor : ColorRes.whiteColor,
+                    border: Border.all(
+                        color: ColorRes.blueColor,
+                        strokeAlign: BorderSide.strokeAlignOutside),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Center(child: commonText(data:bookAppointmentList[index])),
+                ),
+              ),
+            ),
+          );
+        }
       ),
     ),
   );

@@ -5,6 +5,10 @@ import 'package:get/get.dart';
 
 import '../../utils/color_res.dart';
 
+import '../../common_widget/common_appbar.dart';
+import '../../utils/asset_res.dart';
+import '../../utils/icon_res.dart';
+
 class BookAppointment extends StatelessWidget {
   const BookAppointment({Key? key}) : super(key: key);
 
@@ -12,18 +16,33 @@ class BookAppointment extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(BookAppointmentController());
     return Scaffold(
+      appBar: commonAppbar(
+        title: StringRes.bookAppointmentText,
+        leading: GetBuilder<BookAppointmentController>(
+          builder: (controller) {
+            return IconButton(
+              icon: const Icon(IconRes.backArrowIcon),
+              onPressed:controller.backArrow,
+              color: ColorRes.blackColor,
+            );
+          }
+        ),
+      ),
       backgroundColor: ColorRes.scaffoldColor,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            SizedBox(height: Get.height*0.04,),
-           datePickerText(),
-            datePicker(),
-            timePicker(),
-            bookAppointmentButton(),
-            SizedBox(height: Get.height*0.03,)
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: Get.height * 0.02,
+              ),
+              datePickerText(),
+              datePicker(),
+              timePicker(),
+              bookAppointmentButton(),
+            ],
+          ),
         ),
       ),
     );

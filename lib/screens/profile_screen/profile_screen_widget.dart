@@ -7,48 +7,12 @@ import 'package:doctor/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Widget customAppbar() {
-  return Row(
-    children: [
-      Container(
-        height: Get.height * 0.06,
-        width: Get.width * 0.14,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(40),
-          color: Colors.transparent,
-          image: const DecorationImage(
-            image: AssetImage(AssetRes.splashScreen1),
-            fit: BoxFit.fill,
-          ),
-        ),
-      ),
-      SizedBox(
-        width: Get.width * 0.1,
-      ),
-      commonText(
-        data: StringRes.profileText,
-        color: ColorRes.blackColor,
-        fontWeight: FontWeight.bold,
-        fontSize: 25,
-        fontFamily: StringRes.josefinSans,
-      ),
-      const Spacer(),
-      IconButton(
-        onPressed: () {},
-        icon: const Icon(
-          IconRes.moreHorizIcon,
-          color: ColorRes.blackColor,
-        ),
-      ),
-    ],
-  );
-}
 
 Widget profileImage() {
   return Column(
     children: [
       Container(
-        height: Get.height * 0.15,
+        height: Get.height * 0.16,
         width: Get.width * 0.35,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),

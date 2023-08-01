@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 
 class MyAppointmentMessageController extends GetxController{
    void messageButton(){
-     Get.to(const BookAppointment());
+
+   }
+   void backArrow(){
+      Get.back();
    }
 }

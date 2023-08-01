@@ -35,13 +35,9 @@ Widget verificationContainer() {
 }
 
 Widget topImage() {
-  return Column(
-    children: [
-      Image.asset(
-        AssetRes.forgotScreen,
-        height: Get.height * 0.30,
-      ),
-    ],
+  return Image.asset(
+    AssetRes.forgotScreen,
+    height: Get.height * 0.30,
   );
 }
 

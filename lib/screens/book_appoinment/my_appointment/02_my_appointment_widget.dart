@@ -162,220 +162,250 @@ Widget introduction() {
           height: Get.height * 0.02,
         ),
         commonText(
-          data: StringRes.patientText,
+          data: StringRes.scheduledAppointmentText,
           color: ColorRes.blackColor,
           fontSize: 20,
           fontFamily: StringRes.josefinSans,
           fontWeight: FontWeight.bold,
         ),
         SizedBox(
-          height: Get.height * 0.02,
-        ),
-        Row(
-          children: [
-            commonText(
-              data: StringRes.fullNameText,
-              color: ColorRes.blackColor,
-              fontSize: 13,
-              fontFamily: StringRes.josefinSans,
-              fontWeight: FontWeight.bold,
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            commonText(
-              data: StringRes.nameText,
-              color: ColorRes.blackColor,
-              fontSize: 13,
-              fontFamily: StringRes.josefinSans,
-              fontWeight: FontWeight.bold,
-            ),
-          ],
-        ),
-        SizedBox(
-          height: Get.height * 0.02,
-        ),
-        Row(
-          children: [
-            commonText(
-              data: StringRes.genderText,
-              color: ColorRes.blackColor,
-              fontSize: 12,
-              fontFamily: StringRes.josefinSans,
-              fontWeight: FontWeight.bold,
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            commonText(
-              data: StringRes.maleText,
-              color: ColorRes.blackColor,
-              fontSize: 12,
-              fontFamily: StringRes.josefinSans,
-              fontWeight: FontWeight.bold,
-            ),
-          ],
-        ),
-        SizedBox(
           height: Get.height * 0.01,
-        ),
-        Row(
-          children: [
-            commonText(
-              data: StringRes.ageText,
-              color: ColorRes.blackColor,
-              fontSize: 12,
-              fontFamily: StringRes.josefinSans,
-              fontWeight: FontWeight.bold,
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            commonText(
-              data: StringRes.ageDisplayText,
-              color: ColorRes.blackColor,
-              fontSize: 12,
-              fontFamily: StringRes.josefinSans,
-              fontWeight: FontWeight.bold,
-            ),
-          ],
-        ),
-        SizedBox(
-          height: Get.height * 0.01,
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            commonText(
-              data: StringRes.problemText,
-              color: ColorRes.blackColor,
-              fontSize: 12,
-              fontFamily: StringRes.josefinSans,
-              fontWeight: FontWeight.bold,
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            commonText(
-              data: StringRes.problemDataText,
-              color: ColorRes.blackColor,
-              fontSize: 12,
-              fontFamily: StringRes.josefinSans,
-              fontWeight: FontWeight.bold,
-            ),
-          ],
-        ),
-        SizedBox(
-          height: Get.height * 0.02,
-        ),
-        commonText(
-          data: StringRes.packageText,
-          color: ColorRes.blackColor,
-          fontSize: 20,
-          fontFamily: StringRes.josefinSans,
-          fontWeight: FontWeight.bold,
         ),
       ],
     ),
   );
 }
 
+Widget tableRow() {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Column(
+      children: [
+        Table(
+          columnWidths: {
+            0: FixedColumnWidth(90),
+            1: FixedColumnWidth(10),
+          },
+          children: [
+            TableRow(
+              children: [
+                commonText(
+                  data: StringRes.fullNameText,
+                  fontSize: 14,
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: StringRes.josefinSans,
+                ),
+                commonText(
+                  data: ':',
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: StringRes.josefinSans,
+                ),
+                commonText(
+                  data: StringRes.drText,
+                  fontSize: 14,
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: StringRes.josefinSans,
+                ),
+              ],
+            ),
+            TableRow(
+              children: [
+                commonText(
+                  height: 2,
+                  data: StringRes.genderText,
+                  fontSize: 14,
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: StringRes.josefinSans,
+                ),
+                commonText(
+                  height: 2,
+                  data: ':',
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: StringRes.josefinSans,
+                ),
+                commonText(
+                  height: 2,
+                  data: StringRes.maleText,
+                  fontSize: 14,
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: StringRes.josefinSans,
+                ),
+              ],
+            ),
+            TableRow(
+              children: [
+                commonText(
+                  height: 2,
+                  data: StringRes.ageText,
+                  fontSize: 14,
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: StringRes.josefinSans,
+                ),
+                commonText(
+                  height: 2,
+                  data: ':',
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: StringRes.josefinSans,
+                ),
+                commonText(
+                  height: 2,
+                  data: StringRes.ageDisplayText,
+                  fontSize: 14,
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: StringRes.josefinSans,
+                ),
+              ],
+            ),
+            TableRow(
+              children: [
+                commonText(
+                  height: 2,
+                  data: StringRes.problemText,
+                  fontSize: 14,
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: StringRes.josefinSans,
+                ),
+                commonText(
+                  height: 2,
+                  data: ':',
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: StringRes.josefinSans,
+                ),
+                commonText(
+                  height: 2,
+                  data: StringRes.problemDataText,
+                  fontSize: 14,
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: StringRes.josefinSans,
+                ),
+              ],
+            ),
+          ],
+        )
+      ],
+    ),
+  );
+}
+
 Widget package() {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.start,
-    children: [
-      Container(
-        height: Get.height * 0.15,
-        width: double.infinity,
-        decoration: BoxDecoration(
-         color: ColorRes.whiteColor.withOpacity(0.9),
-          borderRadius: BorderRadius.circular(20),
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        commonText(
+          data: StringRes.packageText,
+          fontSize: 20,
+          color: ColorRes.blackColor,
+          fontWeight: FontWeight.bold,
+          fontFamily: StringRes.josefinSans,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              InkWell(
-                onTap: (){},
-                child: CircleAvatar(
-                  radius: 27,
-                  backgroundColor:   ColorRes.blueColor.shade50,
-                  child: const Icon(
-                    IconRes.messageIcon,
-                    color: ColorRes.blueColor,
+        Container(
+          height: Get.height * 0.15,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: ColorRes.whiteColor.withOpacity(0.09),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                InkWell(
+                  onTap: () {},
+                  child: CircleAvatar(
+                    radius: 27,
+                    backgroundColor: ColorRes.blueColor.shade50,
+                    child: const Icon(
+                      IconRes.messageIcon,
+                      color: ColorRes.blueColor,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding:  EdgeInsets.only(
-                  top: Get.height*0.03,
-                  left: Get.width*0.05,
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: Get.height * 0.03,
+                    left: Get.width * 0.05,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      commonText(
+                        data: StringRes.messageText,
+                        color: ColorRes.blackColor,
+                        fontSize: 20,
+                        fontFamily: StringRes.josefinSans,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.02,
+                      ),
+                      commonText(
+                        data: StringRes.chatText,
+                        color: ColorRes.greyColor,
+                        fontSize: 12,
+                        fontFamily: StringRes.josefinSans,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ],
+                  ),
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    commonText(
-                      data: StringRes.messageText,
-                      color: ColorRes.blackColor,
-                      fontSize: 20,
-                      fontFamily: StringRes.josefinSans,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.02,
-                    ),
-                    commonText(
-                      data: StringRes.chatText,
-                      color: ColorRes.greyColor,
-                      fontSize: 12,
-                      fontFamily: StringRes.josefinSans,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ],
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: Get.height * 0.03,
+                    left: Get.width * 0.18,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      commonText(
+                        data: StringRes.text,
+                        color: ColorRes.blueColor,
+                        fontSize: 20,
+                        fontFamily: StringRes.josefinSans,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      SizedBox(
+                        height: Get.height * 0.02,
+                      ),
+                      commonText(
+                        data: StringRes.paidText,
+                        color: ColorRes.greyColor,
+                        fontSize: 12,
+                        fontFamily: StringRes.josefinSans,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding:  EdgeInsets.only(
-                  top: Get.height*0.03,
-                  left: Get.width*0.18,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    commonText(
-                      data: StringRes.text,
-                      color: ColorRes.blueColor,
-                      fontSize: 20,
-                      fontFamily: StringRes.josefinSans,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.02,
-                    ),
-                    commonText(
-                      data: StringRes.paidText,
-                      color: ColorRes.greyColor,
-                      fontSize: 12,
-                      fontFamily: StringRes.josefinSans,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-    ],
+      ],
+    ),
   );
 }
 
 Widget messageButton() {
   return GetBuilder<MyAppointmentMessageController>(builder: (controller) {
     return Padding(
-      padding:  EdgeInsets.only(
+      padding: EdgeInsets.only(
         left: width * 0.08,
         top: height * 0.02,
       ),
