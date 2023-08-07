@@ -20,6 +20,7 @@ class IconRes {
   static const IconData arrowIcon = Icons.keyboard_arrow_right;
   static const  favoriteBorderIcon = Icons.favorite_border;
   static const  bookmarkBorderIcon = Icons.bookmark_border;
+  static const  addIcon = Icons.add;
 
 
 

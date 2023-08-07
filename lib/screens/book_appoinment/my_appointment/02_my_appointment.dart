@@ -39,9 +39,6 @@ class MyAppointmentMessage extends StatelessWidget {
             ),
             introduction(),
             tableRow(),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
             package(),
             messageButton(),
           ],

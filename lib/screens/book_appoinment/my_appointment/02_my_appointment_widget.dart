@@ -367,7 +367,7 @@ Widget package() {
                 Padding(
                   padding: EdgeInsets.only(
                     top: Get.height * 0.03,
-                    left: Get.width * 0.18,
+                    left: Get.width * 0.12,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -407,7 +407,6 @@ Widget messageButton() {
     return Padding(
       padding: EdgeInsets.only(
         left: width * 0.08,
-        top: height * 0.02,
       ),
       child: commonElevatedButton(
         shape: MaterialStateProperty.all(RoundedRectangleBorder(

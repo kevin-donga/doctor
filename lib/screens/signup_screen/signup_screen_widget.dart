@@ -27,33 +27,57 @@ Widget middleTextSignUp() {
 }
 
 Widget nameTextFieldSignUp() {
-  return textField(
-    hintText: StringRes.nameTextFieldHintText,
-    prefixIcon: const Icon(IconRes.personIcon),
-    fillColor: Colors.blueGrey.shade50,
-    filled: true,
-    obscureText: false,
-  );
+  return GetBuilder<SignupScreenController>(
+      id: 'NameTextFiled',
+      builder: (controller) {
+        return textField(
+          controller: controller.nameController,
+          validator: controller.nameCondition,
+          onChanged: controller.nameOnchange,
+          hintText: StringRes.nameTextFieldHintText,
+          prefixIcon: const Icon(IconRes.personIcon),
+          fillColor: Colors.blueGrey.shade50,
+          filled: true,
+          obscureText: false,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+        );
+      });
 }
 
 Widget mobileTextFieldSignUp() {
-  return textField(
-    hintText: StringRes.mobileTextFieldHintText,
-    prefixIcon: const Icon(IconRes.phoneIcon),
-    fillColor: Colors.blueGrey.shade50,
-    filled: true,
-    obscureText: false,
-  );
+  return GetBuilder<SignupScreenController>(
+      id: 'NameTextFiled',
+      builder: (controller) {
+        return textField(
+          controller: controller.mobileController,
+          validator: controller.mobileCondition,
+          maxLength: 10,
+          hintText: StringRes.mobileTextFieldHintText,
+          keyboardType: TextInputType.number,
+          prefixIcon: const Icon(IconRes.phoneIcon),
+          fillColor: Colors.blueGrey.shade50,
+          filled: true,
+          obscureText: false,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+        );
+      });
 }
 
 Widget emailTextFieldSignUp() {
-  return textField(
-    hintText: StringRes.emailTextFieldHintText,
-    prefixIcon: const Icon(Icons.email),
-    fillColor: Colors.blueGrey.shade50,
-    filled: true,
-    obscureText: false,
-  );
+  return GetBuilder<SignupScreenController>(
+      id: 'NameTextFiled',
+      builder: (controller) {
+        return textField(
+          controller: controller.emailController,
+          validator: controller.emailCondition,
+          hintText: StringRes.emailTextFieldHintText,
+          prefixIcon: const Icon(Icons.email),
+          fillColor: Colors.blueGrey.shade50,
+          filled: true,
+          obscureText: false,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+        );
+      });
 }
 
 Widget radioButton() {
@@ -62,30 +86,30 @@ Widget radioButton() {
       builder: (controller) {
         return Container(
           height: Get.height * 0.07,
-          width: Get.width * 0.802,
+          width: Get.width * 0.804,
           decoration: BoxDecoration(
             color: Colors.blueGrey.shade50,
             borderRadius: BorderRadius.circular(40),
-            border: Border.all(color: Colors.grey.shade700),
+            border: Border.all(color: Colors.grey.shade500),
           ),
           child: Row(
             children: [
               Radio(
                 value: controller.male,
                 groupValue: controller.group,
-                onChanged: controller.radioButtonCondition,
+                onChanged: controller.maleRadioButtonCondition,
               ),
               const Text("Male"),
               Radio(
                 value: controller.female,
                 groupValue: controller.group,
-                onChanged: controller.radioButtonCondition,
+                onChanged: controller.femaleRadioButtonCondition,
               ),
               const Text("Female"),
               Radio(
                 value: controller.other,
                 groupValue: controller.group,
-                onChanged: controller.radioButtonCondition,
+                onChanged: controller.otherRadioButtonCondition,
               ),
               const Text("Other"),
             ],
@@ -100,8 +124,11 @@ Widget passTextFieldSignUp() {
       builder: (controller) {
         return textField(
           obscureText: controller.visiBal ? true : false,
+          controller: controller.passwordController,
           hintText: StringRes.passTextFieldHintText,
+          validator: controller.passwordCondition,
           prefixIcon: const Icon(Icons.lock),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
           suffixIcon: IconButton(
             onPressed: () => controller.passSuFix(),
             icon: Icon(
@@ -117,7 +144,7 @@ Widget passTextFieldSignUp() {
 Widget signUpButton() {
   return GetBuilder<SignupScreenController>(builder: (controller) {
     return SizedBox(
-      width: Get.width*0.802,
+      width: Get.width * 0.802,
       height: Get.height * 0.06,
       child: commonElevatedButton(
         shape: MaterialStateProperty.all(RoundedRectangleBorder(

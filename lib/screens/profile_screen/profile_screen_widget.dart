@@ -1,4 +1,5 @@
 import 'package:doctor/common_widget/common_text.dart';
+import 'package:doctor/screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:doctor/screens/profile_screen/profile_screen_controller.dart';
 import 'package:doctor/utils/asset_res.dart';
 import 'package:doctor/utils/color_res.dart';
@@ -7,124 +8,150 @@ import 'package:doctor/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 Widget profileImage() {
-  return Column(
-    children: [
-      Container(
-        height: Get.height * 0.16,
-        width: Get.width * 0.35,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          color: ColorRes.greyColor.shade300,
-          image: const DecorationImage(
-            image: AssetImage(AssetRes.doctorThumb2),
-            fit: BoxFit.fill,
-          ),
-        ),
-      ),
-      SizedBox(
-        height: Get.height * 0.02,
-      ),
-      commonText(
-        data: StringRes.andrewAinsleyText,
-        color: ColorRes.blackColor,
-        fontWeight: FontWeight.bold,
-        fontSize: 25,
-        fontFamily: StringRes.josefinSans,
-      ),
-      SizedBox(
-        height: Get.height * 0.01,
-      ),
-      commonText(
-        data: "+ 1 111 123 145 658",
-        color: ColorRes.blackColor,
-        fontWeight: FontWeight.bold,
-        fontSize: 13,
-        fontFamily: StringRes.josefinSans,
-      ),
-    ],
-  );
-}
-
-List<Map> profileList = [
-  {'icon': IconRes.person1Icon, 'string': 'Edit Profile'},
-  {'icon': IconRes.notificationIcon, 'string': 'Notification'},
-  {'icon': IconRes.paymentIcon, 'string': 'Payment'},
-  {'icon': IconRes.securityIcon, 'string': 'Security'},
-  {'icon': IconRes.helpCenterIcon, 'string': 'Help Center'},
-  {'icon': IconRes.inviteFriendIcon, 'string': 'Invite Friends'},
-];
-
-Widget listview() {
   return GetBuilder<ProfileController>(
+    id: 'imagePicker',
     builder: (controller) {
-      return Expanded(
-        child: ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: profileList.length,
-          itemBuilder: (context, index) => Row(
+      return Column(
+        children: [
+          Stack(
             children: [
-              IconButton(
-                onPressed: () {},
-                icon:  Icon(
-                  profileList[index]['icon'],
-                  color: ColorRes.blackColor,
-                  size: 30,
+              Container(
+                height: Get.height * 0.16,
+                width: Get.width * 0.35,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: ColorRes.greyColor.shade300,
+                  image:  DecorationImage(
+                    image: controller.file == null
+                        ? const AssetImage(AssetRes.doctorThumb3)
+                        : FileImage(controller.file!) as ImageProvider,
+                    fit: BoxFit.fill,
+                  ),
+                  border: Border.all(color: ColorRes.blueColor.withOpacity(0.1)),
                 ),
               ),
-              SizedBox(width: Get.width*0.05,),
-              InkWell(
-                child: commonText(
-                  data:profileList[index]['string'],
-                  color: ColorRes.blackColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  fontFamily: StringRes.josefinSans,
+              Positioned(
+                top:Get.height*0.11,
+                left: Get.width*0.26,
+                child:  GetBuilder<ProfileController>(
+                  id: 'imagePicker',
+                  builder: (controller) {
+                    return InkWell(
+                      onTap: controller.imagePickerWidget,
+                      child: CircleAvatar(
+                        backgroundColor: ColorRes.blueColor,
+                        radius: Get.height*0.02,
+                        child: const Icon(IconRes.addIcon,color: ColorRes.whiteColor,),
+                      ),
+                    );
+                  }
                 ),
-              ),
-              const Spacer(),
-              IconButton(
-                onPressed: () {},
-                icon:  const Icon(
-                  IconRes.arrowIcon,
-                  color: ColorRes.blackColor,
-                  size: 30,
-                ),
-              ),
+              )
             ],
           ),
-        ),
+          SizedBox(
+            height: Get.height * 0.02,
+          ),
+          commonText(
+            data: StringRes.andrewAinsleyText,
+            color: ColorRes.blackColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+            fontFamily: StringRes.josefinSans,
+          ),
+          SizedBox(
+            height: Get.height * 0.01,
+          ),
+          commonText(
+            data: "+ 1 111 123 145 658",
+            color: ColorRes.blackColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 13,
+            fontFamily: StringRes.josefinSans,
+          ),
+        ],
       );
     }
   );
 }
 
-Widget logout(){
-  return GetBuilder<ProfileController>(
-    builder: (controller) {
-      return InkWell(
-        child: Row(
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon:  const Icon(
-                IconRes.logoutIcon,
-                color: ColorRes.errorColor,
-                size: 30,
+Widget listview() {
+  return GetBuilder<ProfileController>(builder: (controller) {
+    return Expanded(
+      child: GetBuilder<ProfileController>(
+          id: 'Listview',
+          builder: (controller) {
+            return ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: StringRes.profileList.length,
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () => controller.listviewCondition(),
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        StringRes.profileList[index]['icon'],
+                        color: ColorRes.blackColor,
+                        size: 30,
+                      ),
+                    ),
+                    SizedBox(
+                      width: Get.width * 0.05,
+                    ),
+                    InkWell(
+                      child: commonText(
+                        data: StringRes.profileList[index]['string'],
+                        color: ColorRes.blackColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        fontFamily: StringRes.josefinSans,
+                      ),
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        IconRes.arrowIcon,
+                        color: ColorRes.blackColor,
+                        size: 30,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(width: Get.width*0.05,),
-            commonText(
-              data:'Logout',
+            );
+          }),
+    );
+  });
+}
+
+Widget logout() {
+  return GetBuilder<ProfileController>(builder: (controller) {
+    return InkWell(
+      child: Row(
+        children: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              IconRes.logoutIcon,
               color: ColorRes.errorColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-              fontFamily: StringRes.josefinSans,
+              size: 30,
             ),
-          ],
-        ),
-      );
-    }
-  );
+          ),
+          SizedBox(
+            width: Get.width * 0.05,
+          ),
+          commonText(
+            data: 'Logout',
+            color: ColorRes.errorColor,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            fontFamily: StringRes.josefinSans,
+          ),
+        ],
+      ),
+    );
+  });
 }

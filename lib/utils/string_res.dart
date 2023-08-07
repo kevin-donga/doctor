@@ -1,4 +1,6 @@
 
+import 'icon_res.dart';
+
 class StringRes {
   //-----------common String------------
   static const josefinSans = 'Josefin Sans';
@@ -54,21 +56,6 @@ class StringRes {
   static const selectHourText = 'Select Hour';
   static const nextText = 'Next';
 
-  static List bookAppointmentList = [
-    '09.00 Am',
-    '09.30 Am',
-    '10.00 Am',
-    '10.30 Am',
-    '11.00 Am',
-    '11.30 Am',
-    '15.00 Am',
-    '15.30 Am',
-    '16.00 Am',
-    '16.30 Am',
-    '17.00 Am',
-    '17.30 Am',
-  ];
-
   //---------Home Screen-----------
   static const appbarTitle = 'Good Morning 👋';
   static const appbarUsername = 'Andrew Ainsley';
@@ -83,6 +70,14 @@ class StringRes {
   //---------Profile Screen---------
   static const profileText = "Profile";
   static const andrewAinsleyText = "Andrew Ainsley";
+  static List<Map> profileList = [
+    {'icon': IconRes.person1Icon, 'string': 'Edit Profile'},
+    {'icon': IconRes.notificationIcon, 'string': 'Notification'},
+    {'icon': IconRes.paymentIcon, 'string': 'Payment'},
+    {'icon': IconRes.securityIcon, 'string': 'Security'},
+    {'icon': IconRes.helpCenterIcon, 'string': 'Help Center'},
+    {'icon': IconRes.inviteFriendIcon, 'string': 'Invite Friends'},
+  ];
 
 //---------MyAppointment Screen---------
   static const drText = "Dr.Rahul Zirkind";
@@ -154,5 +149,17 @@ class StringRes {
   static const articleAppbarTitle="Articles";
   static const article="Articles";
   static const trendingRow="Trending";
+
+//------------bookAppointment Screen-------------
+  static const editProfileAppbarTitle="Edit Profile";
+  static const dateTextFieldHintText = 'Date';
+  static const userTextFieldHintText = 'User Name';
+  static const countryTextFieldHintText = 'Phone Number';
+  static const editGenderText = 'Gender';
+  static const femaleGenderText = 'Female';
+  static const maleGenderText = 'Male';
+  static const otherGenderText = 'Other';
+  static const updateText = 'Update';
+
 
 }

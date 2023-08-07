@@ -17,7 +17,6 @@ PreferredSizeWidget commonAppbar({
   String? img,
   PreferredSizeWidget? bottom,
 }) {
-  double w = Get.width;
   return AppBar(
     backgroundColor: ColorRes.whiteColor,
     leading:leading,

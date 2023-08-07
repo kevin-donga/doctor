@@ -14,7 +14,7 @@ class IntroductionScreenController extends GetxController {
       pageController.nextPage(
           duration: const Duration(seconds: 1), curve: Curves.ease);
     } else {
-      Get.to(const LoginScreen());
+      Get.to( LoginScreen());
     }
     update(['introductionScreen']);
   }

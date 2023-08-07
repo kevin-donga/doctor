@@ -27,12 +27,19 @@ Widget middleTextLogin() {
 }
 
 Widget emailTextFieldLogin() {
-  return textField(
-    hintText: StringRes.emailTextFieldHintText,
-    prefixIcon: const Icon(Icons.email),
-    fillColor: Colors.blueGrey.shade50,
-    filled: true,
-    obscureText: false,
+  return GetBuilder<LoginController>(
+    builder: (controller) {
+      return textField(
+        controller: controller.emailController,
+        validator: controller.emailCondition,
+        hintText: StringRes.emailTextFieldHintText,
+        prefixIcon: const Icon(Icons.email),
+        fillColor: Colors.blueGrey.shade50,
+        filled: true,
+        obscureText: false,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+      );
+    }
   );
 }
 
@@ -44,6 +51,8 @@ Widget passTextFieldLogin() {
           obscureText: controller.visiBal ? true : false,
           hintText: StringRes.passTextFieldHintText,
           prefixIcon: const Icon(Icons.lock),
+          validator: controller.passwordCondition,
+          controller: controller.passController,
           suffixIcon: IconButton(
             onPressed: () => controller.passSuFix(),
             icon: Icon(
@@ -52,6 +61,7 @@ Widget passTextFieldLogin() {
           ),
           fillColor: Colors.blueGrey.shade50,
           filled: true,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
         );
       });
 }

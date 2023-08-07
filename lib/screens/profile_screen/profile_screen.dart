@@ -31,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
             color: Colors.transparent,
-            image:  DecorationImage(
+            image:  const DecorationImage(
               image:AssetImage(AssetRes.splashScreen1),
             ),
           ),
@@ -46,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(height: Get.height*0.04,),
             listview(),
             logout(),
-            SizedBox(height: Get.height*0.16,),
+            SizedBox(height: Get.height*0.12,),
           ],
         ),
       ),

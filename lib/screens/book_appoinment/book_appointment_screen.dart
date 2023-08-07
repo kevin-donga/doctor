@@ -3,11 +3,8 @@ import 'package:doctor/screens/book_appoinment/book_appointment_widget.dart';
 import 'package:doctor/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../utils/color_res.dart';
-
 import '../../common_widget/common_appbar.dart';
-import '../../utils/asset_res.dart';
 import '../../utils/icon_res.dart';
 
 class BookAppointment extends StatelessWidget {
