@@ -135,7 +135,7 @@ Widget topDoctorRow() {
   return Row(
     children: [
       commonText(
-          data: StringRes.article,
+          data: StringRes.topDoctor,
           fontSize: 18,
           fontFamily: StringRes.josefinSans,
           fontWeight: FontWeight.bold),

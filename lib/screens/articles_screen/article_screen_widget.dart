@@ -121,29 +121,29 @@ Widget trendingArticles() {
 }
 
 Widget articlesHeadingRow() {
-  return GetBuilder<ArticleController>(
-      builder: (controller) {
-        return Row(
-          children: [
-            commonText(
-              data: StringRes.article,
-              fontSize: 18,
-              fontFamily: StringRes.josefinSans,
-              fontWeight: FontWeight.bold,),
-            const Spacer(),
-            InkWell(
-              onTap:()=>controller.allArticles(),
-              child: commonText(
-                data: StringRes.seeAllString,
-                color: Colors.blue,
-                fontSize: 18,
-                fontFamily: StringRes.josefinSans,
-                fontWeight: FontWeight.bold,),
-            ),
-          ],
-        );
-      }
-  );
+  return GetBuilder<ArticleController>(builder: (controller) {
+    return Row(
+      children: [
+        commonText(
+          data: StringRes.article,
+          fontSize: 18,
+          fontFamily: StringRes.josefinSans,
+          fontWeight: FontWeight.bold,
+        ),
+        const Spacer(),
+        InkWell(
+          onTap: () => controller.allArticles(),
+          child: commonText(
+            data: StringRes.seeAllString,
+            color: Colors.blue,
+            fontSize: 18,
+            fontFamily: StringRes.josefinSans,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    );
+  });
 }
 
 Widget atriclesTab() {
@@ -192,39 +192,60 @@ Widget articlesList() {
       itemBuilder: (context, index) {
         return Column(
           children: [
-            Row(
-              children: [
-                Container(
-                  height: 130,
-                  width: 130,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.red,
-                    image: DecorationImage(
-                        image: AssetImage(
-                          controller.articleData[index]['cover'],
-                        ),
-                        fit: BoxFit.cover),
+            Container(
+              height: h * 0.2,
+              width: w,
+              child: Row(
+                children: [
+                  Container(
+                    height: 130,
+                    width: 130,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.red,
+                      image: DecorationImage(
+                          image: AssetImage(
+                            controller.articleData[index]['cover'],
+                          ),
+                          fit: BoxFit.cover),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: w * 0.02,
-                ),
-                Expanded(
-                  child: Column(
+                  SizedBox(
+                    width: w * 0.02,
+                  ),
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      commonText(data: controller.articleData[index]['date']),
+                      commonText(
+                        data: controller.articleData[index]['date'],
+                        fontSize: h * 0.015,
+                      ),
                       SizedBox(
                         width: w,
-                        child: commonText(
-                            data: controller.articleData[index]['description'],maxLines: 3,overflow: TextOverflow.ellipsis),
+                        child: Container(
+                          child: commonText(
+                            data: controller.articleData[index]['description'],
+                            maxLines: 3,
+                            fontWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                       ),
-                      commonText(data: controller.articleData[index]['label']),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Color(0xffE3EDFB),
+                        ),
+                        padding: EdgeInsets.all(5),
+                        child: commonText(
+                            data: controller.articleData[index]['label'],
+                            // fontWeight: FontWeight.bold,
+                            color: Colors.lightBlue),
+                      ),
                     ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             SizedBox(
               height: h * 0.02,

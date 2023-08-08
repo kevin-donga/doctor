@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
               delegate: SliverChildListDelegate(
                 [
                   SizedBox(
-                    height: 20,
+                    height: h * 0.02,
                   ),
                   onBoardingContainer(),
                   SizedBox(
@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: h * 0.01,
                   ),
                   SizedBox(
-                    height: h * 0.27,
+                    height: h * 0.28,
                     child: doctorSpecGridView(),
                   ),
                   SizedBox(
@@ -149,6 +149,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: h * 0.35,
                     width: w,
                     child: topDoctorsField(),
+                  ),
+                  SizedBox(
+                    height: h * 0.08,
                   ),
                 ],
               ),
