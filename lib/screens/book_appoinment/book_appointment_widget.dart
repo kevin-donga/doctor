@@ -1,10 +1,7 @@
-import 'dart:ffi';
-
 import 'package:doctor/common_widget/common_text.dart';
 import 'package:doctor/screens/book_appoinment/book_appointment_controller.dart';
 import 'package:doctor/screens/forget_password/forget_password_widget.dart';
 import 'package:doctor/utils/color_res.dart';
-import 'package:doctor/utils/icon_res.dart';
 import 'package:doctor/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -60,12 +60,17 @@ class LoginController extends GetxController {
       print(data);
       data.forEach((element) {
         if (element["Email"] == emailController.text &&
-            element["Password"] == passController.text) {
-          Get.to(() => const BottomNavBar());
+            element["Password"] ==
+                passController.text) {
+          Get.off(const BottomNavBar());
+        }else{
+          Get.snackbar('Invalid Data', 'Please Enter Email and Password');
         }
       });
-    } else {
-      Get.snackbar('Data must be Same', 'Email and Password must be same');
+
+    }
+    else{
+      Get.snackbar('Data Is Empty', 'Please Enter Email and Password');
     }
   }
 

@@ -11,7 +11,7 @@ class LoginScreen extends StatelessWidget {
     Get.put(LoginController());
     return Scaffold(
       body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
+       // physics: const NeverScrollableScrollPhysics(),
         child: Center(
           child: Form(
             key: loginController.formKey,

@@ -1,3 +1,4 @@
+import 'package:doctor/screens/book_appoinment/book_appointment_controller.dart';
 import 'package:doctor/screens/forget_password/forget_password_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -124,54 +125,59 @@ Widget containerWidget() {
   );
 }
 
+BookAppointmentController bookAppointmentController=Get.find<BookAppointmentController>();
 Widget introduction() {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        commonText(
-          data: StringRes.scheduledAppointmentText,
-          color: ColorRes.blackColor,
-          fontSize: 20,
-          fontFamily: StringRes.josefinSans,
-          fontWeight: FontWeight.bold,
-        ),
-        SizedBox(
-          height: Get.height * 0.02,
-        ),
-        commonText(
-          data: StringRes.monthText,
-          color: ColorRes.blackColor,
-          fontSize: 13,
-          fontFamily: StringRes.josefinSans,
-          fontWeight: FontWeight.bold,
-        ),
-        SizedBox(
-          height: Get.height * 0.02,
-        ),
-        commonText(
-          data: StringRes.timeText,
-          color: ColorRes.blackColor,
-          fontSize: 13,
-          fontFamily: StringRes.josefinSans,
-          fontWeight: FontWeight.bold,
-        ),
-        SizedBox(
-          height: Get.height * 0.02,
-        ),
-        commonText(
-          data: StringRes.scheduledAppointmentText,
-          color: ColorRes.blackColor,
-          fontSize: 20,
-          fontFamily: StringRes.josefinSans,
-          fontWeight: FontWeight.bold,
-        ),
-        SizedBox(
-          height: Get.height * 0.01,
-        ),
-      ],
+    child: GetBuilder<MyAppointmentMessageController>(
+      builder: (controller) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            commonText(
+              data: StringRes.scheduledAppointmentText,
+              color: ColorRes.blackColor,
+              fontSize: 20,
+              fontFamily: StringRes.josefinSans,
+              fontWeight: FontWeight.bold,
+            ),
+            SizedBox(
+              height: Get.height * 0.02,
+            ),
+            commonText(
+              data: bookAppointmentController.selectedDate,
+              color: ColorRes.blackColor,
+              fontSize: 13,
+              fontFamily: StringRes.josefinSans,
+              fontWeight: FontWeight.bold,
+            ),
+            SizedBox(
+              height: Get.height * 0.02,
+            ),
+            commonText(
+              data: StringRes.timeText,
+              color: ColorRes.blackColor,
+              fontSize: 13,
+              fontFamily: StringRes.josefinSans,
+              fontWeight: FontWeight.bold,
+            ),
+            SizedBox(
+              height: Get.height * 0.02,
+            ),
+            commonText(
+              data: StringRes.scheduledAppointmentText,
+              color: ColorRes.blackColor,
+              fontSize: 20,
+              fontFamily: StringRes.josefinSans,
+              fontWeight: FontWeight.bold,
+            ),
+            SizedBox(
+              height: Get.height * 0.01,
+            ),
+          ],
+        );
+      }
     ),
   );
 }
@@ -182,7 +188,7 @@ Widget tableRow() {
     child: Column(
       children: [
         Table(
-          columnWidths: {
+          columnWidths: const {
             0: FixedColumnWidth(90),
             1: FixedColumnWidth(10),
           },

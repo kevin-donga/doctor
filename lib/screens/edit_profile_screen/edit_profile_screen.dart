@@ -33,20 +33,22 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            SizedBox(
-              height: Get.height*0.02,
-            ),
-            usernameTextFiled(),
-            nameTextFiled(),
-            dateTextFiled(context),
-            emailTextFiled(),
-            countryTextFiled(),
-            dropDownButton(),
-            SizedBox(height: Get.height*0.13,),
-            editButton(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: Get.height*0.02,
+              ),
+              usernameTextFiled(),
+              nameTextFiled(),
+              dateTextFiled(context),
+              emailTextFiled(),
+              countryTextFiled(),
+              dropDownButton(),
+              SizedBox(height: Get.height*0.13,),
+              editButton(),
+            ],
+          ),
         ),
       ),
     );

@@ -29,19 +29,21 @@ class MyAppointmentMessage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            containerWidget(),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            introduction(),
-            tableRow(),
-            package(),
-            messageButton(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              containerWidget(),
+              SizedBox(
+                height: Get.height * 0.02,
+              ),
+              introduction(),
+              tableRow(),
+              package(),
+              messageButton(),
+            ],
+          ),
         ),
       ),
     );

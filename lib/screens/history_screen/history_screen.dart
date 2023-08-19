@@ -15,7 +15,6 @@ class HistoryScreen extends StatelessWidget {
   HistoryScreenController  historyScreenController=Get.put(HistoryScreenController());
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: commonAppbar(
         title: StringRes.historyText,

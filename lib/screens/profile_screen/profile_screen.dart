@@ -37,18 +37,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            SizedBox(height: Get.height*0.02,),
-            profileImage(),
-            SizedBox(height: Get.height*0.04,),
-            listview(),
-            logout(),
-            SizedBox(height: Get.height*0.12,),
-          ],
-        ),
+      body: GetBuilder<ProfileController>(
+        builder: (controller) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: controller.loading?const CircularProgressIndicator():Column(
+              children: [
+                SizedBox(height: Get.height*0.02,),
+                profileImage(),
+                SizedBox(height: Get.height*0.04,),
+                listview(),
+                logout(context),
+                SizedBox(height: Get.height*0.12,),
+              ],
+            ),
+          );
+        }
       ),
     );
   }
