@@ -22,7 +22,7 @@ class LoginController extends GetxController {
   String? emailCondition(val) {
     update(['NameTextFiled']);
     bool emailValid = RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(val!);
 
     return emailValid ? null : 'Please enter Valid Email';
@@ -31,7 +31,7 @@ class LoginController extends GetxController {
   String? passwordCondition(val) {
     update(['NameTextFiled']);
     RegExp regex =
-    RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
     if (val!.isEmpty) {
       return 'Please enter password';
     } else {
@@ -60,19 +60,19 @@ class LoginController extends GetxController {
       print(data);
       data.forEach((element) {
         if (element["Email"] == emailController.text &&
-            element["Password"] ==
-                passController.text) {
-          Get.to(const HomeScreen());
+            element["Password"] == passController.text) {
+          Get.to(() => const BottomNavBar());
         }
       });
-    }
-    else{
+    } else {
       Get.snackbar('Data must be Same', 'Email and Password must be same');
     }
   }
+
   void forgetPassText() {
     Get.to(const ForgetPasswordScreen());
   }
+
   void newUserTextLogin() {
     Get.to(SignupScreen());
   }

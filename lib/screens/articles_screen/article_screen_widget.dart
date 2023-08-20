@@ -13,48 +13,49 @@ double h = Get.height;
 double w = Get.width;
 
 Widget articlesAppbar() {
-  return Row(
-    children: [
-      Container(
-        height: Get.height * 0.06,
-        width: Get.width * 0.14,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(40),
-          color: Colors.transparent,
+  return GetBuilder<ArticleController>(builder: (controller) {
+    return Row(
+      children: [
+        Container(
+          height: Get.height * 0.05,
+          width: Get.width * 0.12,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            color: Colors.transparent,
+          ),
+          child: Image.asset(
+            AssetRes.articleAppbarLogo,
+            fit: BoxFit.fill,
+            color: Colors.blue,
+          ),
         ),
-        child: Image.asset(
-          AssetRes.articleAppbarLogo,
-          fit: BoxFit.fill,
-          color: Colors.blue,
+        SizedBox(
+          width: Get.width * 0.1,
         ),
-      ),
-      SizedBox(
-        width: Get.width * 0.1,
-      ),
-      commonText(
-        data: StringRes.articleAppbarTitle,
-        color: ColorRes.blackColor,
-        fontWeight: FontWeight.bold,
-        fontSize: 25,
-        fontFamily: StringRes.josefinSans,
-      ),
-      const Spacer(),
-      IconButton(
-        onPressed: () {},
-        icon: const Icon(
-          IconRes.favoriteBorderIcon,
+        commonText(
+          data: StringRes.articleAppbarTitle,
           color: ColorRes.blackColor,
+          fontSize: 25,
+          fontFamily: StringRes.josefinSansBold,
         ),
-      ),
-      IconButton(
-        onPressed: () {},
-        icon: const Icon(
-          IconRes.bookmarkBorderIcon,
-          color: ColorRes.blackColor,
+        const Spacer(),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            IconRes.searchIcon,
+            color: ColorRes.blackColor,
+          ),
         ),
-      ),
-    ],
-  );
+        IconButton(
+          onPressed: () => controller.bookmarkOntap(),
+          icon: const Icon(
+            IconRes.bookmarkBorderIcon,
+            color: ColorRes.blackColor,
+          ),
+        ),
+      ],
+    );
+  });
 }
 
 Widget trendingRowHeadline() {
@@ -63,14 +64,14 @@ Widget trendingRowHeadline() {
       commonText(
           data: StringRes.trendingRow,
           fontSize: 18,
-          fontFamily: StringRes.josefinSans,
+          fontFamily: StringRes.josefinSansBold,
           fontWeight: FontWeight.bold),
       const Spacer(),
       commonText(
           data: StringRes.seeAllString,
           color: Colors.blue,
           fontSize: 18,
-          fontFamily: StringRes.josefinSans,
+          fontFamily: StringRes.josefinSansBold,
           fontWeight: FontWeight.bold),
     ],
   );
@@ -83,37 +84,40 @@ Widget trendingArticles() {
       scrollDirection: Axis.horizontal,
       itemCount: controller.trendingArticles.length,
       itemBuilder: (BuildContext context, int index) {
-        return Column(
-          children: [
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              height: h * 0.2,
-              width: w * 0.6,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                    image: AssetImage(
-                      controller.trendingArticles[index]['cover'],
-                    ),
-                    fit: BoxFit.cover),
-                color: Colors.orange,
+        return InkWell(
+          onTap: () => controller.topArticleOnTap(index),
+          child: Column(
+            children: [
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                height: h * 0.2,
+                width: w * 0.6,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                      image: AssetImage(
+                        controller.trendingArticles[index]['cover'],
+                      ),
+                      fit: BoxFit.cover),
+                  // color: Colors.orange,
+                ),
               ),
-            ),
-            SizedBox(
-              height: h * 0.01,
-            ),
-            SizedBox(
-              // height: h * 0.1,
-              width: w * 0.6,
-              child: commonText(
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  data: controller.trendingArticles[index]['description'],
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: StringRes.josefinSansBold),
-            )
-          ],
+              SizedBox(
+                height: h * 0.01,
+              ),
+              SizedBox(
+                // height: h * 0.1,
+                width: w * 0.6,
+                child: commonText(
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    data: controller.trendingArticles[index]['description'],
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: StringRes.josefinSansBold),
+              )
+            ],
+          ),
         );
       },
     );
@@ -127,7 +131,7 @@ Widget articlesHeadingRow() {
         commonText(
           data: StringRes.article,
           fontSize: 18,
-          fontFamily: StringRes.josefinSans,
+          fontFamily: StringRes.josefinSansBold,
           fontWeight: FontWeight.bold,
         ),
         const Spacer(),
@@ -137,7 +141,7 @@ Widget articlesHeadingRow() {
             data: StringRes.seeAllString,
             color: Colors.blue,
             fontSize: 18,
-            fontFamily: StringRes.josefinSans,
+            fontFamily: StringRes.josefinSansBold,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -152,7 +156,7 @@ Widget atriclesTab() {
     builder: (controller) {
       return ListView.builder(
         shrinkWrap: true,
-        // physics: const NeverScrollableScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         itemCount: controller.articlesTab.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, index) {
@@ -160,7 +164,7 @@ Widget atriclesTab() {
             onTap: () => controller.articleTab(),
             child: commonContainer(
               // height: 30,
-              width: 90,
+              width: w * 0.24,
               margin: const EdgeInsets.all(10),
               alignment: Alignment.center,
               decoration: BoxDecoration(
@@ -172,6 +176,7 @@ Widget atriclesTab() {
                 padding: const EdgeInsets.all(8.0),
                 child: commonText(
                     data: controller.articlesTab[index],
+                    fontWeight: FontWeight.bold,
                     color: controller.articleTabIndex
                         ? Colors.white
                         : Colors.blue),
@@ -188,63 +193,66 @@ Widget articlesList() {
   return GetBuilder<ArticleController>(builder: (controller) {
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: controller.articleData.length,
+      // itemCount: controller.articleData.length,
+      itemCount: 4,
       itemBuilder: (context, index) {
         return Column(
           children: [
-            Container(
-              height: h * 0.2,
+            SizedBox(
+              height: h * 0.17,
               width: w,
-              child: Row(
-                children: [
-                  Container(
-                    height: 130,
-                    width: 130,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.red,
-                      image: DecorationImage(
-                          image: AssetImage(
-                            controller.articleData[index]['cover'],
-                          ),
-                          fit: BoxFit.cover),
-                    ),
-                  ),
-                  SizedBox(
-                    width: w * 0.02,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      commonText(
-                        data: controller.articleData[index]['date'],
-                        fontSize: h * 0.015,
+              child: InkWell(
+                onTap: () => controller.articleOnTap(index),
+                child: Row(
+                  children: [
+                    Container(
+                      height: h * 0.17,
+                      width: 130,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        // color: Colors.red,
+                        image: DecorationImage(
+                            image: AssetImage(
+                              controller.articleData[index]['cover'],
+                            ),
+                            fit: BoxFit.cover),
                       ),
-                      SizedBox(
-                        width: w,
-                        child: Container(
-                          child: commonText(
+                    ),
+                    SizedBox(
+                      width: w * 0.02,
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          commonText(
+                            data: controller.articleData[index]['date'],
+                            fontSize: h * 0.015,
+                          ),
+                          commonText(
                             data: controller.articleData[index]['description'],
+                            fontSize: h * 0.022,
                             maxLines: 3,
                             fontWeight: FontWeight.bold,
                             overflow: TextOverflow.ellipsis,
                           ),
-                        ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Color(0xffE3EDFB),
+                            ),
+                            padding: EdgeInsets.all(5),
+                            child: commonText(
+                                data: controller.articleData[index]['label'],
+                                // fontWeight: FontWeight.bold,
+                                color: Colors.lightBlue),
+                          ),
+                        ],
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Color(0xffE3EDFB),
-                        ),
-                        padding: EdgeInsets.all(5),
-                        child: commonText(
-                            data: controller.articleData[index]['label'],
-                            // fontWeight: FontWeight.bold,
-                            color: Colors.lightBlue),
-                      ),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(

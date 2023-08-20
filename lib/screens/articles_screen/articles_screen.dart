@@ -16,7 +16,7 @@ class ArticleScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorRes.scaffoldColor,
       body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

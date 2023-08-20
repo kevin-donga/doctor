@@ -16,16 +16,17 @@ class MyAppointment extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(MyAppointmentController());
     return Scaffold(
+      backgroundColor: ColorRes.scaffoldColor,
       appBar: commonAppbar(
         title: StringRes.myAppointmentText,
-        leading:  Container(
+        leading: Container(
           height: Get.height * 0.05,
           width: Get.width * 0.14,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
             color: Colors.transparent,
-            image:   DecorationImage(
-              image:AssetImage(AssetRes.splashScreen1),
+            image: DecorationImage(
+              image: AssetImage(AssetRes.splashScreen1),
             ),
           ),
         ),

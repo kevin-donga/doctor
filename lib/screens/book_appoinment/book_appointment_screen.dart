@@ -14,19 +14,17 @@ class BookAppointment extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(BookAppointmentController());
     return Scaffold(
+      backgroundColor: ColorRes.scaffoldColor,
       appBar: commonAppbar(
         title: StringRes.bookAppointmentText,
-        leading: GetBuilder<BookAppointmentController>(
-          builder: (controller) {
-            return IconButton(
-              icon: const Icon(IconRes.backArrowIcon),
-              onPressed:controller.backArrow,
-              color: ColorRes.blackColor,
-            );
-          }
-        ),
+        leading: GetBuilder<BookAppointmentController>(builder: (controller) {
+          return IconButton(
+            icon: const Icon(IconRes.backArrowIcon),
+            onPressed: controller.backArrow,
+            color: ColorRes.blackColor,
+          );
+        }),
       ),
-      backgroundColor: ColorRes.scaffoldColor,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(

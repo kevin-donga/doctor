@@ -79,27 +79,27 @@ Widget doctorSpecialityRow() {
       commonText(
           data: StringRes.doctorSpecialityRow,
           fontSize: 18,
-          fontFamily: StringRes.josefinSans,
+          fontFamily: StringRes.josefinSansBold,
           fontWeight: FontWeight.bold),
       const Spacer(),
       commonText(
           data: StringRes.seeAllString,
           color: Colors.blue,
           fontSize: 18,
-          fontFamily: StringRes.josefinSans,
+          fontFamily: StringRes.josefinSansBold,
           fontWeight: FontWeight.bold)
     ],
   );
 }
 
 List<Map> doctorSpecGridViewList = [
-  {'icon': IconRes.peopleIcon, 'string': 'General..'},
+  {'icon': IconRes.peopleIcon, 'string': 'General Doctor'},
   {'icon': IconRes.dentalIcon, 'string': 'Dentist'},
   {'icon': IconRes.ophthalIcon, 'string': 'Ophthal'},
-  {'icon': IconRes.nutritionIcon, 'string': 'Nutrition..'},
-  {'icon': IconRes.neuroloIcon, 'string': 'Neurolo..'},
+  {'icon': IconRes.nutritionIcon, 'string': 'Nutrition'},
+  {'icon': IconRes.neuroloIcon, 'string': 'Neurolo'},
   {'icon': IconRes.pediatricIcon, 'string': 'Pediatric'},
-  {'icon': IconRes.radioloIcon, 'string': 'Radiology..'},
+  {'icon': IconRes.radioloIcon, 'string': 'Radiology'},
   {'icon': IconRes.moreIcon, 'string': 'More'},
 ];
 
@@ -122,10 +122,14 @@ Widget doctorSpecGridView() {
           child: Image.asset(
             doctorSpecGridViewList[index]['icon'],
             height: Get.height * 0.04,
-            color: Colors.blueAccent,
+            color: Colors.blue,
           ),
         ),
-        Text(doctorSpecGridViewList[index]['string']),
+        commonText(
+          data: doctorSpecGridViewList[index]['string'],
+          overflow: TextOverflow.ellipsis,
+          fontWeight: FontWeight.bold,
+        ),
       ],
     ),
   );
@@ -137,14 +141,14 @@ Widget topDoctorRow() {
       commonText(
           data: StringRes.topDoctor,
           fontSize: 18,
-          fontFamily: StringRes.josefinSans,
+          fontFamily: StringRes.josefinSansBold,
           fontWeight: FontWeight.bold),
       const Spacer(),
       commonText(
           data: StringRes.seeAllString,
           color: Colors.blue,
           fontSize: 18,
-          fontFamily: StringRes.josefinSans,
+          fontFamily: StringRes.josefinSansBold,
           fontWeight: FontWeight.bold),
     ],
   );
@@ -173,7 +177,11 @@ Widget topDoctorsTab() {
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: commonText(data: topDoctorTab[index], color: Colors.blue),
+          child: commonText(
+            data: topDoctorTab[index],
+            color: Colors.blue,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       );
     },

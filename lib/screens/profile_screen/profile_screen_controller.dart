@@ -8,26 +8,29 @@ import '../../services/firebase_services.dart';
 
 class ProfileController extends GetxController {
   int index = StringRes.profileList.length;
+
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
   }
+
   File? file;
   List images = [];
+
   Future<void> imagePickerWidget() async {
-    ImagePicker imagePicker=ImagePicker();
-    XFile? image= await imagePicker.pickImage(source: ImageSource.gallery);
+    ImagePicker imagePicker = ImagePicker();
+    XFile? image = await imagePicker.pickImage(source: ImageSource.gallery);
     file = File(image!.path);
-    if(file!=null){
-       try{
+    if (file != null) {
+      try {
         final imageUrl = await FebServices.getImage("Image");
         print("========>$imageUrl");
         images.add(imageUrl);
         print("===================>$images");
-       }catch(e){
-         return null;
-       }
+      } catch (e) {
+        return null;
+      }
     }
     update(['imagePicker']);
   }

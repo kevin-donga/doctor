@@ -1,3 +1,4 @@
+import 'package:doctor/screens/articles_screen/articles_screen.dart';
 import 'package:doctor/screens/book_appoinment/my_appointment/02_my_appointment.dart';
 import 'package:doctor/screens/bottom_navbar/bottom_navbar.dart';
 import 'package:doctor/screens/home_screen/home_screen.dart';
@@ -13,8 +14,9 @@ Future<void> main() async {
   runApp(const GetMaterialApp(
     // home: EditProfileScreen(),
     // home: SplashScreen(),
+    home: ArticleScreen(),
     // home: HomeScreen(),
-    home: BottomNavBar(),
+    // home: BottomNavBar(),
     debugShowCheckedModeBanner: false,
   ));
 }
