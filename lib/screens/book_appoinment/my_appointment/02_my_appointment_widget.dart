@@ -156,7 +156,7 @@ Widget introduction() {
               height: Get.height * 0.02,
             ),
             commonText(
-              data: StringRes.timeText,
+              data: bookAppointmentController.selectedIndex.toString(),
               color: ColorRes.blackColor,
               fontSize: 13,
               fontFamily: StringRes.josefinSans,

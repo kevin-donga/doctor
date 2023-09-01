@@ -25,9 +25,9 @@ class BookAppointmentController extends GetxController {
 
   void onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
     if (args.value is PickerDateRange) {
-      range = '${DateFormat('dd/MM/yyyy').format(args.value.startDate)} -'
+      range = '${DateFormat('MM/dd/yyyy').format(args.value.startDate)} -'
           // ignore: lines_longer_than_80_chars
-          ' ${DateFormat('dd/MM/yyyy').format(args.value.endDate ?? args.value.startDate)}';
+          ' ${DateFormat('MM/dd/yyyy').format(args.value.endDate ?? args.value.startDate)}';
     } else if (args.value is DateTime) {
       selectedDate = args.value.toString();
     } else if (args.value is List<DateTime>) {

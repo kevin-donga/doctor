@@ -1,5 +1,4 @@
 import 'package:doctor/common_widget/common_text.dart';
-import 'package:doctor/screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:doctor/screens/profile_screen/profile_screen_controller.dart';
 import 'package:doctor/utils/asset_res.dart';
 import 'package:doctor/utils/color_res.dart';

@@ -2,12 +2,9 @@ import 'package:doctor/screens/profile_screen/profile_screen_controller.dart';
 import 'package:doctor/utils/asset_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../common_widget/common_appbar.dart';
 import '../../utils/color_res.dart';
-import '../../utils/icon_res.dart';
 import '../../utils/string_res.dart';
-import '../../utils/color_res.dart';
 import 'profile_screen_widget.dart';
 
 class ProfileScreen extends StatefulWidget {

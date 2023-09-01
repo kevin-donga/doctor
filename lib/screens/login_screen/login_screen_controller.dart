@@ -64,7 +64,7 @@ class LoginController extends GetxController {
                 passController.text) {
           Get.off(const BottomNavBar());
         }else{
-          Get.snackbar('Invalid Data', 'Please Enter Email and Password');
+         // Get.snackbar('Invalid Data', 'Please Enter Email and Password');
         }
       });
 
