@@ -11,11 +11,7 @@ class IntroductionScreen extends StatelessWidget {
     Get.put(IntroductionScreenController());
     return Scaffold(
       body: GetBuilder<IntroductionScreenController>(builder: (controller) {
-        return Column(
-          children: [
-            imageViewSwipable(),
-          ],
-        );
+        return imageViewSwipable();
       }),
     );
   }

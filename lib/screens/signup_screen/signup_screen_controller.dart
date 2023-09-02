@@ -35,7 +35,7 @@ class SignupScreenController extends GetxController {
   String? emailCondition(val) {
     update(['NameTextFiled']);
     bool emailValid = RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(val!);
 
     return emailValid ? null : 'Please enter Valid Email';
@@ -56,7 +56,7 @@ class SignupScreenController extends GetxController {
   String? passwordCondition(val) {
     update(['NameTextFiled']);
     RegExp regex =
-        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+    RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
     if (val!.isEmpty) {
       return 'Please enter password';
     } else {
@@ -105,15 +105,18 @@ class SignupScreenController extends GetxController {
     //   Get.snackbar('SignUp Error', 'Enter Valid Data');
     // }
     if (formKey.currentState!.validate()) {
-      String? key=database.ref('User').push().key;
+      String? key = database
+          .ref('User')
+          .push()
+          .key;
       database.ref('User').child(key!).set({
-        'Name':nameController.text,
-        'Password':passwordController.text,
+        'Name': nameController.text,
+        'Password': passwordController.text,
         "Email": emailController.text,
-        'Mobile Number':mobileController.text,
-        'Key':key,
+        'Mobile Number': mobileController.text,
+        'Key': key,
       });
-      Get.to(LoginScreen());
+      Get.back();
     }
   }
 }

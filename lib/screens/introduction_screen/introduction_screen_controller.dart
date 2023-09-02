@@ -14,12 +14,12 @@ class IntroductionScreenController extends GetxController {
       pageController.nextPage(
           duration: const Duration(seconds: 1), curve: Curves.ease);
     } else {
-      Get.to( LoginScreen());
+      Get.off(() => LoginScreen());
     }
     update(['introductionScreen']);
   }
 
-  void imagePageViewOfIntroductionScreen(int value){
+  void imagePageViewOfIntroductionScreen(int value) {
     pageIndex = value;
     update(['introductionScreen']);
   }

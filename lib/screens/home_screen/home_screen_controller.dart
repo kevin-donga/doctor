@@ -1,8 +1,17 @@
-import 'package:get/get_state_manager/get_state_manager.dart';
-
+import 'package:doctor/screens/home_screen/home_screen_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../utils/asset_res.dart';
+import '../../utils/string_res.dart';
+import '../profile_screen/profile_screen.dart';
+import 'favorite_doctor/fav_doctor_screen.dart';
+import 'notification_screen/notification_screen.dart';
 
 class HomeScreenController extends GetxController {
+  void onProfile() {
+    Get.to(() => const ProfileScreen());
+  }
+
   List topDoctorTab = ['All', 'General', 'Dentist', 'Nutrition'];
   List<Map> topDoctors = [
     {
@@ -47,4 +56,28 @@ class HomeScreenController extends GetxController {
     },
   ];
   bool topDoctorTabDecoration = false;
+
+  void onNotification() {
+    Get.to(() => const NotificationScreen());
+  }
+
+  void onLikedDoctor() {
+    Get.to(() => const FavDoctorScreen());
+  }
+
+  Widget greeting() {
+    final hour = TimeOfDay.now().hour;
+    // var hour = DateTime.now().hour;
+    if (hour <= 12) {
+      return appbarGreetingText(data: StringRes.appbarMorningTitle);
+      // Text('Good Morning', style: TextStyle(
+      //     color: Colors.black,
+      //     fontSize: 14,
+      //     fontWeight: FontWeight.w900,
+      //     fontFamily: StringRes.josefinSans),);
+    } else if (hour <= 17) {
+      return appbarGreetingText(data: StringRes.appbarAfternoonTitle);
+    }
+    return appbarGreetingText(data: StringRes.appbarEveningTitle);
+  }
 }

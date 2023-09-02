@@ -9,6 +9,7 @@ import '../utils/icon_res.dart';
 import '../utils/string_res.dart';
 
 PreferredSizeWidget commonAppbar({
+  Color? backgroundColor,
   IconData? icon,
   Color? color,
   required String title,
@@ -18,8 +19,8 @@ PreferredSizeWidget commonAppbar({
   PreferredSizeWidget? bottom,
 }) {
   return AppBar(
-    backgroundColor: ColorRes.whiteColor,
-    leading:leading,
+    backgroundColor: backgroundColor,
+    leading: leading,
     title: commonText(
       data: title,
       color: ColorRes.blackColor,
@@ -30,9 +31,9 @@ PreferredSizeWidget commonAppbar({
     actions: [
       InkWell(
           child: Icon(
-            actionIcon,
-            color: ColorRes.blackColor,
-          )),
+        actionIcon,
+        color: ColorRes.blackColor,
+      )),
       IconButton(
         onPressed: () {},
         icon: const Icon(

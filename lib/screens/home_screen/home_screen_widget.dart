@@ -258,3 +258,14 @@ Widget topDoctorsField() {
     );
   });
 }
+
+Widget appbarGreetingText({String? data}) {
+  return Text(
+    data!,
+    style: const TextStyle(
+        color: Colors.black,
+        fontSize: 14,
+        fontWeight: FontWeight.w900,
+        fontFamily: StringRes.josefinSans),
+  );
+}

@@ -21,36 +21,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       backgroundColor: ColorRes.scaffoldColor,
       appBar: commonAppbar(
+        backgroundColor: ColorRes.scaffoldColor,
         title: StringRes.profileText,
-        leading:  Container(
+        leading: Container(
           height: Get.height * 0.05,
           width: Get.width * 0.14,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
             color: Colors.transparent,
-            image:  const DecorationImage(
-              image:AssetImage(AssetRes.splashScreen1),
+            image: const DecorationImage(
+              image: AssetImage(AssetRes.splashScreen1),
             ),
           ),
         ),
       ),
-      body: GetBuilder<ProfileController>(
-        builder: (controller) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: controller.loading?const CircularProgressIndicator():Column(
-              children: [
-                SizedBox(height: Get.height*0.02,),
-                profileImage(),
-                SizedBox(height: Get.height*0.04,),
-                listview(),
-                logout(context),
-                SizedBox(height: Get.height*0.12,),
-              ],
-            ),
-          );
-        }
-      ),
+      body: GetBuilder<ProfileController>(builder: (controller) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: controller.loading
+              ? const CircularProgressIndicator()
+              : Column(
+                  children: [
+                    SizedBox(
+                      height: Get.height * 0.02,
+                    ),
+                    profileImage(),
+                    SizedBox(
+                      height: Get.height * 0.04,
+                    ),
+                    listview(),
+                    logout(context),
+                    SizedBox(
+                      height: Get.height * 0.12,
+                    ),
+                  ],
+                ),
+        );
+      }),
     );
   }
 }

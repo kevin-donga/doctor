@@ -35,19 +35,30 @@ class _HomeScreenState extends State<HomeScreen> {
               expandedHeight: Get.height * 0.170,
               foregroundColor: Colors.black,
               backgroundColor: ColorRes.scaffoldColor,
-              leading: const CircleAvatar(
-                backgroundImage: AssetImage(AssetRes.doctorThumb2),
-                backgroundColor: Colors.transparent,
-              ),
+              leading: GetBuilder<HomeScreenController>(builder: (controller) {
+                return InkWell(
+                  onTap: () => controller.onProfile(),
+                  child: const CircleAvatar(
+                    backgroundImage: AssetImage(AssetRes.doctorThumb2),
+                    backgroundColor: Colors.transparent,
+                  ),
+                );
+              }),
               title: Column(
                 children: [
-                  const Text(
+                  /*const Text(
                     StringRes.appbarTitle,
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 14,
                         fontWeight: FontWeight.w900,
                         fontFamily: StringRes.josefinSans),
+                  ),*/
+                  // greeting(),
+                  GetBuilder<HomeScreenController>(
+                    builder: (controller) {
+                      return controller.greeting();
+                    },
                   ),
                   SizedBox(
                     height: h * 0.01,
@@ -103,16 +114,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               actions: <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.notifications_none),
-                  tooltip: 'Notification Icon',
-                  onPressed: () {},
-                ),
-                IconButton(
-                  icon: const Icon(Icons.favorite_border),
-                  tooltip: 'Favorite Icon',
-                  onPressed: () {},
-                ),
+                GetBuilder<HomeScreenController>(builder: (controller) {
+                  return IconButton(
+                    icon: const Icon(Icons.notifications_none),
+                    tooltip: 'Notification Icon',
+                    onPressed: () => controller.onNotification(),
+                  );
+                }),
+                GetBuilder<HomeScreenController>(builder: (controller) {
+                  return IconButton(
+                    icon: const Icon(Icons.favorite_border),
+                    tooltip: 'Favorite Icon',
+                    onPressed: () => controller.onLikedDoctor(),
+                  );
+                }),
               ],
             ),
             SliverList(
@@ -140,11 +155,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: h * 0.01,
                   ),
-                  SizedBox(
-                    height: h * 0.075,
-                    width: w,
-                    child: topDoctorsTab(),
-                  ),
+                  // SizedBox(
+                  //   height: h * 0.075,
+                  //   width: w,
+                  //   child: topDoctorsTab(),
+                  // ),
                   SizedBox(
                     height: h * 0.35,
                     width: w,
@@ -160,5 +175,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+}
+
+class TopDoctors extends StatelessWidget {
+  const TopDoctors({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
   }
 }

@@ -1,4 +1,3 @@
-
 import 'icon_res.dart';
 
 class StringRes {
@@ -57,7 +56,9 @@ class StringRes {
   static const nextText = 'Next';
 
   //---------Home Screen-----------
-  static const appbarTitle = 'Good Morning 👋';
+  static const appbarMorningTitle = 'Good Morning 👋';
+  static const appbarEveningTitle = 'Good Evening 👋';
+  static const appbarAfternoonTitle = 'Good Afternoon 👋';
   static const appbarUsername = 'Andrew Ainsley';
   static const searchbarHintText = 'Search';
   static const onboardingContainerSubString =
@@ -66,6 +67,14 @@ class StringRes {
   static const doctorSpecialityRow = 'Doctor Speciality';
   static const seeAllString = 'See All';
   static const topDoctor = 'Top Doctors';
+
+  //---------Notification Screen-----------
+  static const notificationAppbarTitle = 'Notification';
+  static const noNotification = 'No Notification Yet !!';
+
+  //---------Favorite Doctor Screen-----------
+  static const favDoctorAppbarTitle = 'Favorite';
+  static const noLiked = 'You Have not Liked Any doctor !!';
 
   //---------Profile Screen---------
   static const profileText = "Profile";
@@ -144,14 +153,13 @@ class StringRes {
   static const page4 = 'Articles';
   static const page5 = 'Profile';
 
-
   //---------Articles Screen---------
-  static const articleAppbarTitle="Articles";
-  static const article="Articles";
-  static const trendingRow="Trending";
+  static const articleAppbarTitle = "Articles";
+  static const article = "Articles";
+  static const trendingRow = "Trending";
 
 //------------bookAppointment Screen-------------
-  static const editProfileAppbarTitle="Edit Profile";
+  static const editProfileAppbarTitle = "Edit Profile";
   static const dateTextFieldHintText = 'Date';
   static const userTextFieldHintText = 'User Name';
   static const countryTextFieldHintText = 'Phone Number';
@@ -160,6 +168,4 @@ class StringRes {
   static const maleGenderText = 'Male';
   static const otherGenderText = 'Other';
   static const updateText = 'Update';
-
-
 }

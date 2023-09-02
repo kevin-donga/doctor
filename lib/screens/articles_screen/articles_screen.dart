@@ -40,11 +40,11 @@ class ArticleScreen extends StatelessWidget {
               SizedBox(
                 height: Get.height * 0.01,
               ),
-              SizedBox(
+              /*SizedBox(
                 height: h * 0.075,
                 width: w,
                 child: atriclesTab(),
-              ),
+              ),*/
               SizedBox(
                 height: h,
                 width: w,

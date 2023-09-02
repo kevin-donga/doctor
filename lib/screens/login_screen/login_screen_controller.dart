@@ -58,18 +58,22 @@ class LoginController extends GetxController {
         data.add(value);
       });
       print(data);
-      data.forEach((element) {
-        if (element["Email"] == emailController.text &&
-            element["Password"] ==
-                passController.text) {
-          Get.off(const BottomNavBar());
-        }else{
-         // Get.snackbar('Invalid Data', 'Please Enter Email and Password');
-        }
-      });
-
-    }
-    else{
+      bool checkData = false;
+      bool chack = data.any((element) =>
+          element["Email"] == emailController.text &&
+          element["Password"] == passController.text);
+      // data.forEach((element) {
+      //   if (element["Email"] == emailController.text &&
+      //       element["Password"] == passController.text) {
+      //     checkData = true;
+      //   }
+      // });
+      if (chack) {
+        Get.offAll(() => const BottomNavBar());
+      } else {
+        Get.snackbar('Invalid Data', 'Please Enter Email and Password');
+      }
+    } else {
       Get.snackbar('Data Is Empty', 'Please Enter Email and Password');
     }
   }

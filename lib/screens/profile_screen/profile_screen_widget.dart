@@ -16,7 +16,7 @@ Widget profileImage() {
             Stack(
               children: [
                 InkWell(
-                 //  onTap: controller.imagePickerWidget,
+                  //  onTap: controller.imagePickerWidget,
                   child: Container(
                     height: Get.height * 0.16,
                     width: Get.width * 0.35,
@@ -29,8 +29,8 @@ Widget profileImage() {
                             : FileImage(controller.file!) as ImageProvider,
                         fit: BoxFit.fill,
                       ),
-                      border:
-                          Border.all(color: ColorRes.blueColor.withOpacity(0.1)),
+                      border: Border.all(
+                          color: ColorRes.blueColor.withOpacity(0.1)),
                     ),
                   ),
                 ),
@@ -41,7 +41,7 @@ Widget profileImage() {
                       id: 'imagePicker',
                       builder: (controller) {
                         return InkWell(
-                         onTap:controller.imagePickerWidget,
+                          onTap: controller.imagePickerWidget,
                           child: CircleAvatar(
                             backgroundColor: ColorRes.blueColor,
                             radius: Get.height * 0.02,
@@ -139,14 +139,14 @@ Widget logout(BuildContext context) {
           context: context,
           builder: (context) => AlertDialog(
             title: commonText(
-              data: 'Logout Out',
+              data: 'Log Out',
               color: ColorRes.blackColor,
               fontWeight: FontWeight.bold,
               fontSize: 18,
               fontFamily: StringRes.josefinSans,
             ),
             content: commonText(
-              data: 'You have been successfully Logout out.',
+              data: 'You have been successfully Logged out ?',
               color: ColorRes.blackColor,
               fontWeight: FontWeight.bold,
               fontSize: 13,
@@ -156,22 +156,28 @@ Widget logout(BuildContext context) {
               SizedBox(
                 width: Get.width * 0.03,
               ),
-              commonText(
-                data: 'Cancel',
-                color: ColorRes.blueColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                fontFamily: StringRes.josefinSans,
+              InkWell(
+                onTap: () => controller.onLogoutCancel(),
+                child: commonText(
+                  data: 'Cancel',
+                  color: ColorRes.blueColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  fontFamily: StringRes.josefinSans,
+                ),
               ),
               SizedBox(
                 width: Get.width * 0.03,
               ),
-              commonText(
-                data: 'Ok',
-                color: ColorRes.blueColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                fontFamily: StringRes.josefinSans,
+              InkWell(
+                onTap: () => controller.onLogoutOk(),
+                child: commonText(
+                  data: 'Ok',
+                  color: ColorRes.blueColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  fontFamily: StringRes.josefinSans,
+                ),
               )
             ],
           ),
