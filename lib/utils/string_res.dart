@@ -113,6 +113,9 @@ class StringRes {
   static const packageText = "Your Package";
   static const myAppointmentText = "My Appointment";
   static const messageText = "Messaging";
+  static const upcomingText = "Upcoming";
+  static const acceptText = "Accepted";
+  static const cancelledText = "Cancelled";
   static const chatText = "Chat Messagees with doctor";
   static const text = "\$20";
   static const paidText = "(Paid)";
@@ -122,21 +125,25 @@ class StringRes {
       'Name': 'Dr.Rahul Zirkind',
       'message': 'Voice Call',
       'Date': 'Dec 12,2022|16:00 AM',
+      'icon':IconRes.messageIcon,
     },
     {
       'Name': 'Dr.keegan Dach',
       'message': 'Messaging',
       'Date': 'Dec 12,2022|16:00 AM',
+      'icon':IconRes.phoneIcon,
     },
     {
       'Name': 'Dr.Drake Boeson',
       'message': 'Video Call',
       'Date': 'Dec 12,2022|16:00 AM',
+      'icon':IconRes.messageIcon,
     },
     {
       'Name': 'Dr.Quinn Slatter',
       'message': 'Voice Call',
       'Date': 'Dec 12,2022|16:00 AM',
+      'icon':IconRes.phoneIcon,
     },
   ];
 

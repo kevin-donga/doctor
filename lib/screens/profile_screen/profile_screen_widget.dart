@@ -84,22 +84,21 @@ Widget listview() {
   return GetBuilder<ProfileController>(builder: (controller) {
     return Expanded(
       child: GetBuilder<ProfileController>(
-          id: 'Listview',
-          builder: (controller) {
-            return ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: StringRes.profileList.length,
-              itemBuilder: (context, index) => GestureDetector(
-                onTap: () => controller.listviewCondition(index),
+        id: 'Listview',
+        builder: (controller) {
+          return ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: StringRes.profileList.length,
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () => controller.listviewCondition(index),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        StringRes.profileList[index]['icon'],
-                        color: ColorRes.blackColor,
-                        size: 30,
-                      ),
+                    Icon(
+                      StringRes.profileList[index]['icon'],
+                      color: ColorRes.blackColor,
+                      size: 30,
                     ),
                     SizedBox(
                       width: Get.width * 0.05,
@@ -114,19 +113,21 @@ Widget listview() {
                       ),
                     ),
                     const Spacer(),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        IconRes.arrowIcon,
-                        color: ColorRes.blackColor,
-                        size: 30,
-                      ),
+                    SizedBox(
+                      height: Get.height*0.04,
+                    ),
+                    const Icon(
+                      IconRes.arrowIcon,
+                      color: ColorRes.blackColor,
+                      size: 30,
                     ),
                   ],
                 ),
               ),
-            );
-          }),
+            ),
+          );
+        },
+      ),
     );
   });
 }

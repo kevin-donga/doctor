@@ -29,8 +29,7 @@ Widget topContainer() {
             color: ColorRes.blackColor,
             fontWeight: FontWeight.bold,
             fontSize: 20,
-            fontFamily: StringRes.josefinSans
-        ),
+            fontFamily: StringRes.josefinSans),
       ],
     );
   });
@@ -102,7 +101,6 @@ Widget mobileTextField() {
                 hintText: StringRes.mobileText,
               ),
             ),
-
           ),
         ],
       ),
@@ -134,7 +132,11 @@ Widget forgotButton() {
           top: height * 0.02,
           bottom: height * 0.02,
         ),
-        child: commonText(data: StringRes.forgot,fontFamily: StringRes.josefinSans,fontWeight: FontWeight.bold),
+        child: commonText(
+            data: StringRes.forgot,
+            color: ColorRes.whiteColor,
+            fontFamily: StringRes.josefinSans,
+            fontWeight: FontWeight.bold),
       ),
     );
   });

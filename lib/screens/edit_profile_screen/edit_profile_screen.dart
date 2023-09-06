@@ -8,14 +8,10 @@ import '../../utils/string_res.dart';
 import 'edit_profile_controller.dart';
 import 'edit_profile_widget.dart';
 
-class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({Key? key}) : super(key: key);
+class EditProfileScreen extends StatelessWidget {
+   EditProfileScreen({Key? key}) : super(key: key);
+   EditProfileController editProfileController=Get.put(EditProfileController());
 
-  @override
-  State<EditProfileScreen> createState() => _EditProfileScreenState();
-}
-
-class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     Get.put(EditProfileController());
@@ -34,20 +30,23 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: Get.height*0.02,
-              ),
-              usernameTextFiled(),
-              nameTextFiled(),
-              dateTextFiled(context),
-              emailTextFiled(),
-              countryTextFiled(),
-              dropDownButton(),
-              SizedBox(height: Get.height*0.13,),
-              editButton(),
-            ],
+          child: Form(
+            key: editProfileController.formKey,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: Get.height*0.02,
+                ),
+             //   usernameTextFiled(),
+                nameTextFiled(),
+                dateTextFiled(context),
+                emailTextFiled(),
+                mobileTextFieldSignUp(),
+                radioButton(),
+                SizedBox(height: Get.height*0.10,),
+                editButton(),
+              ],
+            ),
           ),
         ),
       ),

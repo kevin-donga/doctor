@@ -10,7 +10,9 @@ import '../../../utils/asset_res.dart';
 import '../../../utils/string_res.dart';
 
 class MyAppointment extends StatelessWidget {
-  const MyAppointment({Key? key}) : super(key: key);
+   MyAppointment({Key? key}) : super(key: key);
+  MyAppointmentController myAppointmentController =
+  Get.put(MyAppointmentController());
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +33,27 @@ class MyAppointment extends StatelessWidget {
             ),
           ),
         ),
+        bottom: TabBar(
+          indicatorColor: Colors.blue,
+          controller: myAppointmentController.tabController,
+          unselectedLabelColor: ColorRes.greyColor,
+          tabs: myAppointmentController.appointmentData,
+          labelColor: ColorRes.blueColor,
+          labelPadding: const EdgeInsets.all(6),
+        ),
       ),
-      body: Column(
-        children: [
-          listview(),
-        ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              appointmentListview(),
+              SizedBox(
+                height: Get.height * 0.04,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

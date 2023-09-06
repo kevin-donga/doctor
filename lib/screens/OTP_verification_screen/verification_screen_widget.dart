@@ -76,7 +76,7 @@ Widget verifyButton() {
           top: height * 0.02,
           bottom: height * 0.02,
         ),
-        child: commonText(data: StringRes.verifyText),
+        child: commonText(data: StringRes.verifyText,color: ColorRes.whiteColor,),
       ),
     );
   });

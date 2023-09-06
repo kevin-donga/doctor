@@ -11,7 +11,6 @@ SignupScreenController signupScreenController=Get.put(SignupScreenController());
     double height = Get.height;
     Get.put(SignupScreenController());
       return Scaffold(
-     // key: signupScreenController.scaffoldKey,
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Center(
@@ -27,6 +26,8 @@ SignupScreenController signupScreenController=Get.put(SignupScreenController());
                 nameTextFieldSignUp(),
                 SizedBox(height: height * 0.03),
                 emailTextFieldSignUp(),
+                SizedBox(height: height * 0.03),
+                textFieldDate(),
                 SizedBox(height: height * 0.03),
                 mobileTextFieldSignUp(),
                 SizedBox(height: height * 0.03),

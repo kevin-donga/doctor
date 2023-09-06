@@ -4,7 +4,6 @@ import 'package:doctor/screens/signup_screen/signup_screen.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import '../home_screen/home_screen.dart';
 
 class LoginController extends GetxController {
   bool visiBal = true;
@@ -60,8 +59,8 @@ class LoginController extends GetxController {
       print(data);
       bool checkData = false;
       bool chack = data.any((element) =>
-          element["Email"] == emailController.text &&
-          element["Password"] == passController.text);
+          element["email"] == emailController.text &&
+          element["password"] == passController.text);
       // data.forEach((element) {
       //   if (element["Email"] == emailController.text &&
       //       element["Password"] == passController.text) {

@@ -10,5 +10,6 @@ static const whiteColor=Colors.white;
 static const blackColor=Colors.black;
 static const blueColor=Colors.blue;
 static const greyColor=Colors.grey;
-static const errorColor=Colors.red;
+static const greenColor=Colors.green;
+static const errorColor=Color(0xffb30000);
 }

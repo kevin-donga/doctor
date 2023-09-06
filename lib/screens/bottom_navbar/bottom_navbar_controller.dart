@@ -40,7 +40,7 @@ class BottomNavBarController extends GetxController {
   ];
   List screen = [
     const HomeScreen(),
-    const MyAppointment(),
+     MyAppointment(),
      HistoryScreen(),
     const ArticleScreen(),
     const ProfileScreen(),

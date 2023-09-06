@@ -7,76 +7,6 @@ import '../../utils/icon_res.dart';
 import '../../utils/string_res.dart';
 import 'history_screen_controller.dart';
 
-// Widget historyAppbar() {
-//   return GetBuilder<HistoryScreenController>(builder: (controller) {
-//     return Column(
-//       children: [
-//         Container(
-//           height: Get.height * 0.12,
-//           width: double.infinity,
-//           decoration: const BoxDecoration(
-//             color: Colors.transparent,
-//           ),
-//           child: Column(
-//             children: [
-//               Row(
-//                 children: [
-//                   Container(
-//                     height: Get.height * 0.05,
-//                     width: Get.width * 0.14,
-//                     decoration: BoxDecoration(
-//                       borderRadius: BorderRadius.circular(40),
-//                       color: Colors.transparent,
-//                       image: const DecorationImage(
-//                         image: AssetImage(AssetRes.splashScreen1),
-//                         fit: BoxFit.fill,
-//                       ),
-//                     ),
-//                   ),
-//                   SizedBox(
-//                     width: Get.width * 0.020,
-//                   ),
-//                   commonText(
-//                     data: StringRes.historyText,
-//                     color: ColorRes.blackColor,
-//                     fontWeight: FontWeight.bold,
-//                     fontSize: 25,
-//                     fontFamily: StringRes.josefinSans,
-//                   ),
-//                   const Spacer(),
-//                   const InkWell(
-//                     child: Icon(
-//                       IconRes.searchIcon,
-//                       color: ColorRes.blackColor,
-//                     ),
-//                   ),
-//                   IconButton(
-//                     onPressed: () {},
-//                     icon: const Icon(
-//                       IconRes.moreHorizIcon,
-//                       color: ColorRes.blackColor,
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//               SizedBox(
-//                 height: Get.height * 0.02,
-//               ),
-//               TabBar(
-//                 unselectedLabelColor: ColorRes.greyColor,
-//                 controller: controller.tabController,
-//                 tabs: controller.data,
-//                 labelColor: ColorRes.blueColor,
-//                 labelPadding: const EdgeInsets.all(6),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ],
-//     );
-//   });
-// }
-
 Widget historyListview() {
   return GetBuilder<HistoryScreenController>(builder: (controller) {
     return SizedBox(
@@ -248,6 +178,8 @@ Widget historyListview() {
                                         backgroundColor:
                                             ColorRes.blueColor.shade50,
                                         child: const CircleAvatar(
+                                          backgroundColor:
+                                          ColorRes.blueColor,
                                           radius: 12,
                                           child: Center(
                                             child: Icon(
@@ -351,6 +283,8 @@ Widget historyListview() {
                                         backgroundColor:
                                             ColorRes.blueColor.shade50,
                                         child: const CircleAvatar(
+                                          backgroundColor:
+                                          ColorRes.blueColor,
                                           radius: 12,
                                           child: Center(
                                             child: Icon(

@@ -5,6 +5,7 @@ import '../../common_widget/common_elevated_button.dart';
 import '../../common_widget/common_text.dart';
 import '../../common_widget/common_textfield.dart';
 import '../../utils/asset_res.dart';
+import '../../utils/color_res.dart';
 import '../../utils/icon_res.dart';
 import '../../utils/string_res.dart';
 
@@ -80,40 +81,79 @@ Widget emailTextFieldSignUp() {
       });
 }
 
+Widget textFieldDate() {
+  return GetBuilder<SignupScreenController>(
+    id: "NameTextFiled",
+    builder: (controller) {
+      return textField(
+        onTap: controller.birthDateOnTap,
+        controller: controller.birtDateController,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
+        fillColor: Colors.blueGrey.shade50,
+        filled: true,
+        prefixIcon: const Icon(Icons.date_range),
+        hintText: StringRes.dateTextFieldHintText,
+        obscureText: false,
+      );
+    },
+  );
+}
+
 Widget radioButton() {
   return GetBuilder<SignupScreenController>(
       id: 'radioButton',
       builder: (controller) {
-        return Container(
-          height: Get.height * 0.07,
-          width: Get.width * 0.804,
-          decoration: BoxDecoration(
-            color: Colors.blueGrey.shade50,
-            borderRadius: BorderRadius.circular(40),
-            border: Border.all(color: Colors.grey.shade500),
-          ),
-          child: Row(
-            children: [
-              Radio(
-                value: controller.male,
-                groupValue: controller.group,
-                onChanged: controller.maleRadioButtonCondition,
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: Get.height * 0.07,
+              width: Get.width * 0.804,
+              decoration: BoxDecoration(
+                color: Colors.blueGrey.shade50,
+                borderRadius: BorderRadius.circular(40),
+                border: Border.all(
+                    color: controller.genderError != null
+                        ? ColorRes.errorColor
+                        : Colors.grey.shade500),
               ),
-              const Text("Male"),
-              Radio(
-                value: controller.female,
-                groupValue: controller.group,
-                onChanged: controller.femaleRadioButtonCondition,
+              child: Row(
+                children: [
+                  Radio(
+                    value: controller.male,
+                    groupValue: controller.group,
+                    onChanged: controller.maleRadioButtonCondition,
+                  ),
+                  const Text("Male"),
+                  Radio(
+                    value: controller.female,
+                    groupValue: controller.group,
+                    onChanged: controller.femaleRadioButtonCondition,
+                  ),
+                  const Text("Female"),
+                  Radio(
+                    value: controller.other,
+                    groupValue: controller.group,
+                    onChanged: controller.otherRadioButtonCondition,
+                  ),
+                  const Text("Other"),
+                ],
               ),
-              const Text("Female"),
-              Radio(
-                value: controller.other,
-                groupValue: controller.group,
-                onChanged: controller.otherRadioButtonCondition,
-              ),
-              const Text("Other"),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: Get.height * 0.01,
+            ),
+            controller.genderError != null
+                ? commonText(
+                    data: controller.genderError ?? "",
+                    color: ColorRes.errorColor,
+                    fontSize: 12,
+                  )
+                : const SizedBox(),
+          ],
         );
       });
 }
@@ -153,6 +193,7 @@ Widget signUpButton() {
         widget: commonText(
           data: StringRes.signupButtonText,
           fontFamily: StringRes.josefinSans,
+          color: ColorRes.whiteColor,
           fontWeight: FontWeight.bold,
           fontSize: 18,
         ),

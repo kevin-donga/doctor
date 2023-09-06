@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../common_widget/common_elevated_button.dart';
 import '../../common_widget/common_textfield.dart';
 import '../../utils/asset_res.dart';
+import '../../utils/color_res.dart';
 import '../../utils/icon_res.dart';
 import '../../utils/string_res.dart';
 import 'login_screen_controller.dart';
@@ -92,6 +93,7 @@ Widget loginButton() {
             data: StringRes.loginButtonText,
             fontFamily: StringRes.josefinSans,
             fontWeight: FontWeight.bold,
+            color: ColorRes.whiteColor,
             fontSize: 18,
           ),
         ),
