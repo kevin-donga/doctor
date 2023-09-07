@@ -16,16 +16,16 @@ class MyAppointmentMessage extends StatelessWidget {
     Get.put(MyAppointmentMessageController());
     return Scaffold(
       appBar: commonAppbar(
+        backgroundColor: ColorRes.scaffoldColor,
         title: StringRes.myAppointmentText,
-        leading: GetBuilder<MyAppointmentMessageController>(
-          builder: (controller) {
-            return IconButton(
-              icon:  const Icon(IconRes.backArrowIcon),
-              onPressed: controller.backArrow,
-              color: ColorRes.blackColor,
-            );
-          }
-        ),
+        leading:
+            GetBuilder<MyAppointmentMessageController>(builder: (controller) {
+          return IconButton(
+            icon: const Icon(IconRes.backArrowIcon),
+            onPressed: controller.backArrow,
+            color: ColorRes.blackColor,
+          );
+        }),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

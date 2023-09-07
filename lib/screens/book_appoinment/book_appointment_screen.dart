@@ -16,6 +16,7 @@ class BookAppointment extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorRes.scaffoldColor,
       appBar: commonAppbar(
+        backgroundColor: ColorRes.scaffoldColor,
         title: StringRes.bookAppointmentText,
         leading: GetBuilder<BookAppointmentController>(builder: (controller) {
           return IconButton(

@@ -18,6 +18,7 @@ class MyAppointment extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorRes.scaffoldColor,
       appBar: commonAppbar(
+        backgroundColor: ColorRes.scaffoldColor,
         title: StringRes.myAppointmentText,
         leading: Container(
           height: Get.height * 0.05,
@@ -25,7 +26,7 @@ class MyAppointment extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
             color: Colors.transparent,
-            image: DecorationImage(
+            image: const DecorationImage(
               image: AssetImage(AssetRes.splashScreen1),
             ),
           ),

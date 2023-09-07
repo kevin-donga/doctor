@@ -31,4 +31,9 @@ class IconRes {
   static const pediatricIcon = '${imageIconBase}life-insurance_1955137.png';
   static const radioloIcon = '${imageIconBase}x-ray_10427533.png';
   static const moreIcon = '${imageIconBase}meatball_3661476.png';
+  static const doctorInfoPatientIcon =
+      '${imageIconBase}multiple-users-silhouette_33308.png';
+  static const doctorInfoExpertIcon = '${imageIconBase}creativity_2622716.png';
+  static const doctorInfoRatingIcon = '${imageIconBase}rating_2107737.png';
+  static const doctorInfoMessageIcon = '${imageIconBase}chat_134718.png';
 }

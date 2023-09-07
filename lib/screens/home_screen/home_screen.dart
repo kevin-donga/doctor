@@ -1,4 +1,5 @@
 import 'package:doctor/common_widget/common_container.dart';
+import 'package:doctor/common_widget/common_text.dart';
 import 'package:doctor/utils/asset_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -144,8 +145,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: h * 0.01,
                   ),
+                  //===============currently====================
                   SizedBox(
-                    height: h * 0.28,
+                    height: h * 0.30,
                     child: doctorSpecGridView(),
                   ),
                   SizedBox(
@@ -181,8 +183,132 @@ class _HomeScreenState extends State<HomeScreen> {
 class TopDoctors extends StatelessWidget {
   const TopDoctors({Key? key}) : super(key: key);
 
+  // final HomeScreenController _homeScreenController =
+  //     Get.put(HomeScreenController());
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    Get.put(HomeScreenController());
+    double h = Get.height;
+    double w = Get.width;
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        foregroundColor: Colors.black,
+        backgroundColor: ColorRes.scaffoldColor,
+        leading: GetBuilder<HomeScreenController>(
+            id: 'HomeScreenController',
+            builder: (controller) {
+              return IconButton(
+                onPressed: () => controller.onBackSpecialityWiseDoctor(),
+                icon: const Icon(Icons.arrow_back),
+              );
+            }),
+        title: GetBuilder<HomeScreenController>(
+            id: 'HomeScreenController',
+            builder: (controller) {
+              return Text(
+                controller.selectedGridIndexBool == true
+                    ? 'other'
+                    : 'Best Doctor',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w900,
+                  fontFamily: StringRes.josefinSans,
+                ),
+              );
+            }),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ),
+        ],
+      ),
+      backgroundColor: ColorRes.scaffoldColor,
+      body: GetBuilder<HomeScreenController>(builder: (controller) {
+        return ListView.builder(
+          itemCount: controller.topDoctors.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () => controller.onDoctorInfo(index),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  color: Colors.white,
+                  child: Row(
+                    children: [
+                      Column(
+                        children: [
+                          commonContainer(
+                            margin: const EdgeInsets.all(15),
+                            height: h * 0.15,
+                            width: w * 0.30,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                    controller.topDoctors[index]['photo'],
+                                  ),
+                                  fit: BoxFit.cover),
+                              // color: Colors.orange,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          commonText(
+                            data: controller.topDoctors[index]['name'],
+                            fontSize: 15,
+                            fontWeight: FontWeight.w900,
+                            fontFamily: StringRes.josefinSansBold,
+                          ),
+                          const Divider(
+                            color: Colors.red,
+                            thickness: 4,
+                            height: 5,
+                          ),
+                          commonText(
+                            data: controller.topDoctors[index]['qualification'],
+                            fontSize: 13,
+                            fontWeight: FontWeight.w900,
+                            fontFamily: StringRes.josefinSans,
+                          ),
+                          SizedBox(
+                            height: h * 0.01,
+                          ),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.star,
+                                color: Colors.orange,
+                              ),
+                              const Text('2.6'),
+                              SizedBox(
+                                width: w * 0.03,
+                              ),
+                              commonText(
+                                data: '(20 Reviews)',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w900,
+                                fontFamily: StringRes.josefinSans,
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      }),
+    );
   }
 }
