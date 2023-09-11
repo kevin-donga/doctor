@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../common_widget/common_text.dart';
+import '../../../utils/asset_res.dart';
+import '../../../utils/icon_res.dart';
 import '../../../utils/string_res.dart';
 
 class MyAppointmentController extends GetxController
@@ -28,8 +30,67 @@ class MyAppointmentController extends GetxController
       fontSize: 16,
       fontFamily: StringRes.josefinSansBold,
     ),
-
   ];
+
+  List<Map> doctorsList = [
+    {
+      'photo': AssetRes.drManuBora,
+      'name': 'Dr. Manu Bora',
+      'message': 'Voice Call',
+      'Date': 'Dec 12,2022|16:00 AM',
+      'icon': IconRes.messageIcon,
+    },
+    {
+      'photo': AssetRes.drSumitAgarwal,
+      'name': 'Dr. Sumit Agarwal',
+      'message': 'Messaging',
+      'Date': 'Dec 12,2022|16:00 AM',
+      'icon': IconRes.phoneIcon,
+    },
+    {
+      'photo': AssetRes.drAnanyaVatiya,
+      'name': 'Dr. Ananya Vatiya',
+      'message': 'Messaging',
+      'Date': 'Dec 12,2022|16:00 AM',
+      'icon': IconRes.videoIcon,
+    },
+    {
+      'photo': AssetRes.drManmeet,
+      'name': 'Dr. Manmeet',
+      'message': 'Messaging',
+      'Date': 'Dec 12,2022|16:00 AM',
+      'icon': IconRes.messageIcon,
+    },
+    {
+      'photo': AssetRes.drPravinShah,
+      'name': 'Dr. Pravin Shah',
+      'message': 'Messaging',
+      'Date': 'Dec 12,2022|16:00 AM',
+      'icon': IconRes.phoneIcon,
+    },
+    {
+      'photo': AssetRes.drPritiDesai,
+      'name': 'Dr. Priti Desai',
+      'message': 'Messaging',
+      'Date': 'Dec 12,2022|16:00 AM',
+      'icon':  IconRes.videoIcon,
+    },
+    {
+      'photo': AssetRes.drShrutiPatel,
+      'name': 'Dr. Shruti Patel',
+      'message': 'Messaging',
+      'Date': 'Dec 12,2022|16:00 AM',
+      'icon': IconRes.messageIcon,
+    },
+    {
+      'photo': AssetRes.drYagneshSharma,
+      'name': 'Dr. Yagnesh Sharma',
+      'message': 'Messaging',
+      'Date': 'Dec 12,2022|16:00 AM',
+      'icon': IconRes.phoneIcon,
+    },
+  ];
+
 
   @override
   void onInit() {

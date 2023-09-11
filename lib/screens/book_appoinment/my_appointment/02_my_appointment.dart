@@ -15,6 +15,7 @@ class MyAppointmentMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(MyAppointmentMessageController());
     return Scaffold(
+      backgroundColor: ColorRes.scaffoldColor,
       appBar: commonAppbar(
         backgroundColor: ColorRes.scaffoldColor,
         title: StringRes.myAppointmentText,

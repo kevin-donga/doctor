@@ -24,20 +24,22 @@ class DescribedDoctor extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorRes.scaffoldColor,
       appBar: appBarWithDoctorName(),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            doctorIntroCard(),
-            doctorSpeciality(),
-            aboutDoctor(),
-            SizedBox(
-              height: h * 0.04,
-            ),
-            workingTime(),
-            Divider(thickness: 2, height: h * 0.08),
-            bookAppointmentBTN(),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              doctorIntroCard(),
+              doctorSpeciality(),
+              aboutDoctor(),
+              SizedBox(
+                height: h * 0.04,
+              ),
+              workingTime(),
+              Divider(thickness: 2, height: h * 0.08),
+              bookAppointmentBTN(),
+            ],
+          ),
         ),
       ),
     );

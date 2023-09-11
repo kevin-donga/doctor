@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:doctor/services/pref_service.dart';
+import 'package:doctor/utils/pref_res.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,6 +28,20 @@ class EditProfileController extends GetxController {
   bool isFemale = false;
   bool isOther = false;
   bool isMale = false;
+  Map loginUser = {};
+
+  @override
+  void onInit() {
+    String loginString = PrefService.getString(PrefRes.loginUser);
+    loginUser = jsonDecode(loginString);
+
+    dateController.text = loginUser['date'];
+    nameController.text = loginUser['name'];
+    emailController.text = loginUser['email'];
+    mobileController.text = loginUser['mobileNumber'];
+    gender = loginUser['gender'];
+    super.onInit();
+  }
 
   void backArrow() {
     Get.back();
@@ -50,6 +68,7 @@ class EditProfileController extends GetxController {
   }
 
   String? genderError;
+
   void genderCondition(String? val) {
     if (val == null) {
       genderError = "Please enter gender";
@@ -59,6 +78,7 @@ class EditProfileController extends GetxController {
     }
     update(['radioButton']);
   }
+
   void maleRadioButtonCondition(val) {
     group = val.toString();
     isMale = !isMale;
@@ -120,7 +140,7 @@ class EditProfileController extends GetxController {
         'date': dateController.text.trim(),
         'mobileNumber': mobileController.text.trim(),
         'country': countryController.text.trim(),
-        'gender':gender,
+        'gender': gender,
       };
       Get.back();
     } else {

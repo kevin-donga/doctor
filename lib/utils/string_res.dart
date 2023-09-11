@@ -119,31 +119,34 @@ class StringRes {
   static const chatText = "Chat Messagees with doctor";
   static const text = "\$20";
   static const paidText = "(Paid)";
+  static const upcomingAppointmentText =
+      "You don't have an appointment yet ";
+  static const upcomingAppText = "you don't have a doctor's appointment scheduled at the moment";
 
   static List<Map> doctorDataList = [
     {
       'Name': 'Dr.Rahul Zirkind',
       'message': 'Voice Call',
       'Date': 'Dec 12,2022|16:00 AM',
-      'icon':IconRes.messageIcon,
+      'icon': IconRes.messageIcon,
     },
     {
       'Name': 'Dr.keegan Dach',
       'message': 'Messaging',
       'Date': 'Dec 12,2022|16:00 AM',
-      'icon':IconRes.phoneIcon,
+      'icon': IconRes.phoneIcon,
     },
     {
       'Name': 'Dr.Drake Boeson',
       'message': 'Video Call',
       'Date': 'Dec 12,2022|16:00 AM',
-      'icon':IconRes.messageIcon,
+      'icon': IconRes.messageIcon,
     },
     {
       'Name': 'Dr.Quinn Slatter',
       'message': 'Voice Call',
       'Date': 'Dec 12,2022|16:00 AM',
-      'icon':IconRes.phoneIcon,
+      'icon': IconRes.phoneIcon,
     },
   ];
 

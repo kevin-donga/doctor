@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:doctor/screens/bottom_navbar/bottom_navbar.dart';
 import 'package:doctor/screens/forget_password/forget_password.dart';
 import 'package:doctor/screens/signup_screen/signup_screen.dart';
+import 'package:doctor/services/pref_service.dart';
+import 'package:doctor/utils/pref_res.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -12,6 +16,7 @@ class LoginController extends GetxController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   FirebaseDatabase database = FirebaseDatabase.instance;
   List<Map> data = [];
+  Map loginUser = {};
 
   void passSuFix() {
     visiBal = !visiBal;
@@ -21,8 +26,8 @@ class LoginController extends GetxController {
   String? emailCondition(val) {
     update(['NameTextFiled']);
     bool emailValid = RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(val!);
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    ).hasMatch(val!);
 
     return emailValid ? null : 'Please enter Valid Email';
   }
@@ -58,7 +63,7 @@ class LoginController extends GetxController {
       });
       print(data);
       bool checkData = false;
-      bool chack = data.any((element) =>
+      bool check = data.any((element) =>
           element["email"] == emailController.text &&
           element["password"] == passController.text);
       // data.forEach((element) {
@@ -67,7 +72,12 @@ class LoginController extends GetxController {
       //     checkData = true;
       //   }
       // });
-      if (chack) {
+      if (check) {
+        int index = data.indexWhere((element) =>
+            element["email"] == emailController.text &&
+            element["password"] == passController.text);
+        loginUser = data[index];
+        await PrefService.setValue(PrefRes.loginUser, jsonEncode(loginUser));
         Get.offAll(() => const BottomNavBar());
       } else {
         Get.snackbar('Invalid Data', 'Please Enter Email and Password');

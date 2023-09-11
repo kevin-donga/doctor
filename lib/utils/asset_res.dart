@@ -47,4 +47,8 @@ class AssetRes {
   static const alcohole2ArticleCover = '${imageBase}alcohol_2_articles_cover.jpg';
   static const depressedPersonArticleCover = '${imageBase}depressed_person_article_cover.jpg';
   static const coronaVirusArticleCover = '${imageBase}coron_virus)article_cover.jpg';
+
+///------------------appointment Screen---------------------
+  static const upcomingAppointment = '${imageBase}upcomingappointment.png';
+
 }
