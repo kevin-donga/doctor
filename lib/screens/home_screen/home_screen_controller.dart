@@ -1,4 +1,6 @@
 import 'package:doctor/screens/home_screen/home_screen_widget.dart';
+import 'package:doctor/services/firebase_services.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../utils/asset_res.dart';
@@ -13,6 +15,28 @@ class HomeScreenController extends GetxController {
   int selectedIndex = 0;
   int selectedGridIndex = 0;
   bool selectedGridIndexBool = false;
+  List<Map> doctorList = [];
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    getDoctorList();
+  }
+
+  Map allDoctorData = {};
+  DatabaseReference reference = FirebaseDatabase.instance.ref("Admin");
+
+  Future<void> getDoctorList() async {
+    DatabaseReference reference = FirebaseDatabase.instance.ref("Admin");
+    allDoctorData = (await FirebaseServices.getData(reference))!;
+    allDoctorData.forEach((key, value) {
+      doctorList.add(value);
+    });
+    print(doctorList);
+    print(allDoctorData);
+    update(['HomeScreenController', 'abc']);
+  }
 
   void onProfile() {
     Get.to(() => const ProfileScreen());
@@ -43,7 +67,7 @@ class HomeScreenController extends GetxController {
   }
 
   void onDoctorInfo(int index) {
-    selectedIndex = index;
+    // selectedIndex = index;
     Get.to(() => DescribedDoctor());
     update(['HomeScreenController']);
   }

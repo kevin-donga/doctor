@@ -205,75 +205,78 @@ Widget topDoctorsTab() {
 }
 
 Widget topDoctorsField() {
-  return GetBuilder<HomeScreenController>(builder: (controller) {
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      physics: const BouncingScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: controller.topDoctors.length,
-      itemBuilder: (context, index) {
-        return InkWell(
-          onTap: () => controller.onDoctorInfo(index),
-          child: commonContainer(
-            // height: h*0.5,
-            width: w * 0.55,
-            margin: const EdgeInsets.all(10),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
-            ),
-            child: Column(
-              children: [
-                ClipRRect(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                    child: commonContainer(
-                      height: h * 0.24,
-                      width: w,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
+  return GetBuilder<HomeScreenController>(
+      id: 'abc',
+      builder: (controller) {
+        return ListView.builder(
+          scrollDirection: Axis.horizontal,
+          physics: const BouncingScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: controller.doctorList.length,
+          itemBuilder: (context, index) {
+            return InkWell(
+              onTap: () => controller.onDoctorInfo(index),
+              child: commonContainer(
+                // height: h*0.5,
+                width: w * 0.55,
+                margin: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    ClipRRect(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                        child: commonContainer(
+                          height: h * 0.24,
+                          width: w,
+                          decoration: BoxDecoration(
+                              /* image: DecorationImage(
                             image: AssetImage(
                               controller.topDoctors[index]['photo'],
                             ),
-                            fit: BoxFit.cover),
-                      ),
-                      // color: Colors.white24,
-                    )),
-                Column(
-                  children: [
-                    SizedBox(
-                      height: h * 0.01,
-                    ),
-                    commonText(
-                        data: controller.topDoctors[index]['name'],
-                        fontWeight: FontWeight.bold,
-                        fontFamily: StringRes.josefinSansBold),
-                    commonText(
+                            fit: BoxFit.cover),*/
+                              ),
+                          // color: Colors.white24,
+                        )),
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: h * 0.01,
+                        ),
+                        commonText(
+                            data: controller.doctorList[index]['name'],
+                            // data: controller.topDoctors[index]['name'],
+                            fontWeight: FontWeight.bold,
+                            fontFamily: StringRes.josefinSansBold),
+/*                    commonText(
                         data: controller.topDoctors[index]['qualification'],
                         fontWeight: FontWeight.bold,
-                        fontFamily: StringRes.josefinSans),
-                    RatingBarIndicator(
-                      rating: 2.50,
-                      itemBuilder: (context, index) => const Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                      itemCount: 4,
-                      itemSize: 20.0,
-                      direction: Axis.horizontal,
-                    ),
+                        fontFamily: StringRes.josefinSans),*/
+                        RatingBarIndicator(
+                          rating: 2.50,
+                          itemBuilder: (context, index) => const Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          itemCount: 4,
+                          itemSize: 20.0,
+                          direction: Axis.horizontal,
+                        ),
+                      ],
+                    )
                   ],
-                )
-              ],
-            ),
-          ),
+                ),
+              ),
+            );
+          },
         );
-      },
-    );
-  });
+      });
 }
 
 Widget appbarGreetingText({String? data}) {
