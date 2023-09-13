@@ -117,11 +117,6 @@ class EditProfileController extends GetxController {
     return null;
   }
 
-  // Future<String?>? countryCondition(PhoneNumber? val) async {
-  //   print(val);
-  //   return val!.number.isEmpty ? 'Please enter mobile number' : null;
-  // }
-
   String? editEmailCondition(val) {
     update(['NameTextFiled']);
     bool emailValid = RegExp(

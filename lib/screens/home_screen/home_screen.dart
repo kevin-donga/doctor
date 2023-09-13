@@ -228,7 +228,7 @@ class TopDoctors extends StatelessWidget {
       backgroundColor: ColorRes.scaffoldColor,
       body: GetBuilder<HomeScreenController>(builder: (controller) {
         return ListView.builder(
-          itemCount: controller.topDoctors.length,
+          itemCount: controller.doctorList.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
@@ -250,7 +250,7 @@ class TopDoctors extends StatelessWidget {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
-                                    controller.topDoctors[index]['photo'],
+                                    controller.doctorList[index]['photo'],
                                   ),
                                   fit: BoxFit.cover),
                               // color: Colors.orange,
@@ -262,7 +262,7 @@ class TopDoctors extends StatelessWidget {
                       Column(
                         children: [
                           commonText(
-                            data: controller.topDoctors[index]['name'],
+                            data: controller.doctorList[index]['name'],
                             fontSize: 15,
                             fontWeight: FontWeight.w900,
                             fontFamily: StringRes.josefinSansBold,
@@ -273,7 +273,7 @@ class TopDoctors extends StatelessWidget {
                             height: 5,
                           ),
                           commonText(
-                            data: controller.topDoctors[index]['qualification'],
+                            data: controller.doctorList[index]['qualification'],
                             fontSize: 13,
                             fontWeight: FontWeight.w900,
                             fontFamily: StringRes.josefinSans,

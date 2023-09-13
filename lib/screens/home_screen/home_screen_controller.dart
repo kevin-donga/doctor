@@ -73,144 +73,144 @@ class HomeScreenController extends GetxController {
   }
 
   List topDoctorTab = ['All', 'General', 'Dentist', 'Nutrition'];
-  List<Map> topDoctors = [
-    {
-      'photo': AssetRes.drManuBora,
-      'name': 'Dr. Manu Bora',
-      'qualification': 'Dentist Specialist',
-      'star': '4',
-      'hospital': 'Christ Hospital in London, UK',
-      'patient': '5,000+',
-      'experience': '10+',
-      'rating': '4.6',
-      'reviews': '5,479',
-      'about': 'Doctors are considered the most important '
-          'and responsible people in society. They are the '
-          'ones who support when someone is struggling with'
-          ' their health. Doctors are the ones to have a profound'
-          ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-      'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-    },
-    {
-      'photo': AssetRes.drSumitAgarwal,
-      'name': 'Dr. Sumit Agarwal',
-      'qualification': 'Medicine Specialist',
-      'star': '4',
-      'hospital': 'Christ Hospital in London, UK',
-      'patient': '5,000+',
-      'experience': '10+',
-      'rating': '4.6',
-      'reviews': '5,479',
-      'about': 'Doctors are considered the most important '
-          'and responsible people in society. They are the '
-          'ones who support when someone is struggling with'
-          ' their health. Doctors are the ones to have a profound'
-          ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-      'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-    },
-    {
-      'photo': AssetRes.drAnanyaVatiya,
-      'name': 'Dr. Ananya Vatiya',
-      'qualification': 'General Doctor',
-      'star': '4',
-      'hospital': 'Christ Hospital in London, UK',
-      'patient': '5,000+',
-      'experience': '10+',
-      'rating': '4.6',
-      'reviews': '5,479',
-      'about': 'Doctors are considered the most important '
-          'and responsible people in society. They are the '
-          'ones who support when someone is struggling with'
-          ' their health. Doctors are the ones to have a profound'
-          ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-      'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-    },
-    {
-      'photo': AssetRes.drManmeet,
-      'name': 'Dr. Manmeet',
-      'qualification': 'Neuro Specialist',
-      'star': '4',
-      'hospital': 'Christ Hospital in London, UK',
-      'patient': '5,000+',
-      'experience': '10+',
-      'rating': '4.6',
-      'reviews': '5,479',
-      'about': 'Doctors are considered the most important '
-          'and responsible people in society. They are the '
-          'ones who support when someone is struggling with'
-          ' their health. Doctors are the ones to have a profound'
-          ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-      'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-    },
-    {
-      'photo': AssetRes.drPravinShah,
-      'name': 'Dr. Pravin Shah',
-      'qualification': 'Ophthal Specialist',
-      'star': '4',
-      'hospital': 'Christ Hospital in London, UK',
-      'patient': '5,000+',
-      'experience': '10+',
-      'rating': '4.6',
-      'reviews': '5,479',
-      'about': 'Doctors are considered the most important '
-          'and responsible people in society. They are the '
-          'ones who support when someone is struggling with'
-          ' their health. Doctors are the ones to have a profound'
-          ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-      'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-    },
-    {
-      'photo': AssetRes.drPritiDesai,
-      'name': 'Dr. Priti Desai',
-      'qualification': 'Nutrition Specialist',
-      'star': '4',
-      'hospital': 'Christ Hospital in London, UK',
-      'patient': '5,000+',
-      'experience': '10+',
-      'rating': '4.6',
-      'reviews': '5,479',
-      'about': 'Doctors are considered the most important '
-          'and responsible people in society. They are the '
-          'ones who support when someone is struggling with'
-          ' their health. Doctors are the ones to have a profound'
-          ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-      'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-    },
-    {
-      'photo': AssetRes.drShrutiPatel,
-      'name': 'Dr. Shruti Patel',
-      'qualification': 'Radiology Specialist',
-      'star': '4',
-      'hospital': 'Christ Hospital in London, UK',
-      'patient': '5,000+',
-      'experience': '10+',
-      'rating': '4.6',
-      'reviews': '5,479',
-      'about': 'Doctors are considered the most important '
-          'and responsible people in society. They are the '
-          'ones who support when someone is struggling with'
-          ' their health. Doctors are the ones to have a profound'
-          ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-      'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-    },
-    {
-      'photo': AssetRes.drYagneshSharma,
-      'name': 'Dr. Yagnesh Sharma',
-      'qualification': 'Dentist Specialist',
-      'star': '4',
-      'hospital': 'Christ Hospital in London, UK',
-      'patient': '5,000+',
-      'experience': '10+',
-      'rating': '4.6',
-      'reviews': '5,479',
-      'about': 'Doctors are considered the most important '
-          'and responsible people in society. They are the '
-          'ones who support when someone is struggling with'
-          ' their health. Doctors are the ones to have a profound'
-          ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-      'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-    },
-  ];
+  // List<Map> topDoctors = [
+  //   {
+  //     'photo': AssetRes.drManuBora,
+  //     'name': 'Dr. Manu Bora',
+  //     'qualification': 'Dentist Specialist',
+  //     'star': '4',
+  //     'hospital': 'Christ Hospital in London, UK',
+  //     'patient': '5,000+',
+  //     'experience': '10+',
+  //     'rating': '4.6',
+  //     'reviews': '5,479',
+  //     'about': 'Doctors are considered the most important '
+  //         'and responsible people in society. They are the '
+  //         'ones who support when someone is struggling with'
+  //         ' their health. Doctors are the ones to have a profound'
+  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
+  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
+  //   },
+  //   {
+  //     'photo': AssetRes.drSumitAgarwal,
+  //     'name': 'Dr. Sumit Agarwal',
+  //     'qualification': 'Medicine Specialist',
+  //     'star': '4',
+  //     'hospital': 'Christ Hospital in London, UK',
+  //     'patient': '5,000+',
+  //     'experience': '10+',
+  //     'rating': '4.6',
+  //     'reviews': '5,479',
+  //     'about': 'Doctors are considered the most important '
+  //         'and responsible people in society. They are the '
+  //         'ones who support when someone is struggling with'
+  //         ' their health. Doctors are the ones to have a profound'
+  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
+  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
+  //   },
+  //   {
+  //     'photo': AssetRes.drAnanyaVatiya,
+  //     'name': 'Dr. Ananya Vatiya',
+  //     'qualification': 'General Doctor',
+  //     'star': '4',
+  //     'hospital': 'Christ Hospital in London, UK',
+  //     'patient': '5,000+',
+  //     'experience': '10+',
+  //     'rating': '4.6',
+  //     'reviews': '5,479',
+  //     'about': 'Doctors are considered the most important '
+  //         'and responsible people in society. They are the '
+  //         'ones who support when someone is struggling with'
+  //         ' their health. Doctors are the ones to have a profound'
+  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
+  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
+  //   },
+  //   {
+  //     'photo': AssetRes.drManmeet,
+  //     'name': 'Dr. Manmeet',
+  //     'qualification': 'Neuro Specialist',
+  //     'star': '4',
+  //     'hospital': 'Christ Hospital in London, UK',
+  //     'patient': '5,000+',
+  //     'experience': '10+',
+  //     'rating': '4.6',
+  //     'reviews': '5,479',
+  //     'about': 'Doctors are considered the most important '
+  //         'and responsible people in society. They are the '
+  //         'ones who support when someone is struggling with'
+  //         ' their health. Doctors are the ones to have a profound'
+  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
+  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
+  //   },
+  //   {
+  //     'photo': AssetRes.drPravinShah,
+  //     'name': 'Dr. Pravin Shah',
+  //     'qualification': 'Ophthal Specialist',
+  //     'star': '4',
+  //     'hospital': 'Christ Hospital in London, UK',
+  //     'patient': '5,000+',
+  //     'experience': '10+',
+  //     'rating': '4.6',
+  //     'reviews': '5,479',
+  //     'about': 'Doctors are considered the most important '
+  //         'and responsible people in society. They are the '
+  //         'ones who support when someone is struggling with'
+  //         ' their health. Doctors are the ones to have a profound'
+  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
+  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
+  //   },
+  //   {
+  //     'photo': AssetRes.drPritiDesai,
+  //     'name': 'Dr. Priti Desai',
+  //     'qualification': 'Nutrition Specialist',
+  //     'star': '4',
+  //     'hospital': 'Christ Hospital in London, UK',
+  //     'patient': '5,000+',
+  //     'experience': '10+',
+  //     'rating': '4.6',
+  //     'reviews': '5,479',
+  //     'about': 'Doctors are considered the most important '
+  //         'and responsible people in society. They are the '
+  //         'ones who support when someone is struggling with'
+  //         ' their health. Doctors are the ones to have a profound'
+  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
+  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
+  //   },
+  //   {
+  //     'photo': AssetRes.drShrutiPatel,
+  //     'name': 'Dr. Shruti Patel',
+  //     'qualification': 'Radiology Specialist',
+  //     'star': '4',
+  //     'hospital': 'Christ Hospital in London, UK',
+  //     'patient': '5,000+',
+  //     'experience': '10+',
+  //     'rating': '4.6',
+  //     'reviews': '5,479',
+  //     'about': 'Doctors are considered the most important '
+  //         'and responsible people in society. They are the '
+  //         'ones who support when someone is struggling with'
+  //         ' their health. Doctors are the ones to have a profound'
+  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
+  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
+  //   },
+  //   {
+  //     'photo': AssetRes.drYagneshSharma,
+  //     'name': 'Dr. Yagnesh Sharma',
+  //     'qualification': 'Dentist Specialist',
+  //     'star': '4',
+  //     'hospital': 'Christ Hospital in London, UK',
+  //     'patient': '5,000+',
+  //     'experience': '10+',
+  //     'rating': '4.6',
+  //     'reviews': '5,479',
+  //     'about': 'Doctors are considered the most important '
+  //         'and responsible people in society. They are the '
+  //         'ones who support when someone is struggling with'
+  //         ' their health. Doctors are the ones to have a profound'
+  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
+  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
+  //   },
+  // ];
   bool topDoctorTabDecoration = false;
 
   void onNotification() {

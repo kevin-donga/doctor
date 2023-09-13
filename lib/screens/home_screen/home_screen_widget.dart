@@ -236,11 +236,9 @@ Widget topDoctorsField() {
                           height: h * 0.24,
                           width: w,
                           decoration: BoxDecoration(
-                              /* image: DecorationImage(
-                            image: AssetImage(
-                              controller.topDoctors[index]['photo'],
-                            ),
-                            fit: BoxFit.cover),*/
+                               image: DecorationImage(
+                            image: NetworkImage(controller.doctorList[index]['image']),
+                            fit: BoxFit.cover),
                               ),
                           // color: Colors.white24,
                         )),

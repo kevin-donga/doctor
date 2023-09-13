@@ -19,7 +19,7 @@ PreferredSizeWidget appBarWithDoctorName() {
     backgroundColor: ColorRes.scaffoldColor,
     title: commonText(
       data: _homeScreenController
-          .topDoctors[_homeScreenController.selectedIndex]['name'],
+          .doctorList[_homeScreenController.selectedIndex]['name'],
       fontSize: 18,
       fontWeight: FontWeight.w900,
       fontFamily: StringRes.josefinSans,
@@ -45,10 +45,10 @@ Widget doctorIntroCard() {
               width: w * 0.30,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(
+                    image: NetworkImage(
                       _homeScreenController
-                          .topDoctors[_homeScreenController.selectedIndex]
-                      ['photo'],
+                          .doctorList[_homeScreenController.selectedIndex]
+                      ['image'],
                     ),
                     fit: BoxFit.cover),
                 // color: Colors.orange,
@@ -61,7 +61,7 @@ Widget doctorIntroCard() {
           children: [
             commonText(
               data: _homeScreenController
-                  .topDoctors[_homeScreenController.selectedIndex]['name'],
+                  .doctorList[_homeScreenController.selectedIndex]['name'],
               fontSize: 15,
               fontWeight: FontWeight.w900,
               fontFamily: StringRes.josefinSansBold,
@@ -73,7 +73,7 @@ Widget doctorIntroCard() {
             ),
             commonText(
               data: _homeScreenController
-                  .topDoctors[_homeScreenController.selectedIndex]
+                  .doctorList[_homeScreenController.selectedIndex]
               ['qualification'],
               fontSize: 13,
               fontWeight: FontWeight.w900,
@@ -84,7 +84,7 @@ Widget doctorIntroCard() {
             ),
             commonText(
               data: _homeScreenController
-                  .topDoctors[_homeScreenController.selectedIndex]['hospital'],
+                  .doctorList[_homeScreenController.selectedIndex]['hospital'],
               fontSize: 12,
               fontWeight: FontWeight.w900,
               fontFamily: StringRes.josefinSans,
@@ -102,38 +102,38 @@ Widget doctorSpeciality() {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        infoDoctorCircleAvtar(
-          image: const AssetImage(
-            IconRes.doctorInfoPatientIcon,
-          ),
-          data: _homeScreenController
-              .topDoctors[_homeScreenController.selectedIndex]['patient'],
-          title: 'patients',
-        ),
+       // infoDoctorCircleAvtar(
+        //   image: const AssetImage(
+        //     IconRes.doctorInfoPatientIcon,
+        //   ),
+        //   data: _homeScreenController
+        //       .doctorList[_homeScreenController.selectedIndex]['patient'],
+        //   title: 'patients',
+        // ),
         infoDoctorCircleAvtar(
           image: const AssetImage(
             IconRes.doctorInfoExpertIcon,
           ),
           data: _homeScreenController
-              .topDoctors[_homeScreenController.selectedIndex]['experience'],
+              .doctorList[_homeScreenController.selectedIndex]['experience'],
           title: 'Years of experience',
         ),
-        infoDoctorCircleAvtar(
-          image: const AssetImage(
-            IconRes.doctorInfoRatingIcon,
-          ),
-          data: _homeScreenController
-              .topDoctors[_homeScreenController.selectedIndex]['rating'],
-          title: 'rating',
-        ),
-        infoDoctorCircleAvtar(
-          image: const AssetImage(
-            IconRes.doctorInfoMessageIcon,
-          ),
-          data: _homeScreenController
-              .topDoctors[_homeScreenController.selectedIndex]['reviews'],
-          title: 'reviews',
-        ),
+        // infoDoctorCircleAvtar(
+        //   image: const AssetImage(
+        //     IconRes.doctorInfoRatingIcon,
+        //   ),
+        //   data: _homeScreenController
+        //       .doctorList[_homeScreenController.selectedIndex]['rating'],
+        //   title: 'rating',
+        // ),
+        // infoDoctorCircleAvtar(
+        //   image: const AssetImage(
+        //     IconRes.doctorInfoMessageIcon,
+        //   ),
+        //   data: _homeScreenController
+        //       .doctorList[_homeScreenController.selectedIndex]['reviews'],
+        //   title: 'reviews',
+        // ),
       ],
     ),
   );
@@ -154,7 +154,7 @@ Widget aboutDoctor() {
       ),
       commonText(
         data: _homeScreenController
-            .topDoctors[_homeScreenController.selectedIndex]['about'],
+            .doctorList[_homeScreenController.selectedIndex]['about'],
         fontFamily: StringRes.josefinSans,
         fontWeight: FontWeight.bold,
         fontSize: 15,
@@ -180,7 +180,7 @@ Widget workingTime() {
           ),
           commonText(
             data: _homeScreenController
-                .topDoctors[_homeScreenController.selectedIndex]['workTime'],
+                .doctorList[_homeScreenController.selectedIndex]['worktime'],
             fontFamily: StringRes.josefinSans,
             fontWeight: FontWeight.bold,
             fontSize: 15,
