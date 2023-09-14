@@ -11,19 +11,20 @@ import '../../../utils/icon_res.dart';
 
 double h = Get.height;
 double w = Get.width;
-HomeScreenController _homeScreenController = Get.find<HomeScreenController>();
 
 PreferredSizeWidget appBarWithDoctorName() {
   return AppBar(
     foregroundColor: Colors.black,
     backgroundColor: ColorRes.scaffoldColor,
-    title: commonText(
-      data: _homeScreenController
-          .doctorList[_homeScreenController.selectedIndex]['name'],
+    title: GetBuilder<DescribedDoctorController>(
+      id: "Doctor",
+      builder: (controller) => commonText(
+      data: controller
+          .doctorData?['name']??"",
       fontSize: 18,
       fontWeight: FontWeight.w900,
       fontFamily: StringRes.josefinSans,
-    ),
+    ),)
   );
 }
 
@@ -35,7 +36,11 @@ Widget doctorIntroCard() {
       borderRadius: BorderRadius.circular(15),
     ),
     color: Colors.white.withOpacity(0.9),
-    child: Row(
+    child: GetBuilder<DescribedDoctorController>(
+      id: "Doctor",
+      builder: (controller) => controller.isLod?const Center(
+        child: CircularProgressIndicator(),
+      ) : Row(
       children: [
         Column(
           children: [
@@ -46,9 +51,8 @@ Widget doctorIntroCard() {
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(
-                      _homeScreenController
-                          .doctorList[_homeScreenController.selectedIndex]
-                      ['image'],
+                      controller
+                          .doctorData!['image'],
                     ),
                     fit: BoxFit.cover),
                 // color: Colors.orange,
@@ -60,8 +64,8 @@ Widget doctorIntroCard() {
         Column(
           children: [
             commonText(
-              data: _homeScreenController
-                  .doctorList[_homeScreenController.selectedIndex]['name'],
+              data: controller
+                  .doctorData!['name'],
               fontSize: 15,
               fontWeight: FontWeight.w900,
               fontFamily: StringRes.josefinSansBold,
@@ -72,9 +76,8 @@ Widget doctorIntroCard() {
               height: 5,
             ),
             commonText(
-              data: _homeScreenController
-                  .doctorList[_homeScreenController.selectedIndex]
-              ['qualification'],
+              data: controller
+                  .doctorData!['qualification'],
               fontSize: 13,
               fontWeight: FontWeight.w900,
               fontFamily: StringRes.josefinSans,
@@ -83,8 +86,8 @@ Widget doctorIntroCard() {
               height: h * 0.002,
             ),
             commonText(
-              data: _homeScreenController
-                  .doctorList[_homeScreenController.selectedIndex]['hospital'],
+              data: controller
+                  .doctorData!['hospital'],
               fontSize: 12,
               fontWeight: FontWeight.w900,
               fontFamily: StringRes.josefinSans,
@@ -92,17 +95,21 @@ Widget doctorIntroCard() {
           ],
         )
       ],
-    ),
+    ),)
   );
 }
 
 Widget doctorSpeciality() {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 20),
-    child: Row(
+    child: GetBuilder<DescribedDoctorController>(
+      id: "Doctor",
+      builder: (controller) =>controller.isLod?const Center(
+        child: CircularProgressIndicator(),
+      ) : Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-       // infoDoctorCircleAvtar(
+        // infoDoctorCircleAvtar(
         //   image: const AssetImage(
         //     IconRes.doctorInfoPatientIcon,
         //   ),
@@ -114,8 +121,8 @@ Widget doctorSpeciality() {
           image: const AssetImage(
             IconRes.doctorInfoExpertIcon,
           ),
-          data: _homeScreenController
-              .doctorList[_homeScreenController.selectedIndex]['experience'],
+          data: controller
+              .doctorData!['experience'],
           title: 'Years of experience',
         ),
         // infoDoctorCircleAvtar(
@@ -135,7 +142,7 @@ Widget doctorSpeciality() {
         //   title: 'reviews',
         // ),
       ],
-    ),
+    ),),
   );
 }
 
@@ -152,13 +159,15 @@ Widget aboutDoctor() {
       SizedBox(
         height: h * 0.02,
       ),
-      commonText(
-        data: _homeScreenController
-            .doctorList[_homeScreenController.selectedIndex]['about'],
+      GetBuilder<DescribedDoctorController>(
+        id: "Doctor",
+        builder: (controller) => commonText(
+        data: controller
+            .doctorData?['about']??"",
         fontFamily: StringRes.josefinSans,
         fontWeight: FontWeight.bold,
         fontSize: 15,
-      )
+      ),)
     ],
   );
 }
@@ -178,13 +187,15 @@ Widget workingTime() {
           SizedBox(
             height: h * 0.02,
           ),
-          commonText(
-            data: _homeScreenController
-                .doctorList[_homeScreenController.selectedIndex]['worktime'],
+          GetBuilder<DescribedDoctorController>(
+              id: "Doctor",
+              builder: (controller) => commonText(
+            data:  controller
+                .doctorData?['worktime']??"",
             fontFamily: StringRes.josefinSans,
             fontWeight: FontWeight.bold,
             fontSize: 15,
-          ),
+          ),)
         ],
       ),
     ],

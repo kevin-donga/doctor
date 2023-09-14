@@ -8,8 +8,34 @@ import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../common_widget/common_elevated_button.dart';
+import '../../common_widget/common_textfield.dart';
 double h=Get.height;
 double w=Get.width;
+
+Widget textFieldDate() {
+  return GetBuilder<BookAppointmentController>(
+    id: "NameTextFiled",
+    builder: (controller) {
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: textField(
+          // border: OutlineInputBorder(
+          //   borderRadius: BorderRadius.circular(2),
+          // ),
+          fillColor: Colors.blueGrey.shade50,
+          keyboardType: TextInputType.multiline,
+          filled: true,
+          minLines: 7,
+          maxLines: 7,
+          controller: controller.problem,
+          hintText: StringRes.problem1Text,
+          obscureText: false,
+        ),
+      );
+    },
+  );
+}
+
 Widget datePickerText() {
   return GetBuilder<BookAppointmentController>(builder: (controller) {
     return Row(
@@ -17,7 +43,7 @@ Widget datePickerText() {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: Get.width * 0.05),
+          padding: EdgeInsets.only(left: Get.width * 0.05,top: Get.height * 0.01),
           child: commonText(
             data: StringRes.selectDateText,
             color: ColorRes.blackColor,
@@ -73,20 +99,7 @@ Widget datePicker() {
       });
 }
 
- List bookAppointmentList = [
-  '09.00 Am',
-  '09.30 Am',
-  '10.00 Am',
-  '10.30 Am',
-  '11.00 Am',
-  '11.30 Am',
-  '15.00 Am',
-  '15.30 Am',
-  '16.00 Am',
-  '16.30 Am',
-  '17.00 Am',
-  '17.30 Am',
-];
+
 
 Widget timePicker() {
   return Padding(
@@ -99,7 +112,7 @@ Widget timePicker() {
           return GridView.builder(
             shrinkWrap: true,
             physics:const NeverScrollableScrollPhysics(),
-            itemCount: bookAppointmentList.length,
+            itemCount:controller. bookAppointmentList.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               mainAxisSpacing: 15.0,
               crossAxisSpacing: 20.0,
@@ -121,7 +134,7 @@ Widget timePicker() {
                         strokeAlign: BorderSide.strokeAlignOutside),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Center(child: commonText(data:bookAppointmentList[index])),
+                  child: Center(child: commonText(data:controller.bookAppointmentList[index])),
                 ),
               ),
             ),
@@ -137,7 +150,7 @@ Widget bookAppointmentButton() {
     return commonElevatedButton(
       shape: MaterialStateProperty.all(RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(height * 0.25))),
-      onPressed: () => controller.bookAppointmentButton(),
+      onPressed: () => controller.bookAppointment(),
       widget: Padding(
         padding: EdgeInsets.only(
           left: width * 0.32,

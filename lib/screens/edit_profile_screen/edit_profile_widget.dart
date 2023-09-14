@@ -228,20 +228,20 @@ Widget radioButton() {
                   children: [
                     Radio(
                       value: controller.male,
-                      groupValue: controller.group,
+                      groupValue: controller.gender,
                       onChanged: controller.maleRadioButtonCondition,
                     ),
                     const Text("Male"),
                     SizedBox(width: Get.width*0.02,),
                     Radio(
                       value: controller.female,
-                      groupValue: controller.group,
+                      groupValue: controller.gender,
                       onChanged: controller.femaleRadioButtonCondition,
                     ),
                     const Text("Female"),
                     Radio(
                       value: controller.other,
-                      groupValue: controller.group,
+                      groupValue: controller.gender,
                       onChanged: controller.otherRadioButtonCondition,
                     ),
                     const Text("Other"),

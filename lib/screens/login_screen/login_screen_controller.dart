@@ -9,6 +9,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../services/firebase_services.dart';
+
 class LoginController extends GetxController {
   bool visiBal = true;
   TextEditingController emailController = TextEditingController();
@@ -48,42 +50,60 @@ class LoginController extends GetxController {
   }
 
   Future<void> loginButton() async {
-    // if (formKey.currentState!.validate())
-    // {
-    //   Get.to(const HomeScreen());
+    // if (formKey.currentState!.validate()) {
+    //   var d = await database.ref('User').once();
+    //   Map temp = d.snapshot.value as Map;
+    //   data.clear();
+    //   temp.forEach((key, value) {
+    //     data.add(value);
+    //   });
+    //   print(data);
+    //   bool check = data.any((element) =>
+    //       element["email"] == emailController.text &&
+    //       element["password"] == passController.text);
+    //   if (check) {
+    //     int index = data.indexWhere((element) =>
+    //         element["email"] == emailController.text &&
+    //         element["password"] == passController.text);
+    //     loginUser = data[index];
+    //     await PrefService.setValue(PrefRes.loginUser, jsonEncode(loginUser));
+    //     Get.offAll(() => const BottomNavBar());
+    //   } else {
+    //     Get.snackbar('Invalid Data', 'Please Enter Email and Password');
+    //   }
     // } else {
-    //   Get.snackbar('Login Error', 'Enter Valid Data');
+    //   Get.snackbar('Data Is Empty', 'Please Enter Email and Password');
     // }
     if (formKey.currentState!.validate()) {
-      var d = await database.ref('User').once();
-      Map temp = d.snapshot.value as Map;
-      data.clear();
-      temp.forEach((key, value) {
-        data.add(value);
-      });
-      print(data);
-      bool checkData = false;
-      bool check = data.any((element) =>
-          element["email"] == emailController.text &&
-          element["password"] == passController.text);
-      // data.forEach((element) {
-      //   if (element["Email"] == emailController.text &&
-      //       element["Password"] == passController.text) {
-      //     checkData = true;
-      //   }
-      // });
-      if (check) {
-        int index = data.indexWhere((element) =>
-            element["email"] == emailController.text &&
-            element["password"] == passController.text);
-        loginUser = data[index];
-        await PrefService.setValue(PrefRes.loginUser, jsonEncode(loginUser));
-        Get.offAll(() => const BottomNavBar());
+      // Get.snackbar("Login", "Success");
+      List<Map> userDataList = [];
+      DatabaseReference databaseReference =
+      FirebaseDatabase.instance.ref('User');
+      Map? allData = await FirebaseServices.getData(databaseReference);
+      if (allData == null) {
+        Get.snackbar("login", "please signup");
       } else {
-        Get.snackbar('Invalid Data', 'Please Enter Email and Password');
+        allData.forEach((key, value) {
+          value['id'] = key;
+          userDataList.add(value);
+        });
+        bool checkLogin = userDataList.any(
+              (element) =>
+          element['email'] == emailController.text.trim() &&
+              element['password'] == passController.text.trim(),
+        );
+        int loginUserIndex = userDataList.indexWhere((element) => element['email']==emailController.text.trim());
+
+        String loginUserUniqueKey = userDataList[loginUserIndex]['id'];
+        await PrefService.setValue(PrefRes.loginUser, loginUserUniqueKey);
+        if (checkLogin == true) {
+          Get.off(const BottomNavBar());
+        } else {
+          Get.snackbar("login failed", "please enter valid data");
+        }
       }
     } else {
-      Get.snackbar('Data Is Empty', 'Please Enter Email and Password');
+      Get.snackbar("Login", "Please Login");
     }
   }
 

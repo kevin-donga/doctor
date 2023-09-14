@@ -8,10 +8,9 @@ import '../../../utils/asset_res.dart';
 import '../../../utils/color_res.dart';
 import '../../../utils/icon_res.dart';
 import '../../../utils/string_res.dart';
-import '02_my_appointment_controller.dart';
-
 Widget myAppointmentAppbar() {
-  return GetBuilder<MyAppointmentMessageController>(builder: (controller) {
+  return GetBuilder<BookAppointmentController>(
+      builder: (controller) {
     return Column(
       children: [
         Row(
@@ -55,7 +54,7 @@ Widget containerWidget() {
     ),
     child: Padding(
       padding: EdgeInsets.only(left: Get.width * 0.05),
-      child: Row(
+      child: GetBuilder<BookAppointmentController>(builder: (controller) => Row(
         children: [
           Container(
             height: Get.height * 0.12,
@@ -63,8 +62,10 @@ Widget containerWidget() {
             decoration: BoxDecoration(
               color: ColorRes.greyColor.shade400,
               borderRadius: BorderRadius.circular(20),
-              image: const DecorationImage(
-                image: AssetImage(
+              image:  DecorationImage(
+                image:controller.doctorData?["image"]!=null?
+                NetworkImage(controller.doctorData?["image"]) as ImageProvider
+                    :const AssetImage(
                   AssetRes.doctorThumb2,
                 ),
                 fit: BoxFit.fill,
@@ -79,7 +80,7 @@ Widget containerWidget() {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 commonText(
-                  data: StringRes.drText,
+                  data: "Dr.${controller.doctorData?["name"]}",
                   color: ColorRes.blueColor,
                   fontSize: 18,
                   fontFamily: StringRes.josefinSans,
@@ -100,7 +101,7 @@ Widget containerWidget() {
                   height: Get.height * 0.02,
                 ),
                 commonText(
-                  data: StringRes.doctorDataText,
+                  data: controller.doctorData?["qualification"]??'',
                   color: ColorRes.blackColor,
                   fontSize: 12,
                   fontFamily: StringRes.josefinSans,
@@ -110,7 +111,7 @@ Widget containerWidget() {
                   height: Get.height * 0.02,
                 ),
                 commonText(
-                  data: StringRes.locationText,
+                  data: controller.doctorData?["hospital"],
                   color: ColorRes.blackColor,
                   fontSize: 12,
                   fontFamily: StringRes.josefinSans,
@@ -120,16 +121,16 @@ Widget containerWidget() {
             ),
           ),
         ],
-      ),
+      ),),
     ),
   );
 }
 
-BookAppointmentController bookAppointmentController=Get.find<BookAppointmentController>();
+
 Widget introduction() {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: GetBuilder<MyAppointmentMessageController>(
+    child: GetBuilder<BookAppointmentController>(
       builder: (controller) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -146,7 +147,7 @@ Widget introduction() {
               height: Get.height * 0.02,
             ),
             commonText(
-              data: bookAppointmentController.selectedDate,
+              data: controller.selectedDate,
               color: ColorRes.blackColor,
               fontSize: 13,
               fontFamily: StringRes.josefinSans,
@@ -156,7 +157,7 @@ Widget introduction() {
               height: Get.height * 0.02,
             ),
             commonText(
-              data: bookAppointmentController.selectedIndex.toString(),
+              data: controller.timePass.toString(),
               color: ColorRes.blackColor,
               fontSize: 13,
               fontFamily: StringRes.josefinSans,
@@ -185,7 +186,9 @@ Widget introduction() {
 Widget tableRow() {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: Column(
+    child: GetBuilder<BookAppointmentController>(
+      id: "",
+      builder: (controller) => Column(
       children: [
         Table(
           columnWidths: const {
@@ -209,7 +212,7 @@ Widget tableRow() {
                   fontFamily: StringRes.josefinSans,
                 ),
                 commonText(
-                  data: StringRes.drText,
+                  data: controller.userData!["name"],
                   fontSize: 14,
                   color: ColorRes.blackColor,
                   fontWeight: FontWeight.bold,
@@ -236,7 +239,7 @@ Widget tableRow() {
                 ),
                 commonText(
                   height: 2,
-                  data: StringRes.maleText,
+                  data: controller.userData!["gender"],
                   fontSize: 14,
                   color: ColorRes.blackColor,
                   fontWeight: FontWeight.bold,
@@ -263,7 +266,7 @@ Widget tableRow() {
                 ),
                 commonText(
                   height: 2,
-                  data: StringRes.ageDisplayText,
+                  data: controller.userData?["age"]??0.toString(),
                   fontSize: 14,
                   color: ColorRes.blackColor,
                   fontWeight: FontWeight.bold,
@@ -290,7 +293,7 @@ Widget tableRow() {
                 ),
                 commonText(
                   height: 2,
-                  data: StringRes.problemDataText,
+                  data: controller.problem.text.trim(),
                   fontSize: 14,
                   color: ColorRes.blackColor,
                   fontWeight: FontWeight.bold,
@@ -301,7 +304,7 @@ Widget tableRow() {
           ],
         )
       ],
-    ),
+    ),),
   );
 }
 
@@ -409,7 +412,7 @@ Widget package() {
 }
 
 Widget messageButton() {
-  return GetBuilder<MyAppointmentMessageController>(builder: (controller) {
+  return GetBuilder<BookAppointmentController>(builder: (controller) {
     return Padding(
       padding: EdgeInsets.only(
         left: width * 0.08,
@@ -417,7 +420,9 @@ Widget messageButton() {
       child: commonElevatedButton(
         shape: MaterialStateProperty.all(RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(height * 0.25))),
-        onPressed: () => controller.messageButton(),
+        onPressed:() {
+
+        },
         widget: Padding(
           padding: EdgeInsets.only(
             left: width * 0.25,

@@ -1,4 +1,6 @@
 import 'package:doctor/screens/book_appoinment/book_appointment_screen.dart';
+import 'package:doctor/services/firebase_services.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +12,27 @@ import '../../../utils/string_res.dart';
 class MyAppointmentController extends GetxController
     with GetSingleTickerProviderStateMixin {
   TabController? tabController;
+  Map? appointmentMap = {};
+  List<Map> appointmentList = [];
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    tabController = TabController(length: appointmentData.length, vsync: this);
+    getAppointmentData();
+    print(appointmentList);
+  }
+
+  Future<void> getAppointmentData() async {
+    DatabaseReference ref = FirebaseServices.database!.ref('Appointment');
+    appointmentMap = await FirebaseServices.getData(ref);
+    appointmentMap!.forEach((key, value) {
+      appointmentList.add(value);
+    });
+    update(['tab']);
+    print(appointmentList);
+  }
 
   void containerOnTap(){
     Get.to(const BookAppointment());
@@ -92,10 +115,5 @@ class MyAppointmentController extends GetxController
   ];
 
 
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-    tabController = TabController(length: appointmentData.length, vsync: this);
-  }
+
 }

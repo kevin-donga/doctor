@@ -25,12 +25,13 @@ class HomeScreenController extends GetxController {
   }
 
   Map allDoctorData = {};
-  DatabaseReference reference = FirebaseDatabase.instance.ref("Admin");
 
   Future<void> getDoctorList() async {
     DatabaseReference reference = FirebaseDatabase.instance.ref("Admin");
     allDoctorData = (await FirebaseServices.getData(reference))!;
     allDoctorData.forEach((key, value) {
+      print(key);
+      value["id"] = key;
       doctorList.add(value);
     });
     print(doctorList);
@@ -68,7 +69,9 @@ class HomeScreenController extends GetxController {
 
   void onDoctorInfo(int index) {
     // selectedIndex = index;
-    Get.to(() => DescribedDoctor());
+    String? doId = doctorList[index]["id"];
+    print(doId);
+    Get.to(() =>  DescribedDoctor(doId: doId,));
     update(['HomeScreenController']);
   }
 

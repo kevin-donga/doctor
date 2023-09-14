@@ -8,7 +8,6 @@ class LoginScreen extends StatelessWidget {
     LoginController loginController=Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
-    Get.put(LoginController());
     return Scaffold(
       body: SingleChildScrollView(
        // physics: const NeverScrollableScrollPhysics(),

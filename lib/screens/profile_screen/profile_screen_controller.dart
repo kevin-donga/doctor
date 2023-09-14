@@ -5,9 +5,7 @@ import 'package:doctor/utils/string_res.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
-import '../../services/firebase_services.dart';
 
 class ProfileController extends GetxController {
   @override
@@ -24,11 +22,10 @@ class ProfileController extends GetxController {
     List images = [];
     ImagePicker imagePicker = ImagePicker();
     XFile? image = await imagePicker.pickImage(source: ImageSource.gallery);
-    file = File(image!.path);
-
     if (image == null) {
       return;
     }
+    file = File(image.path);
     String fileName = image.name;
     File imageFile = File(image.path);
     try {

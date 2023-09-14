@@ -89,7 +89,7 @@ class StringRes {
   ];
 
 //---------MyAppointment Screen---------
-  static const drText = "Dr.Rahul Zirkind";
+  static const drText = "Dr.";
   static const voiceText = "Voice Call -";
   static const historyVoiceText = "Voice Call";
   static const historyVideoText = "Video Call";
@@ -100,6 +100,7 @@ class StringRes {
   static const scheduledAppointmentText = "Scheduled Appointment";
   static const monthText = "Today,December 22,2022";
   static const timeText = "16:00-16:30 PM(30 minutes)";
+  static const time1Text = "Time";
   static const patientText = "Patient Information";
   static const fullNameText = "Full Name";
   static const nameText = "Andrew Ainsley";
@@ -108,6 +109,8 @@ class StringRes {
   static const ageText = "Age";
   static const ageDisplayText = "27";
   static const problemText = "Problem";
+  static const statesText = "States";
+  static const problem1Text = "What's Your Problem";
   static const problemDataText =
       "Lorem ipsum dolor sit amet,consectetur adipiscing elit,sed doeiusmod tempor.";
   static const packageText = "Your Package";
