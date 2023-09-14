@@ -56,6 +56,7 @@ Widget mobileTextFieldSignUp() {
           hintText: StringRes.mobileTextFieldHintText,
           keyboardType: TextInputType.number,
           prefixIcon: const Icon(IconRes.phoneIcon),
+          counterText: '',
           fillColor: Colors.blueGrey.shade50,
           filled: true,
           obscureText: false,

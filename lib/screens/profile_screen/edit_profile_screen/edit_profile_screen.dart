@@ -1,16 +1,17 @@
+import 'package:doctor/common_widget/common_appbar.dart';
+import 'package:doctor/utils/color_res.dart';
+import 'package:doctor/utils/icon_res.dart';
+import 'package:doctor/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../common_widget/common_appbar.dart';
-import '../../utils/color_res.dart';
-import '../../utils/icon_res.dart';
-import '../../utils/string_res.dart';
 import 'edit_profile_controller.dart';
 import 'edit_profile_widget.dart';
 
 class EditProfileScreen extends StatelessWidget {
-   EditProfileScreen({Key? key}) : super(key: key);
-   EditProfileController editProfileController=Get.put(EditProfileController());
+  EditProfileScreen({Key? key}) : super(key: key);
+  EditProfileController editProfileController =
+      Get.put(EditProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -35,15 +36,17 @@ class EditProfileScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: Get.height*0.02,
+                  height: Get.height * 0.02,
                 ),
-             //   usernameTextFiled(),
+                //   usernameTextFiled(),
                 nameTextFiled(),
                 dateTextFiled(context),
                 emailTextFiled(),
                 mobileTextFieldSignUp(),
                 radioButton(),
-                SizedBox(height: Get.height*0.10,),
+                SizedBox(
+                  height: Get.height * 0.10,
+                ),
                 editButton(),
               ],
             ),

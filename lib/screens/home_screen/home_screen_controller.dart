@@ -33,8 +33,8 @@ class HomeScreenController extends GetxController {
     allDoctorData.forEach((key, value) {
       doctorList.add(value);
     });
-    print(doctorList);
-    print(allDoctorData);
+    // print(doctorList);
+    // print(allDoctorData);
     update(['HomeScreenController', 'abc']);
   }
 
@@ -44,7 +44,7 @@ class HomeScreenController extends GetxController {
 
   void onAllDoctor() {
     selectedGridIndexBool == false;
-    print('=============>$selectedGridIndexBool');
+    // print('=============>$selectedGridIndexBool');
     update();
     // selectedGridIndex = index;
     Get.to(() => const TopDoctors());
@@ -53,14 +53,14 @@ class HomeScreenController extends GetxController {
 
   void onBackSpecialityWiseDoctor() {
     selectedGridIndexBool == false;
-    print('=============>$selectedGridIndexBool');
+    // print('=============>$selectedGridIndexBool');
     Get.back();
   }
 
   void onSpecialityWiseDoctor(int index) {
     selectedGridIndex = index;
     selectedGridIndexBool = true;
-    print('=============>$selectedGridIndexBool');
+    //print('=============>$selectedGridIndexBool');
     update();
     Get.to(() => const TopDoctors());
     update(['HomeScreenController']);

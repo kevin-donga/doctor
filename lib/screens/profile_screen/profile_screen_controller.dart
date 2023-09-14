@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:doctor/screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:doctor/screens/login_screen/login_screen.dart';
+import 'package:doctor/screens/profile_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:doctor/utils/string_res.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
@@ -49,7 +49,7 @@ class ProfileController extends GetxController {
       case 0:
         {
           print('index 1');
-          Get.to( EditProfileScreen());
+          Get.to(EditProfileScreen());
         }
         break;
 

@@ -1,91 +1,88 @@
+import 'package:doctor/common_widget/common_text.dart';
+import 'package:doctor/common_widget/common_textfield.dart';
 import 'package:doctor/utils/color_res.dart';
+import 'package:doctor/utils/icon_res.dart';
+import 'package:doctor/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-import '../../common_widget/common_elevated_button.dart';
-import '../../common_widget/common_text.dart';
-import '../../common_widget/common_textfield.dart';
-import '../../utils/icon_res.dart';
-import '../../utils/string_res.dart';
-import '../forget_password/forget_password_widget.dart';
+import '../../../common_widget/common_elevated_button.dart';
 import 'edit_profile_controller.dart';
 
-Widget usernameTextFiled(){
-  return  Padding(
+double height = Get.height;
+double width = Get.width;
+
+Widget usernameTextFiled() {
+  return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: GetBuilder<EditProfileController>(
-      builder: (controller) {
-        return textField(
-          validator: controller.editUserCondition,
-          hintText: StringRes.userTextFieldHintText,
-          fillColor: Colors.blueGrey.shade50,
-          filled: true,
-          obscureText: false,
-        );
-      }
-    ),
+    child: GetBuilder<EditProfileController>(builder: (controller) {
+      return textField(
+        validator: controller.editUserCondition,
+        hintText: StringRes.userTextFieldHintText,
+        fillColor: Colors.blueGrey.shade50,
+        filled: true,
+        obscureText: false,
+      );
+    }),
   );
 }
 
-Widget nameTextFiled(){
-  return  Padding(
+Widget nameTextFiled() {
+  return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: GetBuilder<EditProfileController>(
-      builder: (controller) {
-        return textField(
-          controller: controller.nameController,
-          validator: controller.editNameCondition,
-          hintText: StringRes.nameTextFieldHintText,
-          fillColor: Colors.blueGrey.shade50,
-          filled: true,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
-          obscureText: false,
-        );
-      }
-    ),
+    child: GetBuilder<EditProfileController>(builder: (controller) {
+      return textField(
+        controller: controller.nameController,
+        validator: controller.editNameCondition,
+        hintText: StringRes.nameTextFieldHintText,
+        fillColor: Colors.blueGrey.shade50,
+        filled: true,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+        obscureText: false,
+      );
+    }),
   );
 }
 
-Widget dateTextFiled(BuildContext context){
-  return  Padding(
+Widget dateTextFiled(BuildContext context) {
+  return Padding(
     padding: const EdgeInsets.all(8.0),
     child: GetBuilder<EditProfileController>(
-      id: 'DatePicker',
-      builder: (controller) {
-        return textField(
-          validator: controller.editDateCondition,
-          hintText: StringRes.dateTextFieldHintText,
-          suffixIcon: const Icon(Icons.date_range),
-          fillColor: Colors.blueGrey.shade50,
-          filled: true,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
-          obscureText: false,
-          controller: controller.dateController,
-          onTap:()=>controller.dateAndTimePickerCondition(context),
-        );
-      }
-    ),
+        id: 'DatePicker',
+        builder: (controller) {
+          return textField(
+            validator: controller.editDateCondition,
+            hintText: StringRes.dateTextFieldHintText,
+            suffixIcon: const Icon(Icons.date_range),
+            fillColor: Colors.blueGrey.shade50,
+            filled: true,
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+            obscureText: false,
+            controller: controller.dateController,
+            onTap: () => controller.dateAndTimePickerCondition(context),
+          );
+        }),
   );
 }
 
-Widget emailTextFiled(){
-  return  Padding(
+Widget emailTextFiled() {
+  return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: GetBuilder<EditProfileController>(
-      builder: (controller) {
-        return textField(
-          validator: controller.editEmailCondition,
-          hintText: StringRes.emailTextFieldHintText,
-          suffixIcon: const Icon(Icons.email,),
-          fillColor: Colors.blueGrey.shade50,
-          filled: true,
-          controller: controller.emailController,
-          obscureText: false,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
-        );
-      }
-    ),
+    child: GetBuilder<EditProfileController>(builder: (controller) {
+      return textField(
+        validator: controller.editEmailCondition,
+        hintText: StringRes.emailTextFieldHintText,
+        suffixIcon: const Icon(
+          Icons.email,
+        ),
+        fillColor: Colors.blueGrey.shade50,
+        filled: true,
+        controller: controller.emailController,
+        obscureText: false,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+      );
+    }),
   );
 }
 
@@ -131,6 +128,7 @@ Widget mobileTextFieldSignUp() {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: textField(
+            counterText: '',
             controller: controller.mobileController,
             validator: controller.editMobileCondition,
             maxLength: 10,
@@ -232,7 +230,9 @@ Widget radioButton() {
                       onChanged: controller.maleRadioButtonCondition,
                     ),
                     const Text("Male"),
-                    SizedBox(width: Get.width*0.02,),
+                    SizedBox(
+                      width: Get.width * 0.02,
+                    ),
                     Radio(
                       value: controller.female,
                       groupValue: controller.group,
@@ -253,13 +253,13 @@ Widget radioButton() {
               ),
               controller.genderError != null
                   ? Padding(
-                    padding:  EdgeInsets.only(left: Get.width*0.04),
-                    child: commonText(
-                data: controller.genderError ?? "",
-                color: ColorRes.errorColor,
-                fontSize: 12,
-              ),
-                  )
+                      padding: EdgeInsets.only(left: Get.width * 0.04),
+                      child: commonText(
+                        data: controller.genderError ?? "",
+                        color: ColorRes.errorColor,
+                        fontSize: 12,
+                      ),
+                    )
                   : const SizedBox(),
             ],
           ),
@@ -278,7 +278,7 @@ Widget editButton() {
         controller.mobileController.clear();
         controller.dateController.clear();
         controller.countryController.clear();
-        controller.gender=null;
+        controller.gender = null;
       }),
       widget: Padding(
         padding: EdgeInsets.only(
@@ -288,7 +288,8 @@ Widget editButton() {
           bottom: height * 0.02,
         ),
         child: FittedBox(
-          child: commonText(data: StringRes.updateText,color: ColorRes.whiteColor),
+          child: commonText(
+              data: StringRes.updateText, color: ColorRes.whiteColor),
         ),
       ),
     );

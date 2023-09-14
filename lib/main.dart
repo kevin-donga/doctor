@@ -5,7 +5,6 @@ import 'package:doctor/screens/splash_screen/01_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'screens/edit_profile_screen/edit_profile_screen.dart';
 import 'services/pref_service.dart';
 
 Future<void> main() async {

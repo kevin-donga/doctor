@@ -4,14 +4,15 @@ import 'login_screen_controller.dart';
 import 'login_screen_widget.dart';
 
 class LoginScreen extends StatelessWidget {
-   LoginScreen({Key? key}) : super(key: key);
-    LoginController loginController=Get.put(LoginController());
+  LoginScreen({Key? key}) : super(key: key);
+  LoginController loginController = Get.put(LoginController());
+
   @override
   Widget build(BuildContext context) {
     Get.put(LoginController());
     return Scaffold(
       body: SingleChildScrollView(
-       // physics: const NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         child: Center(
           child: Form(
             key: loginController.formKey,
