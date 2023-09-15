@@ -2,6 +2,24 @@ import 'package:flutter/material.dart';
 
 import '../utils/color_res.dart';
 
+Widget textField({String? hintText,
+  TextEditingController? controller,
+  Widget? suffixIcon,
+  Widget? prefixIcon,
+  InputBorder? border,
+  Color? fillColor,
+  bool? filled,
+  required bool obscureText,
+  bool? isDense,
+  TextInputType? keyboardType,
+  BoxConstraints? constraints,
+int? minLines,
+int? maxLines = 1,
+  void Function()? onTap,
+  String? Function(String?)? validator,
+  void Function(String)? onChanged,
+  int? maxLength,
+}) {
 Widget textField(
     {String? hintText,
     TextEditingController? controller,
@@ -45,6 +63,8 @@ Widget textField(
       filled: filled,
     ),
     onTap: onTap,
+    maxLines: maxLines,
     maxLength: maxLength,
+    minLines: minLines,
   );
 }

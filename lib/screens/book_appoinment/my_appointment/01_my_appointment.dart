@@ -16,7 +16,6 @@ class MyAppointment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(MyAppointmentController());
     return Scaffold(
       backgroundColor: ColorRes.scaffoldColor,
       appBar: commonAppbar(

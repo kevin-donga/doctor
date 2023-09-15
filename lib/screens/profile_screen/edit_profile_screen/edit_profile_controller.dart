@@ -19,13 +19,9 @@ class EditProfileController extends GetxController {
   DateTime? date;
   DateTime? month;
   String? gender;
-  String? group;
   String male = "Male";
   String female = "Female";
   String other = "Other";
-  bool isFemale = false;
-  bool isOther = false;
-  bool isMale = false;
   Map loginUser = {};
 
   @override
@@ -78,20 +74,17 @@ class EditProfileController extends GetxController {
   }
 
   void maleRadioButtonCondition(val) {
-    group = val.toString();
-    isMale = !isMale;
+    gender = val.toString();
     update(['radioButton']);
   }
 
   void femaleRadioButtonCondition(val) {
-    group = val.toString();
-    isFemale = !isFemale;
+    gender = val.toString();
     update(['radioButton']);
   }
 
   void otherRadioButtonCondition(val) {
-    group = val.toString();
-    isOther = !isOther;
+    gender = val.toString();
     update(['radioButton']);
   }
 
@@ -125,7 +118,7 @@ class EditProfileController extends GetxController {
   }
 
   Future<void> editProfile() async {
-    genderCondition(group);
+    genderCondition(gender);
     if (formKey.currentState!.validate()) {
       Map<String, dynamic> editData = {
         'name': nameController.text.trim(),

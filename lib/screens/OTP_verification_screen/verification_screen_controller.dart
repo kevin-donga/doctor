@@ -18,8 +18,8 @@ class VerificationController extends GetxController {
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
           verificationId: otpPassword.verify, smsCode: code);
       await auth.signInWithCredential(credential);
-      Get.offAll(() => const HomeScreen());
       PrefService.setValue(PrefRes.isLogin, true);
+      Get.offAll(() => const HomeScreen());
     } catch (e) {
       Get.snackbar("Verification Failed", "Please Enter Valid OTP",
           snackPosition: SnackPosition.BOTTOM);

@@ -1,26 +1,25 @@
-import 'package:doctor/screens/book_appoinment/my_appointment/02_my_appointment_controller.dart';
+import 'package:doctor/common_widget/common_appbar.dart';
+import 'package:doctor/screens/book_appoinment/book_appointment_controller.dart';
+import 'package:doctor/screens/book_appoinment/my_appointment/02_my_appointment_widget.dart';
+import 'package:doctor/utils/color_res.dart';
+import 'package:doctor/utils/icon_res.dart';
+import 'package:doctor/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../common_widget/common_appbar.dart';
-import '../../../utils/color_res.dart';
-import '../../../utils/icon_res.dart';
-import '../../../utils/string_res.dart';
-import '02_my_appointment_widget.dart';
 
 class MyAppointmentMessage extends StatelessWidget {
   const MyAppointmentMessage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.put(MyAppointmentMessageController());
     return Scaffold(
       backgroundColor: ColorRes.scaffoldColor,
       appBar: commonAppbar(
         backgroundColor: ColorRes.scaffoldColor,
         title: StringRes.myAppointmentText,
         leading:
-            GetBuilder<MyAppointmentMessageController>(builder: (controller) {
+            GetBuilder<BookAppointmentController>(builder: (controller) {
           return IconButton(
             icon: const Icon(IconRes.backArrowIcon),
             onPressed: controller.backArrow,

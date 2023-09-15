@@ -226,7 +226,7 @@ Widget radioButton() {
                   children: [
                     Radio(
                       value: controller.male,
-                      groupValue: controller.group,
+                      groupValue: controller.gender,
                       onChanged: controller.maleRadioButtonCondition,
                     ),
                     const Text("Male"),
@@ -235,13 +235,13 @@ Widget radioButton() {
                     ),
                     Radio(
                       value: controller.female,
-                      groupValue: controller.group,
+                      groupValue: controller.gender,
                       onChanged: controller.femaleRadioButtonCondition,
                     ),
                     const Text("Female"),
                     Radio(
                       value: controller.other,
-                      groupValue: controller.group,
+                      groupValue: controller.gender,
                       onChanged: controller.otherRadioButtonCondition,
                     ),
                     const Text("Other"),

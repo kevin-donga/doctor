@@ -12,15 +12,14 @@ import '../../../utils/string_res.dart';
 import 'describe_doctor_widget.dart';
 
 class DescribedDoctor extends StatelessWidget {
-  DescribedDoctor({Key? key}) : super(key: key);
-  final HomeScreenController _homeScreenController =
-      Get.put(HomeScreenController());
+ final String? doId;
+  const DescribedDoctor({Key? key, required this.doId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double h = Get.height;
     double w = Get.width;
-    Get.put(DescribedDoctorController());
+    Get.put(DescribedDoctorController(doId));
     return Scaffold(
       backgroundColor: ColorRes.scaffoldColor,
       appBar: appBarWithDoctorName(),
