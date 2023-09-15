@@ -15,9 +15,9 @@ Future<void> main() async {
   await PrefService.init();
   runApp(const GetMaterialApp(
     // home: EditProfileScreen(),
-    home: SplashScreen(),
+    // home: SplashScreen(),
     // home: HomeScreen(),
-    // home: BottomNavBar(),
+    home: BottomNavBar(),
     debugShowCheckedModeBanner: false,
   ));
 }

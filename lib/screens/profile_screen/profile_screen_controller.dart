@@ -46,7 +46,7 @@ class ProfileController extends GetxController {
       case 0:
         {
           print('index 1');
-          Get.to(EditProfileScreen());
+          Get.to(() => EditProfileScreen());
         }
         break;
 

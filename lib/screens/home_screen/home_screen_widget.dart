@@ -236,10 +236,11 @@ Widget topDoctorsField() {
                           height: h * 0.24,
                           width: w,
                           decoration: BoxDecoration(
-                               image: DecorationImage(
-                            image: NetworkImage(controller.doctorList[index]['image']),
-                            fit: BoxFit.cover),
-                              ),
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    controller.doctorList[index]['image']),
+                                fit: BoxFit.cover),
+                          ),
                           // color: Colors.white24,
                         )),
                     Column(
@@ -249,13 +250,15 @@ Widget topDoctorsField() {
                         ),
                         commonText(
                             data: controller.doctorList[index]['name'],
+                            fontSize: h * 0.020,
                             // data: controller.topDoctors[index]['name'],
                             fontWeight: FontWeight.bold,
                             fontFamily: StringRes.josefinSansBold),
-/*                    commonText(
-                        data: controller.topDoctors[index]['qualification'],
-                        fontWeight: FontWeight.bold,
-                        fontFamily: StringRes.josefinSans),*/
+                        commonText(
+                            data: controller.doctorList[index]['qualification'],
+                            fontSize: h * 0.017,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: StringRes.josefinSans),
                         RatingBarIndicator(
                           rating: 2.50,
                           itemBuilder: (context, index) => const Icon(

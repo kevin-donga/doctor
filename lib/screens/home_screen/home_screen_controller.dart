@@ -44,7 +44,7 @@ class HomeScreenController extends GetxController {
   }
 
   void onAllDoctor() {
-    selectedGridIndexBool == false;
+    // selectedGridIndexBool == false;
     // print('=============>$selectedGridIndexBool');
     update();
     // selectedGridIndex = index;
@@ -56,6 +56,7 @@ class HomeScreenController extends GetxController {
     selectedGridIndexBool == false;
     // print('=============>$selectedGridIndexBool');
     Get.back();
+    update(['HomeScreenController']);
   }
 
   void onSpecialityWiseDoctor(int index) {
@@ -76,6 +77,7 @@ class HomeScreenController extends GetxController {
   }
 
   List topDoctorTab = ['All', 'General', 'Dentist', 'Nutrition'];
+
   // List<Map> topDoctors = [
   //   {
   //     'photo': AssetRes.drManuBora,

@@ -207,11 +207,12 @@ class TopDoctors extends StatelessWidget {
         title: GetBuilder<HomeScreenController>(
             id: 'HomeScreenController',
             builder: (controller) {
-              return Text(
-                controller.selectedGridIndexBool == true
-                    ? 'other'
-                    : 'Best Doctor',
-                style: const TextStyle(
+              return const Text(
+                // controller.selectedGridIndexBool == true
+                //     ? 'other'
+                //     :
+                'Best Doctor',
+                style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w900,
                   fontFamily: StringRes.josefinSans,
@@ -250,7 +251,7 @@ class TopDoctors extends StatelessWidget {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
-                                    controller.doctorList[index]['photo'],
+                                    controller.doctorList[index]['image'],
                                   ),
                                   fit: BoxFit.cover),
                               // color: Colors.orange,
