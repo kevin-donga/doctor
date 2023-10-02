@@ -164,12 +164,9 @@ Widget allArticlesList() {
                               borderRadius: BorderRadius.circular(5),
                               color: const Color(0xffE3EDFB),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: commonText(
-                                data: controller.articleData[index]['label'],
-                                color: Colors.lightBlue,
-                              ),
+                            child: commonText(
+                              data: controller.articleData[index]['label'],
+                              color: Colors.lightBlue,
                             ),
                           ),
                         ],

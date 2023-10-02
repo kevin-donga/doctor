@@ -155,7 +155,7 @@ Widget topDoctorRow() {
                 fontWeight: FontWeight.bold),
             const Spacer(),
             InkWell(
-              onTap: () => controller.onAllDoctor(),
+           //   onTap: () => controller.onAllDoctor(),
               child: commonText(
                   data: StringRes.seeAllString,
                   color: Colors.blue,
