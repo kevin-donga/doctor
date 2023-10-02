@@ -78,7 +78,7 @@ class LoginController extends GetxController {
       // Get.snackbar("Login", "Success");
       List<Map> userDataList = [];
       DatabaseReference databaseReference =
-      FirebaseDatabase.instance.ref('User');
+          FirebaseDatabase.instance.ref('User');
       Map? allData = await FirebaseServices.getData(databaseReference);
       if (allData == null) {
         Get.snackbar("login", "please signup");
@@ -88,14 +88,20 @@ class LoginController extends GetxController {
           userDataList.add(value);
         });
         bool checkLogin = userDataList.any(
-              (element) =>
-          element['email'] == emailController.text.trim() &&
+          (element) =>
+              element['email'] == emailController.text.trim() &&
               element['password'] == passController.text.trim(),
         );
-        int loginUserIndex = userDataList.indexWhere((element) => element['email']==emailController.text.trim());
+        int loginUserIndex = userDataList.indexWhere(
+            (element) => element['email'] == emailController.text.trim());
 
         String loginUserUniqueKey = userDataList[loginUserIndex]['id'];
+        // jsonEncode(loginUserUniqueKey);
         await PrefService.setValue(PrefRes.loginUser, loginUserUniqueKey);
+        print(loginUserUniqueKey);
+        await PrefService.setValue(PrefRes.isLogin, true);
+        // Map currentUser = userDataList[loginUserIndex];
+        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
         if (checkLogin == true) {
           Get.off(const BottomNavBar());
         } else {

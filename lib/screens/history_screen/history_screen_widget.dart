@@ -15,7 +15,7 @@ Widget historyListview() {
       child: TabBarView(
         controller: controller.tabController,
         children: [
-          ListView.builder(
+          /*ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: 7,
@@ -109,8 +109,11 @@ Widget historyListview() {
                 ),
               ],
             ),
+          ),*/
+          const Center(
+            child: Text('you have no History Yet!'),
           ),
-          ListView.builder(
+          /* ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemCount: StringRes.doctorDataList.length,
@@ -178,8 +181,7 @@ Widget historyListview() {
                                         backgroundColor:
                                             ColorRes.blueColor.shade50,
                                         child: const CircleAvatar(
-                                          backgroundColor:
-                                          ColorRes.blueColor,
+                                          backgroundColor: ColorRes.blueColor,
                                           radius: 12,
                                           child: Center(
                                             child: Icon(
@@ -214,8 +216,11 @@ Widget historyListview() {
                 ),
               ],
             ),
+          ),*/
+          const Center(
+            child: Text('you have no Voice Call History Yet!'),
           ),
-          ListView.builder(
+          /*ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: StringRes.doctorDataList.length,
@@ -283,8 +288,7 @@ Widget historyListview() {
                                         backgroundColor:
                                             ColorRes.blueColor.shade50,
                                         child: const CircleAvatar(
-                                          backgroundColor:
-                                          ColorRes.blueColor,
+                                          backgroundColor: ColorRes.blueColor,
                                           radius: 12,
                                           child: Center(
                                             child: Icon(
@@ -319,6 +323,9 @@ Widget historyListview() {
                 ),
               ],
             ),
+          ),*/
+          const Center(
+            child: Text('you have no Video Call History Yet!'),
           ),
         ],
       ),

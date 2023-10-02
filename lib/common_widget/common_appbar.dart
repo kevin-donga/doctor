@@ -11,6 +11,7 @@ import '../utils/string_res.dart';
 PreferredSizeWidget commonAppbar({
   Color? backgroundColor,
   IconData? icon,
+  void Function()? onActionTap,
   Color? color,
   required String title,
   Widget? leading,
@@ -30,10 +31,11 @@ PreferredSizeWidget commonAppbar({
     //centerTitle: true,
     actions: [
       InkWell(
+          onTap: onActionTap,
           child: Icon(
-        actionIcon,
-        color: ColorRes.blackColor,
-      )),
+            actionIcon,
+            color: ColorRes.blackColor,
+          )),
       IconButton(
         onPressed: () {},
         icon: const Icon(

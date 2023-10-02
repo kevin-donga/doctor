@@ -25,6 +25,7 @@ class StringRes {
   static const mobileTextFieldHintText = 'Mobile Number';
   static const nameTextFieldHintText = 'Name';
   static const passTextFieldHintText = 'Password';
+  static const ageTextFieldHintText = 'Age';
   static const loginButtonText = 'Sign In';
   static const forgetPasswordText = 'Forget the password ?';
   static const newUserText = 'Don\'t have an account?';
@@ -122,9 +123,9 @@ class StringRes {
   static const chatText = "Chat Messagees with doctor";
   static const text = "\$20";
   static const paidText = "(Paid)";
-  static const upcomingAppointmentText =
-      "You don't have an appointment yet ";
-  static const upcomingAppText = "you don't have a doctor's appointment scheduled at the moment";
+  static const upcomingAppointmentText = "You don't have an appointment yet ";
+  static const upcomingAppText =
+      "you don't have a doctor's appointment scheduled at the moment";
 
   static List<Map> doctorDataList = [
     {

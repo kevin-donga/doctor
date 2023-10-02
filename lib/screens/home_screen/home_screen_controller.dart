@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:doctor/screens/home_screen/home_screen_widget.dart';
 import 'package:doctor/services/firebase_services.dart';
+import 'package:doctor/services/pref_service.dart';
+import 'package:doctor/utils/pref_res.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,12 +20,25 @@ class HomeScreenController extends GetxController {
   int selectedGridIndex = 0;
   bool selectedGridIndexBool = false;
   List<Map> doctorList = [];
+  Map currentUser = {};
+  String loginUserUniqueKey = '';
+  Map? data;
+
+  Future<void> getLoginUser() async {
+    String? getData = PrefService.getString(PrefRes.loginUser);
+    DatabaseReference databaseReference =
+        FirebaseDatabase.instance.ref("User/$loginUserUniqueKey");
+    data = await FirebaseServices.getData(databaseReference);
+    print(currentUser);
+    update(["loginUserAppBar"]);
+  }
 
   @override
   void onInit() {
-    // TODO: implement onInit
-    super.onInit();
+    loginUserUniqueKey = PrefService.getString(PrefRes.loginUser);
+    //getLoginUser();
     getDoctorList();
+    super.onInit();
   }
 
   Map allDoctorData = {};
@@ -72,7 +89,9 @@ class HomeScreenController extends GetxController {
     // selectedIndex = index;
     String? doId = doctorList[index]["id"];
     print(doId);
-    Get.to(() =>  DescribedDoctor(doId: doId,));
+    Get.to(() => DescribedDoctor(
+          doId: doId,
+        ));
     update(['HomeScreenController']);
   }
 

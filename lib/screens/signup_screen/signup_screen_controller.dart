@@ -21,13 +21,17 @@ class SignupScreenController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController mobileController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController ageController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController birtDateController = TextEditingController();
-
 
   FirebaseDatabase database = FirebaseDatabase.instance;
 
   String? nameCondition(String? val) {
+    return val!.isEmpty ? 'Please enter valid name' : null;
+  }
+
+  String? ageCondition(String? val) {
     return val!.isEmpty ? 'Please enter valid name' : null;
   }
 
@@ -38,7 +42,7 @@ class SignupScreenController extends GetxController {
   String? emailCondition(val) {
     update(['NameTextFiled']);
     bool emailValid = RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(val!);
 
     return emailValid ? null : 'Please enter Valid Email';
@@ -59,7 +63,7 @@ class SignupScreenController extends GetxController {
   String? passwordCondition(val) {
     update(['NameTextFiled']);
     RegExp regex =
-    RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
     if (val!.isEmpty) {
       return 'Please enter password';
     } else {
@@ -70,16 +74,19 @@ class SignupScreenController extends GetxController {
       }
     }
   }
+
   String? genderError;
+
   void genderCondition(String? val) {
     if (val == null) {
       genderError = "Please enter gender";
-     print(genderError);
+      print(genderError);
     } else {
       genderError = null;
     }
     update(['radioButton']);
   }
+
   void maleRadioButtonCondition(val) {
     group = val.toString();
     isMale = !isMale;
@@ -137,7 +144,7 @@ class SignupScreenController extends GetxController {
     genderCondition(group);
     if (formKey.currentState!.validate()) {
       DatabaseReference databaseReference =
-      FirebaseDatabase.instance.ref("User");
+          FirebaseDatabase.instance.ref("User");
 
       Map? allData = await FirebaseServices.getData(databaseReference);
       List<Map> allDataList = [];
@@ -146,6 +153,7 @@ class SignupScreenController extends GetxController {
         Map<String, dynamic> userData = {
           'name': nameController.text.trim(),
           'email': emailController.text.trim(),
+          'age': ageController.text.trim(),
           'date': birtDateController.text.trim(),
           'mobileNumber': mobileController.text.trim(),
           'password': passwordController.text.trim(),
@@ -157,13 +165,13 @@ class SignupScreenController extends GetxController {
         });
 
         bool value =
-        allDataList.any((element) => element['email'] == userData['email']);
+            allDataList.any((element) => element['email'] == userData['email']);
 
         if (value == false) {
           await FirebaseServices.addData(
-              databaseReference.child(key!), userData)
+                  databaseReference.child(key!), userData)
               .then(
-                (value) => Get.back(),
+            (value) => Get.back(),
           );
           nameController.clear();
           emailController.clear();

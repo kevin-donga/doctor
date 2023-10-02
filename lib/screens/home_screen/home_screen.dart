@@ -47,15 +47,6 @@ class _HomeScreenState extends State<HomeScreen> {
               }),
               title: Column(
                 children: [
-                  /*const Text(
-                    StringRes.appbarTitle,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w900,
-                        fontFamily: StringRes.josefinSans),
-                  ),*/
-                  // greeting(),
                   GetBuilder<HomeScreenController>(
                     builder: (controller) {
                       return controller.greeting();
@@ -64,15 +55,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: h * 0.01,
                   ),
-                  const Text(
-                    StringRes.appbarUsername,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      // fontFamily: StringRes.josefinSans,
-                    ),
-                  ),
+                  GetBuilder<HomeScreenController>(
+                    id: "loginUserAppBar",
+                    builder: (controller) {
+                      return const Text(
+                        // controller.data!['name'].toString(),
+                        "Dear Patient!",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          // fontWeight: FontWeight.w500,
+                          fontFamily: StringRes.josefinSansBold,
+                        ),
+                      );
+                    },
+                  )
                 ],
               ),
               bottom: PreferredSize(
@@ -221,7 +218,9 @@ class TopDoctors extends StatelessWidget {
             }),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => const SearchAndFilter());
+            },
             icon: const Icon(Icons.search),
           ),
         ],
@@ -250,9 +249,15 @@ class TopDoctors extends StatelessWidget {
                             width: w * 0.30,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage(
-                                    controller.doctorList[index]['image'],
-                                  ),
+                                  image: controller.doctorList[index]
+                                              ['image'] !=
+                                          null
+                                      ? NetworkImage(
+                                          controller.doctorList[index]['image'],
+                                        ) as ImageProvider
+                                      : const AssetImage(
+                                          AssetRes.doctorThumb2,
+                                        ),
                                   fit: BoxFit.cover),
                               // color: Colors.orange,
                               borderRadius: BorderRadius.circular(20),

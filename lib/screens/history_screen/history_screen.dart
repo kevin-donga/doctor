@@ -1,3 +1,4 @@
+import 'package:doctor/screens/search&filter/search&filter.dart';
 import 'package:doctor/utils/icon_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,6 +34,9 @@ class HistoryScreen extends StatelessWidget {
             ),
           ),
         ),
+        onActionTap: () {
+          Get.to(() => const SearchAndFilter());
+        },
         actionIcon: IconRes.searchIcon,
         bottom: TabBar(
           indicatorColor: Colors.blue,

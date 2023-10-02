@@ -1,17 +1,35 @@
 import 'dart:io';
 import 'package:doctor/screens/login_screen/login_screen.dart';
 import 'package:doctor/screens/profile_screen/edit_profile_screen/edit_profile_screen.dart';
-import 'package:doctor/utils/string_res.dart';
+import 'package:doctor/services/pref_service.dart';
+import 'package:doctor/utils/pref_res.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../services/firebase_services.dart';
 
 class ProfileController extends GetxController {
+  String loginUserUniqueKey = '';
+  TextEditingController nameController = TextEditingController();
+  TextEditingController mobileController = TextEditingController();
+
   @override
   void onInit() {
-    // TODO: implement onInit
+    loginUserUniqueKey = PrefService.getString(PrefRes.loginUser);
+    getLoginUserData();
     super.onInit();
+  }
+
+  Future<void> getLoginUserData() async {
+    DatabaseReference databaseReference =
+        FirebaseDatabase.instance.ref("User/$loginUserUniqueKey");
+    Map? data = await FirebaseServices.getData(databaseReference);
+    nameController.text = data!['name'];
+    mobileController.text = data['mobileNumber'];
+    update();
   }
 
   FirebaseStorage firebaseStorage = FirebaseStorage.instance;
@@ -90,6 +108,7 @@ class ProfileController extends GetxController {
   }
 
   void onLogoutOk() {
+    PrefService.setValue(PrefRes.isLogin, false);
     Get.offAll(() => LoginScreen());
   }
 

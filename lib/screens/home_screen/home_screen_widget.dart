@@ -237,9 +237,16 @@ Widget topDoctorsField() {
                           width: w,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: NetworkImage(
-                                    controller.doctorList[index]['image']),
-                                fit: BoxFit.cover),
+                              image: controller.doctorList[index]['image'] !=
+                                      null
+                                  ? NetworkImage(
+                                          controller.doctorList[index]['image'])
+                                      as ImageProvider
+                                  : const AssetImage(
+                                      AssetRes.doctorThumb2,
+                                    ),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                           // color: Colors.white24,
                         )),

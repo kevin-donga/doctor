@@ -7,7 +7,6 @@ import 'package:doctor/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class MyAppointmentMessage extends StatelessWidget {
   const MyAppointmentMessage({Key? key}) : super(key: key);
 
@@ -18,8 +17,7 @@ class MyAppointmentMessage extends StatelessWidget {
       appBar: commonAppbar(
         backgroundColor: ColorRes.scaffoldColor,
         title: StringRes.myAppointmentText,
-        leading:
-            GetBuilder<BookAppointmentController>(builder: (controller) {
+        leading: GetBuilder<BookAppointmentController>(builder: (controller) {
           return IconButton(
             icon: const Icon(IconRes.backArrowIcon),
             onPressed: controller.backArrow,

@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignupScreen extends StatelessWidget {
-   SignupScreen({Key? key}) : super(key: key);
-SignupScreenController signupScreenController=Get.put(SignupScreenController());
+  SignupScreen({Key? key}) : super(key: key);
+  SignupScreenController signupScreenController =
+      Get.put(SignupScreenController());
+
   @override
   Widget build(BuildContext context) {
     double height = Get.height;
     Get.put(SignupScreenController());
-      return Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Center(
@@ -24,6 +26,8 @@ SignupScreenController signupScreenController=Get.put(SignupScreenController());
                 middleTextSignUp(),
                 SizedBox(height: height * 0.02),
                 nameTextFieldSignUp(),
+                SizedBox(height: height * 0.03),
+                ageTextFieldSignUp(),
                 SizedBox(height: height * 0.03),
                 emailTextFieldSignUp(),
                 SizedBox(height: height * 0.03),

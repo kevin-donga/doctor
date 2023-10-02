@@ -233,8 +233,7 @@ Widget appointmentListview() {
                                       top: Get.height * 0.02,
                                       left: Get.height * 0.03),
                                   child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -283,8 +282,7 @@ Widget appointmentListview() {
                                           ),
                                           commonText(
                                             data: controller
-                                                .appointmentList[index]
-                                            ['time'],
+                                                .appointmentList[index]['time'],
                                             color: ColorRes.blackColor,
                                             fontSize: 15,
                                             fontFamily: StringRes.josefinSans,
@@ -295,7 +293,8 @@ Widget appointmentListview() {
                                       Row(
                                         children: [
                                           commonText(
-                                            data: StringRes.dateTextFieldHintText,
+                                            data:
+                                                StringRes.dateTextFieldHintText,
                                             color: ColorRes.blackColor,
                                             fontSize: 15,
                                             fontFamily: StringRes.josefinSans,
@@ -310,8 +309,7 @@ Widget appointmentListview() {
                                           ),
                                           commonText(
                                             data: controller
-                                                    .appointmentList[index]
-                                                ['date'],
+                                                .appointmentList[index]['date'],
                                             color: ColorRes.blackColor,
                                             fontSize: 15,
                                             fontFamily: StringRes.josefinSans,
@@ -337,7 +335,8 @@ Widget appointmentListview() {
                                           ),
                                           commonText(
                                             data: controller
-                                                .appointmentList[index]['states'],
+                                                    .appointmentList[index]
+                                                ['states'],
                                             color: ColorRes.blackColor,
                                             fontSize: 15,
                                             fontFamily: StringRes.josefinSans,
@@ -391,7 +390,7 @@ Widget appointmentListview() {
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(
-                                      top: Get.height * 0.05,
+                                      top: Get.height * 0.04,
                                       left: Get.height * 0.03),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -444,7 +443,7 @@ Widget appointmentListview() {
                                           InkWell(
                                             onTap: () {},
                                             child: CircleAvatar(
-                                              radius: 25,
+                                              radius: 20,
                                               backgroundColor:
                                                   ColorRes.blueColor.shade50,
                                               child: Icon(
@@ -569,7 +568,7 @@ Widget appointmentListview() {
                                           InkWell(
                                             onTap: () {},
                                             child: CircleAvatar(
-                                              radius: 25,
+                                              radius: 20,
                                               backgroundColor:
                                                   ColorRes.blueColor.shade50,
                                               child: Icon(

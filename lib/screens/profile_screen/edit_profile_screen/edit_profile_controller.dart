@@ -19,15 +19,20 @@ class EditProfileController extends GetxController {
   DateTime? date;
   DateTime? month;
   String? gender;
+  String? group;
   String male = "Male";
   String female = "Female";
   String other = "Other";
+  bool isFemale = false;
+  bool isOther = false;
+  bool isMale = false;
   Map loginUser = {};
 
   @override
   void onInit() {
     String loginString = PrefService.getString(PrefRes.loginUser);
     loginUser = jsonDecode(loginString);
+
 
     dateController.text = loginUser['date'];
     nameController.text = loginUser['name'];
@@ -74,17 +79,20 @@ class EditProfileController extends GetxController {
   }
 
   void maleRadioButtonCondition(val) {
-    gender = val.toString();
+    group = val.toString();
+    isMale = !isMale;
     update(['radioButton']);
   }
 
   void femaleRadioButtonCondition(val) {
-    gender = val.toString();
+    group = val.toString();
+    isFemale = !isFemale;
     update(['radioButton']);
   }
 
   void otherRadioButtonCondition(val) {
-    gender = val.toString();
+    group = val.toString();
+    isOther = !isOther;
     update(['radioButton']);
   }
 
@@ -111,14 +119,14 @@ class EditProfileController extends GetxController {
   String? editEmailCondition(val) {
     update(['NameTextFiled']);
     bool emailValid = RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(val!);
 
     return emailValid ? null : 'Please enter Valid Email';
   }
 
   Future<void> editProfile() async {
-    genderCondition(gender);
+    genderCondition(group);
     if (formKey.currentState!.validate()) {
       Map<String, dynamic> editData = {
         'name': nameController.text.trim(),

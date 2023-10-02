@@ -28,10 +28,29 @@ AppBar describeArticleAppbar() {
         onPressed: () {},
         icon: const Icon(Icons.send),
       ),
-      IconButton(
-        onPressed: () {},
-        icon: const Icon(Icons.more_horiz),
-      ),
+      PopupMenuButton(onSelected: (value) {
+        // your logic
+        // setState(() {
+        //   selectedItem = value.toString();
+        // });
+        print(value);
+        //Navigator.pushNamed(context, value.toString());
+      }, itemBuilder: (BuildContext bc) {
+        return const [
+          PopupMenuItem(
+            child: Text("Rate Us!"),
+            value: '/hello',
+          ),
+          PopupMenuItem(
+            child: Text("About"),
+            value: '/about',
+          ),
+          PopupMenuItem(
+            child: Text("Contact"),
+            value: '/contact',
+          )
+        ];
+      })
     ],
   );
 }

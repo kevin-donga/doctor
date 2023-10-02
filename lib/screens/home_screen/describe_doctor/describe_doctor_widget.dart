@@ -1,6 +1,7 @@
 import 'package:doctor/common_widget/common_text.dart';
 import 'package:doctor/screens/home_screen/describe_doctor/describe_doctor_controller.dart';
 import 'package:doctor/screens/home_screen/home_screen_controller.dart';
+import 'package:doctor/utils/asset_res.dart';
 import 'package:doctor/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,89 +15,93 @@ double w = Get.width;
 
 PreferredSizeWidget appBarWithDoctorName() {
   return AppBar(
-    foregroundColor: Colors.black,
-    backgroundColor: ColorRes.scaffoldColor,
-    title: GetBuilder<DescribedDoctorController>(
-      id: "Doctor",
-      builder: (controller) => commonText(
-      data: controller
-          .doctorData?['name']??"",
-      fontSize: 18,
-      fontWeight: FontWeight.w900,
-      fontFamily: StringRes.josefinSans,
-    ),)
-  );
+      foregroundColor: Colors.black,
+      backgroundColor: ColorRes.scaffoldColor,
+      title: GetBuilder<DescribedDoctorController>(
+        id: "Doctor",
+        builder: (controller) => commonText(
+          data: controller.doctorData?['name'] ?? "",
+          fontSize: 18,
+          fontWeight: FontWeight.w900,
+          fontFamily: StringRes.josefinSans,
+        ),
+      ));
 }
 
 Widget doctorIntroCard() {
   return Card(
-    elevation: h * 0.03,
-    shadowColor: Colors.blue.withOpacity(0.5),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(15),
-    ),
-    color: Colors.white.withOpacity(0.9),
-    child: GetBuilder<DescribedDoctorController>(
-      id: "Doctor",
-      builder: (controller) => controller.isLod?const Center(
-        child: CircularProgressIndicator(),
-      ) : Row(
-      children: [
-        Column(
-          children: [
-            commonContainer(
-              margin: const EdgeInsets.all(15),
-              height: h * 0.15,
-              width: w * 0.30,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(
-                      controller
-                          .doctorData!['image'],
-                    ),
-                    fit: BoxFit.cover),
-                // color: Colors.orange,
-                borderRadius: BorderRadius.circular(20),
+      elevation: h * 0.03,
+      shadowColor: Colors.blue.withOpacity(0.5),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      color: Colors.white.withOpacity(0.9),
+      child: GetBuilder<DescribedDoctorController>(
+        id: "Doctor",
+        builder: (controller) => controller.isLod
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : Row(
+                children: [
+                  Column(
+                    children: [
+                      commonContainer(
+                        margin: const EdgeInsets.all(15),
+                        height: h * 0.15,
+                        width: w * 0.30,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: controller.doctorData!['image'] != null
+                                  ? NetworkImage(
+                                      controller.doctorData!['image'],
+                                    ) as ImageProvider
+                                  : const AssetImage(
+                                      AssetRes.doctorThumb2,
+                                    ),
+                              fit: BoxFit.cover),
+                          // color: Colors.orange,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      commonText(
+                        data: controller.doctorData!['name'],
+                        fontSize: h * 0.02,
+                        fontWeight: FontWeight.w900,
+                        fontFamily: StringRes.josefinSansBold,
+                      ),
+                      // const Divider(
+                      //   color: Colors.red,
+                      //   thickness: 4,
+                      //   height: 5,
+                      // ),
+                      SizedBox(
+                        height: h * 0.002,
+                      ),
+                      commonText(
+                        data: controller.doctorData!['qualification'],
+                        fontSize: h * 0.017,
+                        fontWeight: FontWeight.w900,
+                        fontFamily: StringRes.josefinSans,
+                      ),
+                      SizedBox(
+                        height: h * 0.002,
+                      ),
+                      commonText(
+                        data: controller.doctorData!['hospital'],
+                        fontSize: h * 0.015,
+                        fontWeight: FontWeight.w900,
+                        fontFamily: StringRes.josefinSans,
+                      )
+                    ],
+                  )
+                ],
               ),
-            )
-          ],
-        ),
-        Column(
-          children: [
-            commonText(
-              data: controller
-                  .doctorData!['name'],
-              fontSize: 15,
-              fontWeight: FontWeight.w900,
-              fontFamily: StringRes.josefinSansBold,
-            ),
-            const Divider(
-              color: Colors.red,
-              thickness: 4,
-              height: 5,
-            ),
-            commonText(
-              data: controller
-                  .doctorData!['qualification'],
-              fontSize: 13,
-              fontWeight: FontWeight.w900,
-              fontFamily: StringRes.josefinSans,
-            ),
-            SizedBox(
-              height: h * 0.002,
-            ),
-            commonText(
-              data: controller
-                  .doctorData!['hospital'],
-              fontSize: 12,
-              fontWeight: FontWeight.w900,
-              fontFamily: StringRes.josefinSans,
-            )
-          ],
-        )
-      ],
-    ),)
-  );
+      ));
 }
 
 Widget doctorSpeciality() {
@@ -104,45 +109,47 @@ Widget doctorSpeciality() {
     padding: const EdgeInsets.symmetric(vertical: 20),
     child: GetBuilder<DescribedDoctorController>(
       id: "Doctor",
-      builder: (controller) =>controller.isLod?const Center(
-        child: CircularProgressIndicator(),
-      ) : Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        // infoDoctorCircleAvtar(
-        //   image: const AssetImage(
-        //     IconRes.doctorInfoPatientIcon,
-        //   ),
-        //   data: _homeScreenController
-        //       .doctorList[_homeScreenController.selectedIndex]['patient'],
-        //   title: 'patients',
-        // ),
-        infoDoctorCircleAvtar(
-          image: const AssetImage(
-            IconRes.doctorInfoExpertIcon,
-          ),
-          data: controller
-              .doctorData!['experience'],
-          title: 'Years of experience',
-        ),
-        // infoDoctorCircleAvtar(
-        //   image: const AssetImage(
-        //     IconRes.doctorInfoRatingIcon,
-        //   ),
-        //   data: _homeScreenController
-        //       .doctorList[_homeScreenController.selectedIndex]['rating'],
-        //   title: 'rating',
-        // ),
-        // infoDoctorCircleAvtar(
-        //   image: const AssetImage(
-        //     IconRes.doctorInfoMessageIcon,
-        //   ),
-        //   data: _homeScreenController
-        //       .doctorList[_homeScreenController.selectedIndex]['reviews'],
-        //   title: 'reviews',
-        // ),
-      ],
-    ),),
+      builder: (controller) => controller.isLod
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                // infoDoctorCircleAvtar(
+                //   image: const AssetImage(
+                //     IconRes.doctorInfoPatientIcon,
+                //   ),
+                //   data: _homeScreenController
+                //       .doctorList[_homeScreenController.selectedIndex]['patient'],
+                //   title: 'patients',
+                // ),
+                infoDoctorCircleAvtar(
+                  image: const AssetImage(
+                    IconRes.doctorInfoExpertIcon,
+                  ),
+                  data: controller.doctorData!['experience'],
+                  title: 'Years of experience',
+                ),
+                // infoDoctorCircleAvtar(
+                //   image: const AssetImage(
+                //     IconRes.doctorInfoRatingIcon,
+                //   ),
+                //   data: _homeScreenController
+                //       .doctorList[_homeScreenController.selectedIndex]['rating'],
+                //   title: 'rating',
+                // ),
+                // infoDoctorCircleAvtar(
+                //   image: const AssetImage(
+                //     IconRes.doctorInfoMessageIcon,
+                //   ),
+                //   data: _homeScreenController
+                //       .doctorList[_homeScreenController.selectedIndex]['reviews'],
+                //   title: 'reviews',
+                // ),
+              ],
+            ),
+    ),
   );
 }
 
@@ -162,12 +169,12 @@ Widget aboutDoctor() {
       GetBuilder<DescribedDoctorController>(
         id: "Doctor",
         builder: (controller) => commonText(
-        data: controller
-            .doctorData?['about']??"",
-        fontFamily: StringRes.josefinSans,
-        fontWeight: FontWeight.bold,
-        fontSize: 15,
-      ),)
+          data: controller.doctorData?['about'] ?? "",
+          fontFamily: StringRes.josefinSans,
+          fontWeight: FontWeight.bold,
+          fontSize: 15,
+        ),
+      )
     ],
   );
 }
@@ -188,23 +195,24 @@ Widget workingTime() {
             height: h * 0.02,
           ),
           GetBuilder<DescribedDoctorController>(
-              id: "Doctor",
-              builder: (controller) => commonText(
-            data:  controller
-                .doctorData?['worktime']??"",
-            fontFamily: StringRes.josefinSans,
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
-          ),)
+            id: "Doctor",
+            builder: (controller) => commonText(
+              data: controller.doctorData?['worktime'] ?? "",
+              fontFamily: StringRes.josefinSans,
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
+            ),
+          )
         ],
       ),
     ],
   );
 }
 
-Widget infoDoctorCircleAvtar({required ImageProvider image,
-  required String data,
-  required String title}) {
+Widget infoDoctorCircleAvtar(
+    {required ImageProvider image,
+    required String data,
+    required String title}) {
   return SizedBox(
     // color: Colors.white70,
     // height: h * 0.2,
@@ -258,7 +266,7 @@ Widget bookAppointmentBTN() {
             ),
           ),
         ),
-        child: commonText(data: 'Book Appointment'),
+        child: commonText(data: 'Process'),
       ),
     );
   });

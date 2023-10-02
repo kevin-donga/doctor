@@ -65,6 +65,24 @@ Widget mobileTextFieldSignUp() {
       });
 }
 
+Widget ageTextFieldSignUp() {
+  return GetBuilder<SignupScreenController>(
+      id: 'NameTextFiled',
+      builder: (controller) {
+        return textField(
+          maxLines: 1,
+          controller: controller.ageController,
+          validator: controller.ageCondition,
+          hintText: StringRes.ageTextFieldHintText,
+          prefixIcon: const Icon(IconRes.person1Icon),
+          fillColor: Colors.blueGrey.shade50,
+          filled: true,
+          obscureText: false,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+        );
+      });
+}
+
 Widget emailTextFieldSignUp() {
   return GetBuilder<SignupScreenController>(
       id: 'NameTextFiled',
@@ -164,6 +182,7 @@ Widget passTextFieldSignUp() {
       id: 'LoginController',
       builder: (controller) {
         return textField(
+          maxLines: 1,
           obscureText: controller.visiBal ? true : false,
           controller: controller.passwordController,
           hintText: StringRes.passTextFieldHintText,

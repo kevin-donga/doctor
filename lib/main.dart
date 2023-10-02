@@ -13,11 +13,12 @@ Future<void> main() async {
   await Firebase.initializeApp();
   FirebaseServices.init();
   await PrefService.init();
-  runApp(const GetMaterialApp(
+
+  runApp(GetMaterialApp(
     // home: EditProfileScreen(),
-    // home: SplashScreen(),
+    home: SplashScreen(),
     // home: HomeScreen(),
-    home: BottomNavBar(),
+    //home: BottomNavBar(),
     debugShowCheckedModeBanner: false,
   ));
 }

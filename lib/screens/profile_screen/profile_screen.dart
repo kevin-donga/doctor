@@ -20,9 +20,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     Get.put(ProfileController());
     return Scaffold(
       backgroundColor: ColorRes.scaffoldColor,
-      appBar: commonAppbar(
+      appBar: AppBar(
+        foregroundColor: Colors.black,
         backgroundColor: ColorRes.scaffoldColor,
-        title: StringRes.profileText,
+        title: const Text(StringRes.profileText),
         leading: Container(
           height: Get.height * 0.05,
           width: Get.width * 0.14,
@@ -34,6 +35,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
         ),
+        actions: [
+          PopupMenuButton(onSelected: (value) {
+            // your logic
+            // setState(() {
+            //   selectedItem = value.toString();
+            // });
+            print(value);
+            //Navigator.pushNamed(context, value.toString());
+          }, itemBuilder: (BuildContext bc) {
+            return const [
+              PopupMenuItem(
+                child: Text("Rate Us!"),
+                value: '/hello',
+              ),
+              PopupMenuItem(
+                child: Text("About"),
+                value: '/about',
+              ),
+              PopupMenuItem(
+                child: Text("Contact"),
+                value: '/contact',
+              )
+            ];
+          })
+        ],
       ),
       body: GetBuilder<ProfileController>(builder: (controller) {
         return Padding(

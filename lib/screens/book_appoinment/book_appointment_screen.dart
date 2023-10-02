@@ -8,25 +8,51 @@ import '../../common_widget/common_appbar.dart';
 import '../../utils/icon_res.dart';
 
 class BookAppointment extends StatelessWidget {
- final Map? doctorData;
-  const BookAppointment({Key? key,this.doctorData}) : super(key: key);
+  final Map? doctorData;
+
+  const BookAppointment({Key? key, this.doctorData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Get.put(BookAppointmentController(doctorData));
     return Scaffold(
       backgroundColor: ColorRes.scaffoldColor,
-      appBar: commonAppbar(
+      appBar: AppBar(
+        foregroundColor: Colors.black,
         backgroundColor: ColorRes.scaffoldColor,
-        title: StringRes.bookAppointmentText,
-        leading: GetBuilder<BookAppointmentController>(
-            builder: (controller) {
+        title: const Text(StringRes.bookAppointmentText),
+        leading: GetBuilder<BookAppointmentController>(builder: (controller) {
           return IconButton(
             icon: const Icon(IconRes.backArrowIcon),
             onPressed: controller.backArrow,
             color: ColorRes.blackColor,
           );
         }),
+        actions: [
+          PopupMenuButton(onSelected: (value) {
+            // your logic
+            // setState(() {
+            //   selectedItem = value.toString();
+            // });
+            print(value);
+            //Navigator.pushNamed(context, value.toString());
+          }, itemBuilder: (BuildContext bc) {
+            return const [
+              PopupMenuItem(
+                child: Text("Rate Us!"),
+                value: '/hello',
+              ),
+              PopupMenuItem(
+                child: Text("About"),
+                value: '/about',
+              ),
+              PopupMenuItem(
+                child: Text("Contact"),
+                value: '/contact',
+              )
+            ];
+          })
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

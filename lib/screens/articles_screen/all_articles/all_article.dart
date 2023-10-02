@@ -22,11 +22,11 @@ class AllArticles extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                SizedBox(
+                /*SizedBox(
                   height: h * 0.075,
                   width: w,
                   child: allAtriclesTab(),
-                ),
+                ),*/
                 SizedBox(
                   height: h,
                   child: allArticlesList(),

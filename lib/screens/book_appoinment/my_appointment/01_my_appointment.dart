@@ -10,17 +10,18 @@ import '../../../utils/asset_res.dart';
 import '../../../utils/string_res.dart';
 
 class MyAppointment extends StatelessWidget {
-   MyAppointment({Key? key}) : super(key: key);
+  MyAppointment({Key? key}) : super(key: key);
   MyAppointmentController myAppointmentController =
-  Get.put(MyAppointmentController());
+      Get.put(MyAppointmentController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorRes.scaffoldColor,
-      appBar: commonAppbar(
+      appBar: AppBar(
+        foregroundColor: Colors.black,
         backgroundColor: ColorRes.scaffoldColor,
-        title: StringRes.myAppointmentText,
+        title: const Text(StringRes.myAppointmentText),
         leading: Container(
           height: Get.height * 0.05,
           width: Get.width * 0.14,
@@ -32,6 +33,31 @@ class MyAppointment extends StatelessWidget {
             ),
           ),
         ),
+        actions: [
+          PopupMenuButton(onSelected: (value) {
+            // your logic
+            // setState(() {
+            //   selectedItem = value.toString();
+            // });
+            print(value);
+            //Navigator.pushNamed(context, value.toString());
+          }, itemBuilder: (BuildContext bc) {
+            return const [
+              PopupMenuItem(
+                value: '/hello',
+                child: Text("Rate Us!"),
+              ),
+              PopupMenuItem(
+                value: '/about',
+                child: Text("About"),
+              ),
+              PopupMenuItem(
+                value: '/contact',
+                child: Text("Contact"),
+              )
+            ];
+          })
+        ],
         bottom: TabBar(
           indicatorColor: Colors.blue,
           controller: myAppointmentController.tabController,

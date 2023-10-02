@@ -1,3 +1,4 @@
+import 'package:doctor/screens/search&filter/search&filter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../common_widget/common_container.dart';
@@ -29,13 +30,38 @@ AppBar appbar() {
         ),
       ),
       IconButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(() => const SearchAndFilter());
+        },
         icon: const Icon(Icons.search),
       ),
-      IconButton(
-        onPressed: () {},
-        icon: const Icon(Icons.more_horiz),
-      ),
+      // IconButton(
+      //   onPressed: () {},
+      //   icon: const Icon(Icons.more_horiz),
+      // ),
+      PopupMenuButton(onSelected: (value) {
+        // your logic
+        // setState(() {
+        //   selectedItem = value.toString();
+        // });
+        print(value);
+        //Navigator.pushNamed(context, value.toString());
+      }, itemBuilder: (BuildContext bc) {
+        return const [
+          PopupMenuItem(
+            child: Text("Rate Us!"),
+            value: '/hello',
+          ),
+          PopupMenuItem(
+            child: Text("About"),
+            value: '/about',
+          ),
+          PopupMenuItem(
+            child: Text("Contact"),
+            value: '/contact',
+          )
+        ];
+      })
     ],
   );
 }

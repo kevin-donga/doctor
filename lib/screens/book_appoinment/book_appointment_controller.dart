@@ -1,4 +1,3 @@
-
 import 'dart:ffi';
 
 import 'package:doctor/services/firebase_services.dart';
@@ -17,11 +16,12 @@ class BookAppointmentController extends GetxController {
   String dateCount = '';
   String range = '';
   String rangeCount = '';
-  String timePass='09.00 Am';
+  String timePass = '09.00 Am';
   int _selectedIndex = 0;
   Map? doctorData;
   Map? userData;
   TextEditingController problem = TextEditingController();
+
   int get selectedIndex => _selectedIndex;
   List bookAppointmentList = [
     '09.00 Am',
@@ -50,9 +50,10 @@ class BookAppointmentController extends GetxController {
   Future<void> getUserData() async {
     String userId = PrefService.getString(PrefRes.loginUser);
     print(userId);
-    DatabaseReference databaseReference=FirebaseServices.database!.ref('User/$userId');
-    userData= await FirebaseServices.getData(databaseReference);
-print(userData);
+    DatabaseReference databaseReference =
+        FirebaseServices.database!.ref('User/$userId');
+    userData = await FirebaseServices.getData(databaseReference);
+    print(userData);
   }
 
   set selectedIndex(int value) {
@@ -82,25 +83,29 @@ print(userData);
   Future<void> bookAppointment() async {
     String userId = PrefService.getString(PrefRes.loginUser);
     Map<String, dynamic> appointment = {
-      "userId" : userId,
+      "userId": userId,
+      "userName": userData!["name"],
+      "doctorName": doctorData!["name"],
       "doctorId": doctorData!["id"],
-      "time" : timePass,
-      "date" : selectedDate,
-      "problem":problem.text.trim(),
+      "time": timePass,
+      "date": selectedDate,
+      "problem": problem.text.trim(),
       "states": "pending"
     };
 
-    DatabaseReference databaseReference=FirebaseServices.database!.ref('Appointment');
-    String? key =  databaseReference.push().key;
-    await FirebaseServices.addData(databaseReference.child(key!), appointment).then((value){
+    DatabaseReference databaseReference =
+        FirebaseServices.database!.ref('Appointment');
+    String? key = databaseReference.push().key;
+    await FirebaseServices.addData(databaseReference.child(key!), appointment)
+        .then((value) {
       bookAppointmentButton();
     });
   }
 
   void bookAppointmentButton() {
-    Get.to(const MyAppointmentMessage())!.then((value){
-    Get.back();
-    Get.back();
+    Get.to(const MyAppointmentMessage())!.then((value) {
+      Get.back();
+      Get.back();
     });
   }
 }

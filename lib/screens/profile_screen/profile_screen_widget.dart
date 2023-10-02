@@ -1,4 +1,5 @@
 import 'package:doctor/common_widget/common_text.dart';
+import 'package:doctor/common_widget/common_textfield.dart';
 import 'package:doctor/screens/profile_screen/profile_screen_controller.dart';
 import 'package:doctor/utils/asset_res.dart';
 import 'package:doctor/utils/color_res.dart';
@@ -12,6 +13,8 @@ Widget profileImage() {
       id: 'imagePicker',
       builder: (controller) {
         return Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Stack(
               children: [
@@ -27,7 +30,7 @@ Widget profileImage() {
                         image: controller.file == null
                             ? const AssetImage(AssetRes.doctorThumb3)
                             : FileImage(controller.file!) as ImageProvider,
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       ),
                       border: Border.all(
                           color: ColorRes.blueColor.withOpacity(0.1)),
@@ -58,23 +61,35 @@ Widget profileImage() {
             SizedBox(
               height: Get.height * 0.02,
             ),
-            commonText(
-              data: StringRes.andrewAinsleyText,
-              color: ColorRes.blackColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 25,
-              fontFamily: StringRes.josefinSans,
-            ),
-            SizedBox(
-              height: Get.height * 0.01,
-            ),
-            commonText(
-              data: "+ 1 111 123 145 658",
-              color: ColorRes.blackColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 13,
-              fontFamily: StringRes.josefinSans,
-            ),
+            TextFormField(
+                style: const TextStyle(
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                  fontFamily: StringRes.josefinSans,
+                ),
+                textAlign: TextAlign.center,
+                controller: controller.nameController,
+                decoration: const InputDecoration(
+                  // labelText: 'Enter Name',
+                  border: InputBorder.none,
+                )),
+            // SizedBox(
+            //   height: Get.height * 0.01,
+            // ),
+            TextFormField(
+                style: const TextStyle(
+                  color: ColorRes.blackColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  fontFamily: StringRes.josefinSans,
+                ),
+                textAlign: TextAlign.center,
+                controller: controller.mobileController,
+                decoration: const InputDecoration(
+                  // labelText: 'Enter Name',
+                  border: InputBorder.none,
+                )),
           ],
         );
       });
@@ -114,7 +129,7 @@ Widget listview() {
                     ),
                     const Spacer(),
                     SizedBox(
-                      height: Get.height*0.04,
+                      height: Get.height * 0.04,
                     ),
                     const Icon(
                       IconRes.arrowIcon,

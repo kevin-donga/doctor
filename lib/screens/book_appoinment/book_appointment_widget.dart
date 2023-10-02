@@ -9,8 +9,9 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../common_widget/common_elevated_button.dart';
 import '../../common_widget/common_textfield.dart';
-double h=Get.height;
-double w=Get.width;
+
+double h = Get.height;
+double w = Get.width;
 
 Widget textFieldDate() {
   return GetBuilder<BookAppointmentController>(
@@ -43,7 +44,8 @@ Widget datePickerText() {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: Get.width * 0.05,top: Get.height * 0.01),
+          padding:
+              EdgeInsets.only(left: Get.width * 0.05, top: Get.height * 0.01),
           child: commonText(
             data: StringRes.selectDateText,
             color: ColorRes.blackColor,
@@ -99,48 +101,49 @@ Widget datePicker() {
       });
 }
 
-
-
 Widget timePicker() {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(
-      height: Get.height*0.250,
+      height: Get.height * 0.250,
       child: GetBuilder<BookAppointmentController>(
-        id: 'container',
-        builder: (controller) {
-          return GridView.builder(
-            shrinkWrap: true,
-            physics:const NeverScrollableScrollPhysics(),
-            itemCount:controller. bookAppointmentList.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisSpacing: 15.0,
-              crossAxisSpacing: 20.0,
-              childAspectRatio: 2.78,
-              crossAxisCount: 3,
-            ),
-            itemBuilder: ( BuildContext context, int index) => Align(
-              child: InkWell(
-                onTap: (){
-                  controller.selectedIndex = index;
-                },
-                child: Container(
-                  height: Get.height * 0.80,
-                  width: Get.width * 0.90,
-                  decoration: BoxDecoration(
-                    color: controller.selectedIndex == index ? ColorRes.blueColor : ColorRes.whiteColor,
-                    border: Border.all(
-                        color: ColorRes.blueColor,
-                        strokeAlign: BorderSide.strokeAlignOutside),
-                    borderRadius: BorderRadius.circular(20),
+          id: 'container',
+          builder: (controller) {
+            return GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: controller.bookAppointmentList.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                mainAxisSpacing: 15.0,
+                crossAxisSpacing: 20.0,
+                childAspectRatio: 2.78,
+                crossAxisCount: 3,
+              ),
+              itemBuilder: (BuildContext context, int index) => Align(
+                child: InkWell(
+                  onTap: () {
+                    controller.selectedIndex = index;
+                  },
+                  child: Container(
+                    height: Get.height * 0.80,
+                    width: Get.width * 0.90,
+                    decoration: BoxDecoration(
+                      color: controller.selectedIndex == index
+                          ? ColorRes.blueColor
+                          : ColorRes.whiteColor,
+                      border: Border.all(
+                          color: ColorRes.blueColor,
+                          strokeAlign: BorderSide.strokeAlignOutside),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Center(
+                        child: commonText(
+                            data: controller.bookAppointmentList[index])),
                   ),
-                  child: Center(child: commonText(data:controller.bookAppointmentList[index])),
                 ),
               ),
-            ),
-          );
-        }
-      ),
+            );
+          }),
     ),
   );
 }
@@ -153,13 +156,14 @@ Widget bookAppointmentButton() {
       onPressed: () => controller.bookAppointment(),
       widget: Padding(
         padding: EdgeInsets.only(
-          left: width * 0.32,
-          right: width * 0.30,
+          left: width * 0.22,
+          right: width * 0.20,
           top: height * 0.02,
           bottom: height * 0.02,
         ),
-        child: FittedBox(
-          child: commonText(data: StringRes.nextText),
+        child: commonText(
+          data: 'Book Appointment', fontSize: 14,
+          // data: StringRes.nextText,
         ),
       ),
     );

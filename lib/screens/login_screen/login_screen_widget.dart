@@ -7,6 +7,7 @@ import '../../utils/asset_res.dart';
 import '../../utils/color_res.dart';
 import '../../utils/icon_res.dart';
 import '../../utils/string_res.dart';
+import '../bottom_navbar/bottom_navbar.dart';
 import 'login_screen_controller.dart';
 
 double height = Get.height;
@@ -28,20 +29,19 @@ Widget middleTextLogin() {
 }
 
 Widget emailTextFieldLogin() {
-  return GetBuilder<LoginController>(
-    builder: (controller) {
-      return textField(
-        controller: controller.emailController,
-        validator: controller.emailCondition,
-        hintText: StringRes.emailTextFieldHintText,
-        prefixIcon: const Icon(Icons.email),
-        fillColor: Colors.blueGrey.shade50,
-        filled: true,
-        obscureText: false,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
-      );
-    }
-  );
+  return GetBuilder<LoginController>(builder: (controller) {
+    return textField(
+      controller: controller.emailController,
+      validator: controller.emailCondition,
+      hintText: StringRes.emailTextFieldHintText,
+      prefixIcon: const Icon(Icons.email),
+      fillColor: Colors.blueGrey.shade50,
+      filled: true,
+      obscureText: false,
+      maxLines: 1,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+    );
+  });
 }
 
 Widget passTextFieldLogin() {
@@ -52,6 +52,7 @@ Widget passTextFieldLogin() {
           obscureText: controller.visiBal ? true : false,
           hintText: StringRes.passTextFieldHintText,
           prefixIcon: const Icon(Icons.lock),
+          maxLines: 1,
           validator: controller.passwordCondition,
           controller: controller.passController,
           suffixIcon: IconButton(
@@ -78,6 +79,7 @@ Widget forgetPassTextLogin() {
 
 Widget loginButton() {
   return GetBuilder<LoginController>(
+    id: "loginButton",
     builder: (controller) {
       return SizedBox(
         width: Get.width * 0.802,
