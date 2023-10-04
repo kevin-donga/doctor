@@ -5,13 +5,12 @@ import 'package:doctor/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'edit_profile_controller.dart';
+import '../profile_screen_controller.dart';
 import 'edit_profile_widget.dart';
 
 class EditProfileScreen extends StatelessWidget {
   EditProfileScreen({Key? key}) : super(key: key);
-  EditProfileController editProfileController =
-      Get.put(EditProfileController());
+  ProfileController editProfileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +18,9 @@ class EditProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorRes.scaffoldColor,
       appBar: commonAppbar(
+        backgroundColor: ColorRes.scaffoldColor,
         title: StringRes.editProfileAppbarTitle,
-        leading: GetBuilder<EditProfileController>(builder: (controller) {
+        leading: GetBuilder<ProfileController>(builder: (controller) {
           return IconButton(
             icon: const Icon(IconRes.backArrowIcon),
             onPressed: controller.backArrow,

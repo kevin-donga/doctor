@@ -243,7 +243,8 @@ Widget appointmentListview() {
                                             data: StringRes.problemText,
                                             color: ColorRes.blackColor,
                                             fontSize: 15,
-                                            fontFamily: StringRes.josefinSans,
+                                            fontFamily:
+                                                StringRes.josefinSansBold,
                                             fontWeight: FontWeight.bold,
                                           ),
                                           commonText(
@@ -270,7 +271,8 @@ Widget appointmentListview() {
                                             data: StringRes.time1Text,
                                             color: ColorRes.blackColor,
                                             fontSize: 15,
-                                            fontFamily: StringRes.josefinSans,
+                                            fontFamily:
+                                                StringRes.josefinSansBold,
                                             fontWeight: FontWeight.bold,
                                           ),
                                           commonText(
@@ -297,7 +299,8 @@ Widget appointmentListview() {
                                                 StringRes.dateTextFieldHintText,
                                             color: ColorRes.blackColor,
                                             fontSize: 15,
-                                            fontFamily: StringRes.josefinSans,
+                                            fontFamily:
+                                                StringRes.josefinSansBold,
                                             fontWeight: FontWeight.bold,
                                           ),
                                           commonText(
@@ -323,7 +326,8 @@ Widget appointmentListview() {
                                             data: StringRes.statesText,
                                             color: ColorRes.blackColor,
                                             fontSize: 15,
-                                            fontFamily: StringRes.josefinSans,
+                                            fontFamily:
+                                                StringRes.josefinSansBold,
                                             fontWeight: FontWeight.bold,
                                           ),
                                           commonText(

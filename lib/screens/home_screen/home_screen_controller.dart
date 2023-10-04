@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:doctor/screens/home_screen/home_screen_widget.dart';
 import 'package:doctor/services/firebase_services.dart';
 import 'package:doctor/services/pref_service.dart';
@@ -7,7 +5,6 @@ import 'package:doctor/utils/pref_res.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../utils/asset_res.dart';
 import '../../utils/string_res.dart';
 import '../profile_screen/profile_screen.dart';
 import 'describe_doctor/describe_doctor.dart';
@@ -20,25 +17,25 @@ class HomeScreenController extends GetxController {
   int selectedGridIndex = 0;
   bool selectedGridIndexBool = false;
   List<Map> doctorList = [];
-  Map currentUser = {};
+  Map? currentUser = {};
   String loginUserUniqueKey = '';
-  Map? data;
-
-  Future<void> getLoginUser() async {
-    String? getData = PrefService.getString(PrefRes.loginUser);
-    DatabaseReference databaseReference =
-        FirebaseDatabase.instance.ref("User/$loginUserUniqueKey");
-    data = await FirebaseServices.getData(databaseReference);
-    print(currentUser);
-    update(["loginUserAppBar"]);
-  }
+  Map? data = {};
 
   @override
   void onInit() {
     loginUserUniqueKey = PrefService.getString(PrefRes.loginUser);
-    //getLoginUser();
+    getLoginUser();
     getDoctorList();
     super.onInit();
+  }
+
+  Future<void> getLoginUser() async {
+    //String? getData = PrefService.getString(PrefRes.loginUser);
+    DatabaseReference databaseReference =
+        FirebaseDatabase.instance.ref("User/$loginUserUniqueKey");
+    currentUser = await FirebaseServices.getData(databaseReference);
+    print(currentUser);
+    update(["loginUserAppBar"]);
   }
 
   Map allDoctorData = {};
@@ -61,10 +58,7 @@ class HomeScreenController extends GetxController {
   }
 
   void onAllDoctor() {
-    // selectedGridIndexBool == false;
-    // print('=============>$selectedGridIndexBool');
     update();
-    // selectedGridIndex = index;
     Get.to(() => const TopDoctors());
     update(['HomeScreenController']);
   }
@@ -97,144 +91,6 @@ class HomeScreenController extends GetxController {
 
   List topDoctorTab = ['All', 'General', 'Dentist', 'Nutrition'];
 
-  // List<Map> topDoctors = [
-  //   {
-  //     'photo': AssetRes.drManuBora,
-  //     'name': 'Dr. Manu Bora',
-  //     'qualification': 'Dentist Specialist',
-  //     'star': '4',
-  //     'hospital': 'Christ Hospital in London, UK',
-  //     'patient': '5,000+',
-  //     'experience': '10+',
-  //     'rating': '4.6',
-  //     'reviews': '5,479',
-  //     'about': 'Doctors are considered the most important '
-  //         'and responsible people in society. They are the '
-  //         'ones who support when someone is struggling with'
-  //         ' their health. Doctors are the ones to have a profound'
-  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-  //   },
-  //   {
-  //     'photo': AssetRes.drSumitAgarwal,
-  //     'name': 'Dr. Sumit Agarwal',
-  //     'qualification': 'Medicine Specialist',
-  //     'star': '4',
-  //     'hospital': 'Christ Hospital in London, UK',
-  //     'patient': '5,000+',
-  //     'experience': '10+',
-  //     'rating': '4.6',
-  //     'reviews': '5,479',
-  //     'about': 'Doctors are considered the most important '
-  //         'and responsible people in society. They are the '
-  //         'ones who support when someone is struggling with'
-  //         ' their health. Doctors are the ones to have a profound'
-  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-  //   },
-  //   {
-  //     'photo': AssetRes.drAnanyaVatiya,
-  //     'name': 'Dr. Ananya Vatiya',
-  //     'qualification': 'General Doctor',
-  //     'star': '4',
-  //     'hospital': 'Christ Hospital in London, UK',
-  //     'patient': '5,000+',
-  //     'experience': '10+',
-  //     'rating': '4.6',
-  //     'reviews': '5,479',
-  //     'about': 'Doctors are considered the most important '
-  //         'and responsible people in society. They are the '
-  //         'ones who support when someone is struggling with'
-  //         ' their health. Doctors are the ones to have a profound'
-  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-  //   },
-  //   {
-  //     'photo': AssetRes.drManmeet,
-  //     'name': 'Dr. Manmeet',
-  //     'qualification': 'Neuro Specialist',
-  //     'star': '4',
-  //     'hospital': 'Christ Hospital in London, UK',
-  //     'patient': '5,000+',
-  //     'experience': '10+',
-  //     'rating': '4.6',
-  //     'reviews': '5,479',
-  //     'about': 'Doctors are considered the most important '
-  //         'and responsible people in society. They are the '
-  //         'ones who support when someone is struggling with'
-  //         ' their health. Doctors are the ones to have a profound'
-  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-  //   },
-  //   {
-  //     'photo': AssetRes.drPravinShah,
-  //     'name': 'Dr. Pravin Shah',
-  //     'qualification': 'Ophthal Specialist',
-  //     'star': '4',
-  //     'hospital': 'Christ Hospital in London, UK',
-  //     'patient': '5,000+',
-  //     'experience': '10+',
-  //     'rating': '4.6',
-  //     'reviews': '5,479',
-  //     'about': 'Doctors are considered the most important '
-  //         'and responsible people in society. They are the '
-  //         'ones who support when someone is struggling with'
-  //         ' their health. Doctors are the ones to have a profound'
-  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-  //   },
-  //   {
-  //     'photo': AssetRes.drPritiDesai,
-  //     'name': 'Dr. Priti Desai',
-  //     'qualification': 'Nutrition Specialist',
-  //     'star': '4',
-  //     'hospital': 'Christ Hospital in London, UK',
-  //     'patient': '5,000+',
-  //     'experience': '10+',
-  //     'rating': '4.6',
-  //     'reviews': '5,479',
-  //     'about': 'Doctors are considered the most important '
-  //         'and responsible people in society. They are the '
-  //         'ones who support when someone is struggling with'
-  //         ' their health. Doctors are the ones to have a profound'
-  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-  //   },
-  //   {
-  //     'photo': AssetRes.drShrutiPatel,
-  //     'name': 'Dr. Shruti Patel',
-  //     'qualification': 'Radiology Specialist',
-  //     'star': '4',
-  //     'hospital': 'Christ Hospital in London, UK',
-  //     'patient': '5,000+',
-  //     'experience': '10+',
-  //     'rating': '4.6',
-  //     'reviews': '5,479',
-  //     'about': 'Doctors are considered the most important '
-  //         'and responsible people in society. They are the '
-  //         'ones who support when someone is struggling with'
-  //         ' their health. Doctors are the ones to have a profound'
-  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-  //   },
-  //   {
-  //     'photo': AssetRes.drYagneshSharma,
-  //     'name': 'Dr. Yagnesh Sharma',
-  //     'qualification': 'Dentist Specialist',
-  //     'star': '4',
-  //     'hospital': 'Christ Hospital in London, UK',
-  //     'patient': '5,000+',
-  //     'experience': '10+',
-  //     'rating': '4.6',
-  //     'reviews': '5,479',
-  //     'about': 'Doctors are considered the most important '
-  //         'and responsible people in society. They are the '
-  //         'ones who support when someone is struggling with'
-  //         ' their health. Doctors are the ones to have a profound'
-  //         ' knowledge of all kinds of diseases, their symptoms, and their treatments.',
-  //     'workTime': 'Monday-Friday, 08:00 AM-20:00 AM',
-  //   },
-  // ];
   bool topDoctorTabDecoration = false;
 
   void onNotification() {
@@ -250,11 +106,6 @@ class HomeScreenController extends GetxController {
     // var hour = DateTime.now().hour;
     if (hour <= 12) {
       return appbarGreetingText(data: StringRes.appbarMorningTitle);
-      // Text('Good Morning', style: TextStyle(
-      //     color: Colors.black,
-      //     fontSize: 14,
-      //     fontWeight: FontWeight.w900,
-      //     fontFamily: StringRes.josefinSans),);
     } else if (hour <= 17) {
       return appbarGreetingText(data: StringRes.appbarAfternoonTitle);
     }

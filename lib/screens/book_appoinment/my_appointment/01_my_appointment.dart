@@ -1,3 +1,4 @@
+import 'package:doctor/common_widget/common_text.dart';
 import 'package:doctor/screens/book_appoinment/my_appointment/01_my_appointment_controller.dart';
 import 'package:doctor/screens/book_appoinment/my_appointment/01_my_appointment_widget.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,9 @@ class MyAppointment extends StatelessWidget {
       appBar: AppBar(
         foregroundColor: Colors.black,
         backgroundColor: ColorRes.scaffoldColor,
-        title: const Text(StringRes.myAppointmentText),
+        title: commonText(
+            data: StringRes.myAppointmentText,
+            fontFamily: StringRes.josefinSansBold),
         leading: Container(
           height: Get.height * 0.05,
           width: Get.width * 0.14,

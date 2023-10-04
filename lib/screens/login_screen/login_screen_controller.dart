@@ -50,30 +50,6 @@ class LoginController extends GetxController {
   }
 
   Future<void> loginButton() async {
-    // if (formKey.currentState!.validate()) {
-    //   var d = await database.ref('User').once();
-    //   Map temp = d.snapshot.value as Map;
-    //   data.clear();
-    //   temp.forEach((key, value) {
-    //     data.add(value);
-    //   });
-    //   print(data);
-    //   bool check = data.any((element) =>
-    //       element["email"] == emailController.text &&
-    //       element["password"] == passController.text);
-    //   if (check) {
-    //     int index = data.indexWhere((element) =>
-    //         element["email"] == emailController.text &&
-    //         element["password"] == passController.text);
-    //     loginUser = data[index];
-    //     await PrefService.setValue(PrefRes.loginUser, jsonEncode(loginUser));
-    //     Get.offAll(() => const BottomNavBar());
-    //   } else {
-    //     Get.snackbar('Invalid Data', 'Please Enter Email and Password');
-    //   }
-    // } else {
-    //   Get.snackbar('Data Is Empty', 'Please Enter Email and Password');
-    // }
     if (formKey.currentState!.validate()) {
       // Get.snackbar("Login", "Success");
       List<Map> userDataList = [];
@@ -103,13 +79,13 @@ class LoginController extends GetxController {
         // Map currentUser = userDataList[loginUserIndex];
         print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
         if (checkLogin == true) {
-          Get.off(const BottomNavBar());
+          Get.off(() => const BottomNavBar());
         } else {
           Get.snackbar("login failed", "please enter valid data");
         }
       }
     } else {
-      Get.snackbar("Login", "Please Login");
+      Get.snackbar("Login", "Please Login with Correct detail");
     }
   }
 
