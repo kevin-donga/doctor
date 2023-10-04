@@ -5,10 +5,8 @@ import 'package:doctor/utils/icon_res.dart';
 import 'package:doctor/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
-
 import '../../../common_widget/common_elevated_button.dart';
-import 'edit_profile_controller.dart';
+import '../profile_screen_controller.dart';
 
 double height = Get.height;
 double width = Get.width;
@@ -16,7 +14,7 @@ double width = Get.width;
 Widget usernameTextFiled() {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: GetBuilder<EditProfileController>(builder: (controller) {
+    child: GetBuilder<ProfileController>(builder: (controller) {
       return textField(
         validator: controller.editUserCondition,
         hintText: StringRes.userTextFieldHintText,
@@ -31,24 +29,26 @@ Widget usernameTextFiled() {
 Widget nameTextFiled() {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: GetBuilder<EditProfileController>(builder: (controller) {
-      return textField(
-        controller: controller.nameController,
-        validator: controller.editNameCondition,
-        hintText: StringRes.nameTextFieldHintText,
-        fillColor: Colors.blueGrey.shade50,
-        filled: true,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
-        obscureText: false,
-      );
-    }),
+    child: GetBuilder<ProfileController>(
+        id: 'EditProfileController',
+        builder: (controller) {
+          return textField(
+            controller: controller.nameController,
+            validator: controller.editNameCondition,
+            hintText: StringRes.nameTextFieldHintText,
+            fillColor: Colors.blueGrey.shade50,
+            filled: true,
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+            obscureText: false,
+          );
+        }),
   );
 }
 
 Widget dateTextFiled(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: GetBuilder<EditProfileController>(
+    child: GetBuilder<ProfileController>(
         id: 'DatePicker',
         builder: (controller) {
           return textField(
@@ -69,7 +69,7 @@ Widget dateTextFiled(BuildContext context) {
 Widget emailTextFiled() {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: GetBuilder<EditProfileController>(builder: (controller) {
+    child: GetBuilder<ProfileController>(builder: (controller) {
       return textField(
         validator: controller.editEmailCondition,
         hintText: StringRes.emailTextFieldHintText,
@@ -122,7 +122,7 @@ Widget emailTextFiled() {
 //   );
 // }
 Widget mobileTextFieldSignUp() {
-  return GetBuilder<EditProfileController>(
+  return GetBuilder<ProfileController>(
       id: 'NameTextFiled',
       builder: (controller) {
         return Padding(
@@ -202,7 +202,7 @@ Widget mobileTextFieldSignUp() {
 // }
 
 Widget radioButton() {
-  return GetBuilder<EditProfileController>(
+  return GetBuilder<ProfileController>(
       id: 'radioButton',
       builder: (controller) {
         return Padding(
@@ -253,13 +253,13 @@ Widget radioButton() {
               ),
               controller.genderError != null
                   ? Padding(
-                      padding: EdgeInsets.only(left: Get.width * 0.04),
-                      child: commonText(
-                        data: controller.genderError ?? "",
-                        color: ColorRes.errorColor,
-                        fontSize: 12,
-                      ),
-                    )
+                padding: EdgeInsets.only(left: Get.width * 0.04),
+                child: commonText(
+                  data: controller.genderError ?? "",
+                  color: ColorRes.errorColor,
+                  fontSize: 12,
+                ),
+              )
                   : const SizedBox(),
             ],
           ),
@@ -268,18 +268,11 @@ Widget radioButton() {
 }
 
 Widget editButton() {
-  return GetBuilder<EditProfileController>(builder: (controller) {
+  return GetBuilder<ProfileController>(builder: (controller) {
     return commonElevatedButton(
       shape: MaterialStateProperty.all(RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(height * 0.25))),
-      onPressed: () => controller.editProfile().then((value) {
-        controller.nameController.clear();
-        controller.emailController.clear();
-        controller.mobileController.clear();
-        controller.dateController.clear();
-        controller.countryController.clear();
-        controller.gender = null;
-      }),
+      onPressed: () => controller.editProfile(),
       widget: Padding(
         padding: EdgeInsets.only(
           left: width * 0.34,

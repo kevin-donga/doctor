@@ -154,7 +154,7 @@ class SignupScreenController extends GetxController {
           'name': nameController.text.trim(),
           'email': emailController.text.trim(),
           'age': ageController.text.trim(),
-          'date': birtDateController.text.trim(),
+          //'date': birtDateController.text.trim(),
           'mobileNumber': mobileController.text.trim(),
           'password': passwordController.text.trim(),
           'gender': group!.trim(),
